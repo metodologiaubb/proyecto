@@ -13,13 +13,13 @@ import javafx.beans.property.SimpleStringProperty;
  * @author Pascal
  */
 public class Consulta {
-      private SimpleStringProperty ID_CONSULTA = new SimpleStringProperty();
+    private SimpleStringProperty ID_CONSULTA = new SimpleStringProperty();
     private SimpleStringProperty ID_LECTOR = new SimpleStringProperty();
-    private SimpleStringProperty   FECHA_CONS= new SimpleStringProperty();
+    private SimpleStringProperty FECHA_CONS= new SimpleStringProperty();
 
     public String getID_CONSULTA(){
         return ID_CONSULTA.get();
-    }
+    } 
     public String getID_LECTOR(){
         return ID_LECTOR.get();
     }
