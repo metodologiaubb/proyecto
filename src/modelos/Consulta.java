@@ -12,7 +12,7 @@ import javafx.beans.property.SimpleStringProperty;
  *
  * @author Pascal
  */
-public class Consulta {
+public class Consulta {  
     private SimpleStringProperty ID_CONSULTA = new SimpleStringProperty();
     private SimpleStringProperty ID_LECTOR = new SimpleStringProperty();
     private SimpleStringProperty FECHA_CONS= new SimpleStringProperty();
