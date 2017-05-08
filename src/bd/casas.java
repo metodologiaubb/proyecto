@@ -10,5 +10,9 @@ package bd;
  * @author balannor
  */
 public class casas {
+
+    public casas() {
+        System.out.println("HOlis");
+    }
     
 }
