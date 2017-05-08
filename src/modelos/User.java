@@ -23,7 +23,7 @@ public class User {
     private SimpleStringProperty USER_PASS = new SimpleStringProperty();
     private SimpleStringProperty USER_NOMBRE = new SimpleStringProperty();
     private SimpleStringProperty USER_APELLIDO = new SimpleStringProperty();
-    private SimpleIntegerProperty USER_FONO = new SimpleIntegerProperty();
+    private SimpleStringProperty USER_FONO = new SimpleStringProperty();
     private SimpleIntegerProperty USER_ROL = new SimpleIntegerProperty();
     
     
@@ -36,7 +36,7 @@ public class User {
     public String getPASS_USER(){
         return USER_PASS.get();
     }
-     public int getFONO_USER(){
+     public String getFONO_USER(){
         return USER_FONO.get();
     }
        public int getROL(){
