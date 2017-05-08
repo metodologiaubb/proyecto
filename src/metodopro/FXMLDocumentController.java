@@ -5,7 +5,9 @@
  */
 package metodopro;
 
+import bd.conexion;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,10 +32,11 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn Nproducot;
     @FXML
     private TableColumn descripcot;
-    
+    conexion con;
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
+        con =new conexion();
+        Connection reg= con.getconexion();
         
     }
     
