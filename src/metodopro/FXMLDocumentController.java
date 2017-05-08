@@ -5,7 +5,7 @@
  */
 package metodopro;
 
-import bd.conexion;
+import bd.consultas;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
@@ -21,7 +21,8 @@ import javafx.scene.control.TableView;
  * @author jerson
  */
 public class FXMLDocumentController implements Initializable {
-    
+    consultas cs;
+    //@FXML
     @FXML
     private TableView tablacot;
     @FXML
@@ -32,17 +33,18 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn Nproducot;
     @FXML
     private TableColumn descripcot;
-    conexion con;
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        con =new conexion();
-        Connection reg= con.getconexion();
-        
+        int x;
+        x=cs.Insert("INSERT INTO admin(PASS_ADMIN, NOMBRE_ADMIN, APELLIDO_ADMIN) VALUES ('123456d','Pedro','Perez')");//Prueba de funcionamiento
+        if(x==0){
+            System.out.println("insercion exitosa");
+        }
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        cs=new consultas();
     }    
     
 }
