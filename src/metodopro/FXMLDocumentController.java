@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import modelos.User;
 
 /**
  *
@@ -36,7 +37,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) {
         int x;
-        x=cs.Insert("INSERT INTO admin(PASS_ADMIN, NOMBRE_ADMIN, APELLIDO_ADMIN) VALUES ('123456d','Pedro','Perez')");//Prueba de funcionamiento
+        x=cs.Insert(User.Insert_User("jexxmt", "holi123", "8858376", 3, "jerson", "martinez"));//Prueba de funcionamiento
         if(x==0){
             System.out.println("insercion exitosa");
         }

@@ -36,6 +36,10 @@ public class Cotizacion {
     public String getTOKEN(){
         return TOKEN.get();
     }
+    public static String Insert_cod(int ID_creador,String Descripcion,String token){
+        String sql="INSERT INTO cotizacion( ID_CREADOR, DESCRIPCION, TOKEN) VALUES ("+ID_creador+",'"+ Descripcion +"','"+token+"')";
+        return sql;
+    }
 
     
 }
