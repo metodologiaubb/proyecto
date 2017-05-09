@@ -38,4 +38,10 @@ public class Producto {
     public int getID_MARCA(){
         return ID_MARCA.get();
     }
+    
+    
+     public static String Insert_Producto(String Nombre_producto,String U_medida,String Pentrega,int Precio_producto,int Id_marca){
+        String sql="INSERT INTO producto( NOMBRE_PRODUCTO, U_MEDIDA, PENTREGA,PRECIO_PRODUCTO, ID_MARCA) VALUES ('"+Nombre_producto+"','"+U_medida+"','"+Pentrega+"','"+Precio_producto+"','"+Id_marca+"');";
+        return sql;
+    }
 }

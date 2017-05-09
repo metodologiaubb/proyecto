@@ -31,4 +31,13 @@ public class Proveedor {
     public int getC_PRO_DCTO(){
         return C_PRO_DCTO.get();
     }
+    
+    public static String Insert_Proveedor(String Nombre_proveedor, int Dcto_proveedor,int C_pro_dcto){
+        String sql="INSERT INTO proveedor ( NOMBRE_PROVEEDOR, DCTO_PROVEEDOR, C_PRO_DCTO) VALUES ('"+Nombre_proveedor+"','"+Dcto_proveedor+"','"+C_pro_dcto+"');";
+        return sql;
+    }
+    public static String Insert_Proveedor(String Nombre_proveedor, int Dcto_proveedor){
+        String sql="INSERT INTO proveedor ( NOMBRE_PROVEEDOR, DCTO_PROVEEDOR) VALUES ('"+Nombre_proveedor+"','"+Dcto_proveedor+"');";
+        return sql;
+    }
 }

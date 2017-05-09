@@ -41,6 +41,7 @@ public class FXMLDocumentController implements Initializable {
         if(x==0){
             System.out.println("insercion exitosa");
         }
+       
     }
     
     @Override
