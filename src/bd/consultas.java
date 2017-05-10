@@ -18,13 +18,13 @@ import java.util.logging.Logger;
  * @author jerson
  */
 public class consultas {
-    private Connection reg;
-    public consultas() {
-        conexion con=new conexion();
-        reg= con.getconexion();
+    private static Connection reg;
+    public consultas(Connection con) {
+        
+        reg= con;
     }
     
-    public ResultSet Select(String sql) {
+    public static  ResultSet Select(String sql) {
         
     Statement st;
     ResultSet rs=null;
@@ -39,7 +39,7 @@ public class consultas {
         return rs;
     }
     //retorna 0 si es exitosa la insercion y -1 si no lo es  
-    public int Insert(String sql){
+    public static int Insert(String sql){
         int x;
         try {
             PreparedStatement pps =reg.prepareStatement(sql);

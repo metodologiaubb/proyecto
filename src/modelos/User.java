@@ -9,7 +9,6 @@ package modelos;
  *
  * @author Pascal
  */
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 

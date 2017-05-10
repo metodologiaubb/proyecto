@@ -17,7 +17,7 @@ public class conexion {
     private static Connection con;
     private static final String driver = "com.mysql.jdbc.Driver";
     private static final String user ="root";
-    private static final String password = "****";
+    private static final String password = "1705";
     private static final String bd = "jdbc:mysql://localhost:3306/proyecto";
 
     public conexion() {
