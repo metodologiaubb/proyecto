@@ -47,6 +47,37 @@ public class User {
    public String getUSER_APELLIDO(){
         return USER_APELLIDO.get();
     }
+
+    public void setID_USER(int ID_USER) {
+        this.ID_USER.set(ID_USER);
+    }
+
+    public void setUSER_USERNAME(String USER_USERNAME) {
+        this.USER_USERNAME.set(USER_USERNAME);
+    }
+
+    public void setUSER_PASS(String USER_PASS) {
+        this.USER_PASS.set(USER_PASS);
+    }
+
+    public void setUSER_NOMBRE(String USER_NOMBRE) {
+        this.USER_NOMBRE.set(USER_NOMBRE);
+    }
+
+    public void setUSER_APELLIDO(String USER_APELLIDO) {
+        this.USER_APELLIDO.set(USER_APELLIDO);
+    }
+
+    public void setUSER_FONO(String USER_FONO) {
+        this.USER_FONO.set(USER_FONO);
+    }
+
+    public void setUSER_ROL(int USER_ROL) {
+        this.USER_ROL.set(USER_ROL); 
+    }
+   
+   
+   
    
     public static String Insert_User(String User_username,String User_pass,String User_fono,int User_rol,String User_nombre,String User_apellido){
         String sql="INSERT INTO user( USER_USERNAME, USER_PASS, USER_NOMBRE, USER_APELLIDO, USER_FONO, USER_ROL) VALUES ('"+User_username+"','"+User_pass+"','"+User_nombre+"','"+User_apellido+"','"+User_fono+"','"+User_rol+"')";

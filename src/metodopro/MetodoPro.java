@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sesion.Autentificar;
+import sesion.Sesion;
 
 /**
  *
@@ -47,7 +48,7 @@ public class MetodoPro extends Application {
         System.out.println("got user id " + username + " password " + password);
         if (Autentificar.validar(username, password)) {
             System.out.println("OK");
-            
+            Sesion sesion =new Sesion(Autentificar.getSQLuser());
             gotoCotiza();
             return true;
         } else {

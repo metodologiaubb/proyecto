@@ -6,52 +6,74 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="metodopro.cotizaController">
-<children>
-      <SplitPane dividerPositions="0.5865070729053319" layoutY="102.0" prefHeight="596.0" prefWidth="921.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="539.0">
-               <children>
-                  <TableView fx:id="tablacot" layoutX="-1.0" layoutY="43.0" prefHeight="269.0" prefWidth="537.0">
-                    <columns>
-                      <TableColumn fx:id="IDcot" prefWidth="75.0" text="ID" />
-                      <TableColumn fx:id="FechaCot" prefWidth="103.0" text="Fecha" />
-                        <TableColumn fx:id="Nproducot" prefWidth="117.0" text="N° Productos" />
-                        <TableColumn fx:id="descripcot" prefWidth="241.0" text="Descripción" />
-                    </columns>
-                  </TableView>
-                  <TableView layoutX="-1.0" layoutY="311.0" prefHeight="284.0" prefWidth="537.0">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                  </TableView>
-                  <ToolBar prefHeight="40.0" prefWidth="535.0">
-                     <items>
-                        <TextField prefHeight="25.0" prefWidth="67.0" />
-                        <TextField prefHeight="25.0" prefWidth="97.0" />
-                        <TextField prefHeight="25.0" prefWidth="114.0" />
-                        <TextField prefHeight="25.0" prefWidth="221.0" />
-                     </items>
-                  </ToolBar>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="594.0" prefWidth="361.0">
-               <children>
-                  <SplitPane dividerPositions="0.42567567567567566" layoutX="-2.0" orientation="VERTICAL" prefHeight="594.0" prefWidth="376.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="374.0" />
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-      <ToolBar layoutX="1.0" layoutY="62.0" prefHeight="40.0" prefWidth="921.0">
-        <items>
-          <Button mnemonicParsing="false" onAction="#handleButtonAction" text="Prueba" />
-        </items>
-      </ToolBar>
+<AnchorPane id="AnchorPane" prefHeight="716.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="metodopro.cotizaController">
+   <children>
+      <TabPane layoutY="55.0" prefHeight="659.0" prefWidth="1040.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Cotizaciones">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="581.0" prefWidth="971.0">
+                     <children>
+                        <SplitPane dividerPositions="0.5854189336235038" prefHeight="627.0" prefWidth="1040.0">
+                           <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="539.0">
+                                 <children>
+                                    <TableView fx:id="tablacot" layoutX="-1.0" layoutY="43.0" prefHeight="269.0" prefWidth="606.0">
+                                       <columns>
+                                          <TableColumn fx:id="IDcot" prefWidth="75.0" text="ID" />
+                                          <TableColumn fx:id="FechaCot" prefWidth="103.0" text="Fecha" />
+                                          <TableColumn fx:id="Nproducot" prefWidth="117.0" text="N° Productos" />
+                                          <TableColumn fx:id="descripcot" prefWidth="241.0" text="Descripción" />
+                                       </columns>
+                                    </TableView>
+                                    <TableView layoutX="-1.0" layoutY="311.0" prefHeight="317.0" prefWidth="607.0">
+                                       <columns>
+                                          <TableColumn prefWidth="75.0" text="C1" />
+                                          <TableColumn prefWidth="75.0" text="C2" />
+                                       </columns>
+                                    </TableView>
+                                    <ToolBar prefHeight="40.0" prefWidth="535.0">
+                                       <items>
+                                          <TextField prefHeight="25.0" prefWidth="67.0" />
+                                          <TextField prefHeight="25.0" prefWidth="97.0" />
+                                          <TextField prefHeight="25.0" prefWidth="114.0" />
+                                          <TextField prefHeight="25.0" prefWidth="221.0" />
+                                       </items>
+                                    </ToolBar>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="594.0" prefWidth="361.0">
+                                 <children>
+                                    <SplitPane dividerPositions="0.42567567567567566" layoutX="-2.0" orientation="VERTICAL" prefHeight="627.0" prefWidth="431.0">
+                                       <items>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="374.0" prefWidth="374.0" />
+                                       </items>
+                                    </SplitPane>
+                                 </children>
+                              </AnchorPane>
+                           </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Datos Personales">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="tfnombre" layoutX="158.0" layoutY="80.0" />
+                        <TextField fx:id="tfapellido" layoutX="158.0" layoutY="119.0" />
+                        <TextField fx:id="tftelefono" layoutX="158.0" layoutY="156.0" />
+                        <Label layoutX="44.0" layoutY="85.0" text="Nombre" />
+                        <Label layoutX="44.0" layoutY="124.0" text="Apellido" />
+                        <Label layoutX="43.0" layoutY="161.0" text="Tefefono" />
+                        <TextField fx:id="tfcontrasena" layoutX="158.0" layoutY="194.0" />
+                        <Label layoutX="44.0" layoutY="199.0" text="Contraseña" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

@@ -14,6 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import sesion.Sesion;
 
 
 /**
@@ -23,6 +25,14 @@ import javafx.scene.control.TableView;
 public class cotizaController implements Initializable {
     
     //@FXML
+    @FXML
+    private TextField tfnombre;
+    @FXML
+    private TextField tfapellido;
+    @FXML
+    private TextField tftelefono;
+    @FXML
+    private TextField tfcontrasena;
     @FXML
     private TableView tablacot;
     @FXML
@@ -43,6 +53,10 @@ public class cotizaController implements Initializable {
     
     public void setApp(MetodoPro application){
         this.application = application;
+        tfnombre.setText(Sesion.CurrentUser.getUSER_NOMBRE());
+        tfapellido.setText(Sesion.CurrentUser.getUSER_APELLIDO());
+        tftelefono.setText(Sesion.CurrentUser.getFONO_USER());
+        tfcontrasena.setText(Sesion.CurrentUser.getPASS_USER());
     }
     
     
