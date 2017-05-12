@@ -25,7 +25,7 @@ public class User {
     private SimpleStringProperty USER_FONO = new SimpleStringProperty();
     private SimpleIntegerProperty USER_ROL = new SimpleIntegerProperty();
     
-    
+       
     public int getID_USER(){
         return ID_USER.get();
     }
