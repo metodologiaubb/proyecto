@@ -22,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -56,16 +57,12 @@ public class cotizaController implements Initializable {
     @FXML private TableColumn FechaCot;
     @FXML private TableColumn Nproducot;
     @FXML private TableColumn descripcot;
-   
+      @FXML private Button f5boton;
     
     private Text actionStatus;
     private ObservableList data;
     
  
-    
-    
-    
-    
     
     private void handleButtonAction(ActionEvent event) {
        
@@ -81,18 +78,18 @@ public class cotizaController implements Initializable {
         tfapellido.setText(Sesion.CurrentUser.getUSER_APELLIDO());
         tftelefono.setText(Sesion.CurrentUser.getFONO_USER());
             tfcontrasena.setText(Sesion.CurrentUser.getPASS_USER());
-        data = gettablainicial();
-        tablacot.setItems(data);
- 
+      
+ llenartablacot();
 
         actionStatus = new Text();
         actionStatus.setFill(Color.FIREBRICK);
-        
-  
-
     }
     
-    
+    public void llenartablacot(){
+        
+          data = gettablainicial();
+        tablacot.setItems(data);
+    }
     
 
     
