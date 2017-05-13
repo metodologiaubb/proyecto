@@ -65,7 +65,7 @@ public class cotizaController implements Initializable {
  
     
     private void handleButtonAction(ActionEvent event) {
-       
+            
     }
     
     private MetodoPro application;
