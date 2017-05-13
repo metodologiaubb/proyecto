@@ -40,4 +40,20 @@ public class Proveedor {
         String sql="INSERT INTO proveedor ( NOMBRE_PROVEEDOR, DCTO_PROVEEDOR) VALUES ('"+Nombre_proveedor+"','"+Dcto_proveedor+"');";
         return sql;
     }
+
+    public void setID_PROVEEDOR(int ID_PROVEEDOR) {
+        this.ID_PROVEEDOR.set(ID_PROVEEDOR);
+    }
+
+    public void setNOMBRE_PROVEEDOR(String NOMBRE_PROVEEDOR) {
+        this.NOMBRE_PROVEEDOR.set(NOMBRE_PROVEEDOR);
+    }
+
+    public void setDCTO_PROVEEDOR(int DCTO_PROVEEDOR) {
+        this.DCTO_PROVEEDOR.set(DCTO_PROVEEDOR);
+    }
+
+    public void setC_PRO_DCTO(int C_PRO_DCTO) {
+        this.C_PRO_DCTO.set(C_PRO_DCTO);
+    }
 }
