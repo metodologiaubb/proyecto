@@ -22,6 +22,14 @@ public class Marca {
      public String getNOMBRE_MARCA(){
          return NOMBRE_MARCA.get();
      }
+
+    public void setID_MARCA(int ID_MARCA) {
+        this.ID_MARCA.set(ID_MARCA);
+    }
+
+    public void setNOMBRE_MARCA(String NOMBRE_MARCA) {
+        this.NOMBRE_MARCA.set(NOMBRE_MARCA);
+    }
      
      public static String Insert_marca(String Nombre_marca){
          String sql="INSERT INTO marca( NOMBRE_MARCA) VALUES ('"+Nombre_marca+"');";

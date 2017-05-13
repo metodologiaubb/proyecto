@@ -26,4 +26,19 @@ public class Consulta {
     public String getFECHA_CONS(){
         return FECHA_CONS.get();
     }
+
+    public void setID_CONSULTA(String ID_CONSULTA) {
+        this.ID_CONSULTA.set(ID_CONSULTA);
+    }
+
+    public void setID_LECTOR(String ID_LECTOR) {
+        this.ID_LECTOR.set(ID_LECTOR);
+    }
+
+    public void setFECHA_CONS(String FECHA_CONS) {
+        this.FECHA_CONS.set(FECHA_CONS);
+    }
+    
+    
+    
 }

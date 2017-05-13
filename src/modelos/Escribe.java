@@ -26,5 +26,21 @@ public class Escribe {
       public int getID_ESCRITOR(){
          return ID_ESCRITOR.get();
      }
-}
+
+    public void setID_ESCRIBE(int ID_ESCRIBE) {
+        this.ID_ESCRIBE.set(ID_ESCRIBE);
+    }
+
+    public void setID_COTI(int ID_COTI) {
+        this.ID_COTI.set(ID_COTI);
+    }
+
+    public void setID_ESCRITOR(int ID_ESCRITOR) {
+        this.ID_ESCRITOR.set(ID_ESCRITOR);
+    }
+      
+       
+    }
+      
+
 

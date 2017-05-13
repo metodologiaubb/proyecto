@@ -36,6 +36,28 @@ public class Cotizacion {
     public String getTOKEN(){
         return TOKEN.get();
     }
+
+    public void setID_COT(int ID_COT) {
+        this.ID_COT.set(ID_COT);
+    }
+
+    public void setFECHA_COT(String FECHA_COT) {
+        this.FECHA_COT.set(FECHA_COT);
+    }
+
+    public void setID_CREADOR(int ID_CREADOR) {
+        this.ID_CREADOR.set(ID_CREADOR);
+    }
+
+    public void setDESCRIPCION(String DESCRIPCION) {
+        this.DESCRIPCION.set(DESCRIPCION);
+    }
+
+    public void setTOKEN(String TOKEN) {
+        this.TOKEN.set(TOKEN);
+    }
+    
+    
     public static String Insert_cod(int ID_creador,String Descripcion,String token){
         String sql="INSERT INTO cotizacion( ID_CREADOR, DESCRIPCION, TOKEN) VALUES ("+ID_creador+",'"+ Descripcion +"','"+token+"')";
         return sql;
