@@ -31,6 +31,7 @@ public class MetodoPro extends Application {
     private final double MINIMUM_WINDOW_HEIGHT = 500.0;
     conexion con;
     consultas cons;
+    Sesion sesion;
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
@@ -48,7 +49,7 @@ public class MetodoPro extends Application {
         System.out.println("got user id " + username + " password " + password);
         if (Autentificar.validar(username, password)) {
             System.out.println("OK");
-            Sesion sesion =new Sesion(Autentificar.getSQLuser());
+            sesion =new Sesion(Autentificar.getSQLuser());
             gotoCotiza();
             return true;
         } else {

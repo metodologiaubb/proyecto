@@ -35,10 +35,6 @@ public class Producto {
     public int getPRECIO_PRODUCTO(){
         return PRECIO_PRODUCTO.get();
     }
-    public int getID_MARCA(){
-        return ID_MARCA.get();
-    }
-    
     
     
      public static String Insert_Producto(String Nombre_producto,String U_medida,String Pentrega,int Precio_producto,int Id_marca){
@@ -66,7 +62,4 @@ public class Producto {
         this.PRECIO_PRODUCTO.set(PRECIO_PRODUCTO);
     }
 
-    public void setID_MARCA(int ID_MARCA) {
-        this.ID_MARCA.set(ID_MARCA);
-    }
 }
