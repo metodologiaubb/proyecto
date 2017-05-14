@@ -16,9 +16,9 @@ import java.sql.SQLException;
 public class conexion {
     private static Connection con;
     private static final String driver = "com.mysql.jdbc.Driver";
-    private static final String user ="root";
-    private static final String password = "1705";
-    private static final String bd = "jdbc:mysql://localhost:3306/proyecto";
+    private static final String user ="dealersm_prueba";
+    private static final String password = "ABC12345";
+    private static final String bd = "jdbc:mysql://212.1.212.1:3306/dealersm_proyecto";
 
     public conexion() {
         con=null;
