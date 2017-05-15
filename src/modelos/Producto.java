@@ -14,15 +14,19 @@ import javafx.beans.property.SimpleStringProperty;
  */
 public class Producto {
     private SimpleIntegerProperty ID_PRODUCTO = new SimpleIntegerProperty();
+    private SimpleIntegerProperty ID_MARCA = new SimpleIntegerProperty();
     private SimpleStringProperty NOMBRE_PRODUCTO = new SimpleStringProperty();
     private SimpleStringProperty U_MEDIDA = new SimpleStringProperty();
     private SimpleStringProperty PENTREGA = new SimpleStringProperty();
+    //solo para setear y enviar a tabla
+    private SimpleStringProperty NOMBRE_PROVEEDOR= new SimpleStringProperty();
     private SimpleIntegerProperty PRECIO_PRODUCTO = new SimpleIntegerProperty();
-    private SimpleIntegerProperty ID_MARCA = new SimpleIntegerProperty();
+        private SimpleStringProperty NOMBRE_MARCA = new SimpleStringProperty();
     
     public int getID_PRODUCTO(){
         return ID_PRODUCTO.get();
     }
+    
     public String getNOMBRE_PRODUCTO(){
         return NOMBRE_PRODUCTO.get();
     }
@@ -35,6 +39,8 @@ public class Producto {
     public int getPRECIO_PRODUCTO(){
         return PRECIO_PRODUCTO.get();
     }
+  
+    
     
     
      public static String Insert_Producto(String Nombre_producto,String U_medida,String Pentrega,int Precio_producto,int Id_marca){
@@ -44,6 +50,12 @@ public class Producto {
 
     public void setID_PRODUCTO(int ID_PRODUCTO) {
         this.ID_PRODUCTO.set(ID_PRODUCTO);
+    }
+    public void setNOMBRE_MARCA(String NOMBRE_MARCA) {
+        this.NOMBRE_MARCA.set(NOMBRE_MARCA);
+    }
+     public void setNOMBRE_PROVEEDOR(String NOMBRE_PROVEEDOR) {
+        this.NOMBRE_PROVEEDOR.set(NOMBRE_PROVEEDOR);
     }
 
     public void setNOMBRE_PRODUCTO(String NOMBRE_PRODUCTO) {
