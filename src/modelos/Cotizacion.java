@@ -18,6 +18,7 @@ public class Cotizacion {
     private SimpleIntegerProperty ID_COT = new SimpleIntegerProperty();
     private SimpleStringProperty FECHA_COT = new SimpleStringProperty();
     private SimpleIntegerProperty ID_CREADOR = new SimpleIntegerProperty();
+    private SimpleIntegerProperty N_PRODUCTOS = new SimpleIntegerProperty();
     private SimpleStringProperty DESCRIPCION = new SimpleStringProperty();
     private SimpleStringProperty TOKEN = new SimpleStringProperty();
     
@@ -29,6 +30,9 @@ public class Cotizacion {
     }
     public int getID_CREADOR(){
         return ID_CREADOR.get();
+    }
+      public int getN_PRODUCTOS(){
+        return N_PRODUCTOS.get();
     }
     public String getDESCRIPCION(){
         return DESCRIPCION.get();
@@ -48,6 +52,10 @@ public class Cotizacion {
     public void setID_CREADOR(int ID_CREADOR) {
         this.ID_CREADOR.set(ID_CREADOR);
     }
+      public void setN_PRODUCTOS(int N_PRODUCTOS) {
+        this.N_PRODUCTOS.set(N_PRODUCTOS);
+    }
+
 
     public void setDESCRIPCION(String DESCRIPCION) {
         this.DESCRIPCION.set(DESCRIPCION);
