@@ -58,7 +58,12 @@ public class cotizaController implements Initializable {
     @FXML private TableColumn Nproducot;
     @FXML private TableColumn descripcot;
       @FXML private Button f5boton;
+      
+    //variables tabla 2 tab 1
     
+      
+      
+      
     private Text actionStatus;
     private ObservableList data;
     
@@ -86,8 +91,7 @@ public class cotizaController implements Initializable {
     }
     
     public void llenartablacot(){
-        
-          data = gettablainicial();
+        data = gettablainicial();
         tablacot.setItems(data);
     }
     
@@ -96,15 +100,15 @@ public class cotizaController implements Initializable {
     //extraer datos de BD :D (tabla cotizacion, loco)
     ObservableList gettablainicial() { 
         List list = new ArrayList();
-    
-        
      String miau;
         try{
-        ResultSet resultSet=consultas.Select("SELECT `ID_COT`,`FECHA_COT`,`DESCRIPCION` FROM `cotizacion`");     
+        ResultSet resultSet=consultas.Select("SELECT `ID_COT`,`FECHA_COT`,`N_PRODUCTOS`,`DESCRIPCION` FROM `cotizacion`");     
     while(resultSet.next())
     {    Cotizacion papo= new Cotizacion();
+    
        papo.setID_COT(resultSet.getInt("ID_COT"));    
        papo.setFECHA_COT(resultSet.getString("FECHA_COT"));
+       papo.setN_PRODUCTOS(resultSet.getInt("N_PRODUCTOS"));    
        papo.setDESCRIPCION(resultSet.getString("DESCRIPCION"));
         list.add(papo);}
         }
@@ -123,14 +127,13 @@ public class cotizaController implements Initializable {
         new PropertyValueFactory<Cotizacion,String>("ID_COT"));
        FechaCot.setCellValueFactory(                
         new PropertyValueFactory<Cotizacion,String>("FECHA_COT"));
-      descripcot.setCellValueFactory(
+        Nproducot.setCellValueFactory(
+        new PropertyValueFactory<Cotizacion,String>("N_PRODUCTOS"));
+       descripcot.setCellValueFactory(
         new PropertyValueFactory<Cotizacion,String>("DESCRIPCION"));
+        
     
-      
-      
-      
-      
-      
+
         
     }    
     
