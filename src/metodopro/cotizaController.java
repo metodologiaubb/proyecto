@@ -124,6 +124,7 @@ public class cotizaController implements Initializable {
     }
     //extraer datos de BD con entero sacado de la tabla cot con el ID  de la cot
         ObservableList gettablados(int miau) { 
+            //NO TOCAR POR EL AMOR DE JESUS NO TOCAR
         idpro.setCellValueFactory(new PropertyValueFactory<Producto,String>("ID_PRODUCTO"));  
         nombrepro.setCellValueFactory(new PropertyValueFactory<Producto,String>("NOMBRE_PRODUCTO"));
        unidadmedidapro.setCellValueFactory(new PropertyValueFactory<Producto,String>("U_MEDIDA")); 
@@ -161,7 +162,7 @@ ResultSet resultSet2=consultas.Select("SELECT t1.ID_PRODUCTO,t1.NOMBRE_PRODUCTO,
         //valores de objeto para la table view de producto NO MOVER!!!!1111!!!!!
       
 
-
+//eventos tabla 1
 tablacot.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override//why not
             public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
@@ -177,14 +178,39 @@ tablacot.getSelectionModel().selectedItemProperty().addListener(new ChangeListen
                 papo3 =  tablacot.getSelectionModel().getSelectedItem();
    
                     //Object GetSinglevalue = tablePosition.getTableColumn().getCellData(newValue);
-                    //valor de la primeratablacot.getColumns().get(0);
                     //para tomar valor de la primera columna re replica el modelo con decl para evitar parsing :-)
        //pasa id a funcion
           llenartablados(papo3.getID_COT());
                 }}}
+     
+        
+        
 );
 
+   
+        //evento para tabla 2
+        tablapro.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override//why not
+            public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
+                //chequea que item esta seleccionado
+                if (tablapro.getSelectionModel().getSelectedItem() != null) {
+                    TableView.TableViewSelectionModel selectionModel = tablapro.getSelectionModel();
+                    ObservableList selectedCells = selectionModel.getSelectedCells();
+                    TablePosition tablePosition = (TablePosition) selectedCells.get(0);
+                    tablePosition.getTableView().getSelectionModel().getTableView().getId();
+             
+                Object value = tablePosition.getTableColumn().getCellData(newValue);
+          //      Cotizacion papo3 = new Cotizacion();
+          //      papo3 =  tablapro.getSelectionModel().getSelectedItem();
+   
+                 //   Object GetSinglevalue = tablePosition.getTableColumn().getCellData(newValue);
+                    
+                    //para tomar valor de la primera columna re replica el modelo con decl para evitar parsing :-)
+       //pasa id a funcion
+        //  llenartablados(papo3.getID_COT());
 
+                    System.out.println("valor de tablita producto:   " + value);
+                }}});
 
     }
   
