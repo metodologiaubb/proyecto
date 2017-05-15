@@ -9,11 +9,12 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="716.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="metodopro.cotizaController">
+<AnchorPane id="AnchorPane" cacheShape="false" prefHeight="796.0" prefWidth="1040.0" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="metodopro.cotizaController">
    <children>
-      <TabPane layoutY="55.0" onMouseClicked="#llenartablacot" prefHeight="659.0" prefWidth="1040.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="55.0" onMouseClicked="#llenartablacot" prefHeight="659.0" prefWidth="1040.0" stylesheets="@tabpane.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Cotizaciones">
             <content>
@@ -23,7 +24,7 @@
                            <items>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="539.0">
                                  <children>
-                                    <TableView fx:id="tablacot" editable="true" layoutY="40.0" prefHeight="269.0" prefWidth="1040.0">
+                                    <TableView fx:id="tablacot" editable="true" layoutY="40.0" prefHeight="269.0" prefWidth="1040.0" stylesheets="@Login.css">
                                        <columns>
                                           <TableColumn fx:id="IDcot" prefWidth="136.0" text="ID Cotización" />
                                           <TableColumn fx:id="FechaCot" prefWidth="217.0" text="Fecha" />
@@ -31,7 +32,7 @@
                                           <TableColumn fx:id="descripcot" prefWidth="574.0" text="Descripción" />
                                        </columns>
                                     </TableView>
-                                    <TableView fx:id="tablapro" layoutX="-1.0" layoutY="311.0" prefHeight="317.0" prefWidth="1040.0">
+                                    <TableView id="f5boton" fx:id="tablapro" layoutX="-1.0" layoutY="311.0" prefHeight="317.0" prefWidth="1040.0" stylesheets="@Login.css">
                                        <columns>
                                           <TableColumn fx:id="idpro" prefWidth="129.0" text="ID Producto" />
                                           <TableColumn fx:id="nombrepro" prefWidth="171.0" text="Nombre" />
@@ -93,6 +94,9 @@
           </Tab>
         </tabs>
       </TabPane>
-      <Button fx:id="f5boton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#llenartablacot" text="Actualizar" />
+      <Button fx:id="f5boton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#llenartablacot" prefHeight="29.0" prefWidth="170.0" text="Actualizar" textOverrun="CLIP">
+         <effect>
+            <Glow level="0.35" />
+         </effect></Button>
    </children>
 </AnchorPane>
