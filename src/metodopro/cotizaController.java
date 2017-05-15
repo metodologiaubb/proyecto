@@ -7,9 +7,6 @@ package metodopro;
 
 
 import bd.consultas;
-import java.awt.Insets;
-import java.awt.event.MouseEvent;
-import java.awt.print.Book;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,25 +17,16 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.util.Callback;
-import static javax.management.Query.value;
-import static javax.management.Query.value;
 import modelos.Cotizacion;
 import modelos.Producto;
 import sesion.Sesion;
@@ -69,17 +57,18 @@ public class cotizaController implements Initializable {
     //variables tabla 2 tab 1
     @FXML private TableView tablapro;
     @FXML private TableColumn idpro;
-    @FXML private TableColumn idmarcapro;
     @FXML private TableColumn nombrepro;
     @FXML private TableColumn preciopro;
     @FXML private TableColumn unidadmedidapro;
+    @FXML private TableColumn <Producto,String> idmarcapro;
     @FXML private TableColumn idprove;
     @FXML private TableColumn pentregapro;
     @FXML TableView<Cotizacion> tablacot;
      
     private Text actionStatus;
     private ObservableList data;
-    private ObservableList data2;
+    private ObservableList<Producto> data2;
+
 
  
   
@@ -92,22 +81,18 @@ public class cotizaController implements Initializable {
         tfnombre.setText(Sesion.CurrentUser.getUSER_NOMBRE());
         tfapellido.setText(Sesion.CurrentUser.getUSER_APELLIDO());
         tftelefono.setText(Sesion.CurrentUser.getFONO_USER());
-            tfcontrasena.setText(Sesion.CurrentUser.getPASS_USER());
-      
+        tfcontrasena.setText(Sesion.CurrentUser.getPASS_USER());
+  //listado post inicio
  llenartablacot();
-
  //llenartablados debe moverse a un action
-
         actionStatus = new Text();
         actionStatus.setFill(Color.FIREBRICK);
     }
- 
     //funciones actualizar tablas
     public void llenartablacot(){
         data = gettablauno();
         tablacot.setItems(data);
     }
-
    public void llenartablados(int rawr){
     data2 = gettablados(rawr);
     tablapro.setItems(data2);
@@ -115,6 +100,10 @@ public class cotizaController implements Initializable {
     
     //extraer datos de BD :D (tabla cotizacion, loco)
     ObservableList gettablauno() { 
+        IDcot.setCellValueFactory(new PropertyValueFactory<Cotizacion,String>("ID_COT"));
+       FechaCot.setCellValueFactory(new PropertyValueFactory<Cotizacion,String>("FECHA_COT"));
+        Nproducot.setCellValueFactory(new PropertyValueFactory<Cotizacion,String>("N_PRODUCTOS"));
+        descripcot.setCellValueFactory(new PropertyValueFactory<Cotizacion,String>("DESCRIPCION"));
         List list = new ArrayList();
         try{
         ResultSet resultSet=consultas.Select("SELECT `ID_COT`,`FECHA_COT`,`N_PRODUCTOS`,`DESCRIPCION` FROM `cotizacion`");     
@@ -135,55 +124,42 @@ public class cotizaController implements Initializable {
     }
     //extraer datos de BD con entero sacado de la tabla cot con el ID  de la cot
         ObservableList gettablados(int miau) { 
-        List list2 = new ArrayList();
-        try{
+        idpro.setCellValueFactory(new PropertyValueFactory<Producto,String>("ID_PRODUCTO"));  
+        nombrepro.setCellValueFactory(new PropertyValueFactory<Producto,String>("NOMBRE_PRODUCTO"));
+       unidadmedidapro.setCellValueFactory(new PropertyValueFactory<Producto,String>("U_MEDIDA")); 
+        preciopro.setCellValueFactory(new PropertyValueFactory<Producto,String>("PRECIO_PRODUCTO"));
+        idmarcapro.setCellValueFactory(new PropertyValueFactory<Producto,String>("NOMBRE_MARCA"));
+         idprove.setCellValueFactory(new PropertyValueFactory<Producto,String>("NOMBRE_PROVEEDOR"));
+         pentregapro.setCellValueFactory(new PropertyValueFactory<Producto,String>("PENTREGA"));
+             List list2 = new ArrayList();
+        try{    
 ResultSet resultSet2=consultas.Select("SELECT t1.ID_PRODUCTO,t1.NOMBRE_PRODUCTO,t1.U_MEDIDA,t1.PENTREGA ,t3.PRECIO_PRODUCTO, t4.NOMBRE_PROVEEDOR, t6.NOMBRE_MARCA FROM producto t1,pertenece t2 , tiene t3 , proveedor t4, productom t5, marca t6 WHERE t4.ID_PROVEEDOR=t3.ID_PROVEEDOR AND t3.ID_PRODUCTO= t1.ID_PRODUCTO AND t1.ID_PRODUCTO=t5.ID_PRUDUCTO AND t5.ID_MARCA= t6.ID_MARCA AND t1.ID_PRODUCTO=t2.ID_PRODUCT AND t2.ID_COT='"+miau+"';");     
+
     while(resultSet2.next())
-    {    Producto papo2= new Producto();
-    
+    {   Producto papo2= new Producto(); 
         papo2.setID_PRODUCTO(resultSet2.getInt("ID_PRODUCTO"));    
         papo2.setNOMBRE_PRODUCTO(resultSet2.getString("NOMBRE_PRODUCTO"));
         papo2.setU_MEDIDA(resultSet2.getString("U_MEDIDA")); 
-        papo2.setPENTREGA(resultSet2.getString("PENTREGA"));
         papo2.setPRECIO_PRODUCTO(resultSet2.getInt("PRECIO_PRODUCTO"));
-        papo2.setNOMBRE_PROVEEDOR(resultSet2.getString("NOMBRE_PROVEEDOR"));
         papo2.setNOMBRE_MARCA(resultSet2.getString("NOMBRE_MARCA"));
-        list2.add(papo2);}
-        }
+        papo2.setNOMBRE_PROVEEDOR(resultSet2.getString("NOMBRE_PROVEEDOR"));
+        papo2.setPENTREGA(resultSet2.getString("PENTREGA"));
+                    list2.add(papo2);
+    }}
         catch(SQLException sqlException) {
-     }     
+        System.exit(1);}     
       ObservableList data2 = FXCollections.observableList(list2);
-        return data2;
-    }
-   
+        return data2;}
     
+        
+        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
         //valores de objeto para la table view de cotizacion NO MOVER O ESTO EXPLOTA PAPO
-        IDcot.setCellValueFactory(
-        new PropertyValueFactory<Cotizacion,String>("ID_COT"));
-       FechaCot.setCellValueFactory(                
-        new PropertyValueFactory<Cotizacion,String>("FECHA_COT"));
-        Nproducot.setCellValueFactory(
-        new PropertyValueFactory<Cotizacion,String>("N_PRODUCTOS"));
-        descripcot.setCellValueFactory(
-        new PropertyValueFactory<Cotizacion,String>("DESCRIPCION"));
+
         //valores de objeto para la table view de producto NO MOVER!!!!1111!!!!!
-        idpro.setCellValueFactory(
-        new PropertyValueFactory<Producto,String>("ID_PRODUCTO"));  
-        nombrepro.setCellValueFactory(
-        new PropertyValueFactory<Producto,String>("NOMBRE_PRODUCTO"));
-           unidadmedidapro.setCellValueFactory(
-        new PropertyValueFactory<Producto,String>("U_MEDIDA")); 
-        pentregapro.setCellValueFactory(
-        new PropertyValueFactory<Producto,String>("PENTREGA"));
-        preciopro.setCellValueFactory(
-        new PropertyValueFactory<Producto,String>("PRECIO_PRODUCTO"));
-        idmarcapro.setCellValueFactory(
-        new PropertyValueFactory<Producto,String>("NOMBRE_MARCA"));
-         idprove.setCellValueFactory(
-        new PropertyValueFactory<Producto,String>("NOMBRE_PROVEEDOR"));
+      
 
 
 tablacot.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
@@ -205,10 +181,7 @@ tablacot.getSelectionModel().selectedItemProperty().addListener(new ChangeListen
                     //para tomar valor de la primera columna re replica el modelo con decl para evitar parsing :-)
        //pasa id a funcion
           llenartablados(papo3.getID_COT());
-                    
-                              
                 }}}
-
 );
 
 
