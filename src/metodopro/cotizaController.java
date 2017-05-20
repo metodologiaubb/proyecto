@@ -28,7 +28,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import modelos.Cotizacion;
-import modelos.Producto;
+import modelos.Tablaproducto;
 import sesion.Sesion;
 
 
@@ -60,14 +60,14 @@ public class cotizaController implements Initializable {
     @FXML private TableColumn nombrepro;
     @FXML private TableColumn preciopro;
     @FXML private TableColumn unidadmedidapro;
-    @FXML private TableColumn <Producto,String> idmarcapro;
+    @FXML private TableColumn <Tablaproducto,String> idmarcapro;
     @FXML private TableColumn idprove;
     @FXML private TableColumn pentregapro;
     @FXML TableView<Cotizacion> tablacot;
      
     private Text actionStatus;
     private ObservableList data;
-    private ObservableList<Producto> data2;
+    private ObservableList<Tablaproducto> data2;
 
 
  
@@ -96,6 +96,7 @@ public class cotizaController implements Initializable {
    public void llenartablados(int rawr){
     data2 = gettablados(rawr);
     tablapro.setItems(data2);
+
   }
     
     //extraer datos de BD :D (tabla cotizacion, loco)
@@ -125,19 +126,19 @@ public class cotizaController implements Initializable {
     //extraer datos de BD con entero sacado de la tabla cot con el ID  de la cot
         ObservableList gettablados(int miau) { 
             //NO TOCAR POR EL AMOR DE JESUS NO TOCAR
-        idpro.setCellValueFactory(new PropertyValueFactory<Producto,String>("ID_PRODUCTO"));  
-        nombrepro.setCellValueFactory(new PropertyValueFactory<Producto,String>("NOMBRE_PRODUCTO"));
-       unidadmedidapro.setCellValueFactory(new PropertyValueFactory<Producto,String>("U_MEDIDA")); 
-        preciopro.setCellValueFactory(new PropertyValueFactory<Producto,String>("PRECIO_PRODUCTO"));
-        idmarcapro.setCellValueFactory(new PropertyValueFactory<Producto,String>("NOMBRE_MARCA"));
-         idprove.setCellValueFactory(new PropertyValueFactory<Producto,String>("NOMBRE_PROVEEDOR"));
-         pentregapro.setCellValueFactory(new PropertyValueFactory<Producto,String>("PENTREGA"));
+        idpro.setCellValueFactory(new PropertyValueFactory<Tablaproducto,String>("ID_PRODUCTO"));  
+        nombrepro.setCellValueFactory(new PropertyValueFactory<Tablaproducto,String>("NOMBRE_PRODUCTO"));
+       unidadmedidapro.setCellValueFactory(new PropertyValueFactory<Tablaproducto,String>("U_MEDIDA")); 
+        preciopro.setCellValueFactory(new PropertyValueFactory<Tablaproducto,String>("PRECIO_PRODUCTO"));
+        idmarcapro.setCellValueFactory(new PropertyValueFactory<Tablaproducto,String>("NOMBRE_MARCA"));
+         idprove.setCellValueFactory(new PropertyValueFactory<Tablaproducto,String>("NOMBRE_PROVEEDOR"));
+         pentregapro.setCellValueFactory(new PropertyValueFactory<Tablaproducto,String>("PENTREGA"));
              List list2 = new ArrayList();
         try{    
 ResultSet resultSet2=consultas.Select("SELECT t1.ID_PRODUCTO,t1.NOMBRE_PRODUCTO,t1.U_MEDIDA,t1.PENTREGA ,t3.PRECIO_PRODUCTO, t4.NOMBRE_PROVEEDOR, t6.NOMBRE_MARCA FROM producto t1,pertenece t2 , tiene t3 , proveedor t4, productom t5, marca t6 WHERE t4.ID_PROVEEDOR=t3.ID_PROVEEDOR AND t3.ID_PRODUCTO= t1.ID_PRODUCTO AND t1.ID_PRODUCTO=t5.ID_PRUDUCTO AND t5.ID_MARCA= t6.ID_MARCA AND t1.ID_PRODUCTO=t2.ID_PRODUCT AND t2.ID_COT='"+miau+"';");     
 
     while(resultSet2.next())
-    {   Producto papo2= new Producto(); 
+    {   Tablaproducto papo2= new Tablaproducto(); 
         papo2.setID_PRODUCTO(resultSet2.getInt("ID_PRODUCTO"));    
         papo2.setNOMBRE_PRODUCTO(resultSet2.getString("NOMBRE_PRODUCTO"));
         papo2.setU_MEDIDA(resultSet2.getString("U_MEDIDA")); 
@@ -145,7 +146,7 @@ ResultSet resultSet2=consultas.Select("SELECT t1.ID_PRODUCTO,t1.NOMBRE_PRODUCTO,
         papo2.setNOMBRE_MARCA(resultSet2.getString("NOMBRE_MARCA"));
         papo2.setNOMBRE_PROVEEDOR(resultSet2.getString("NOMBRE_PROVEEDOR"));
         papo2.setPENTREGA(resultSet2.getString("PENTREGA"));
-                    list2.add(papo2);
+         list2.add(papo2);
     }}
         catch(SQLException sqlException) {
         System.exit(1);}     
@@ -182,9 +183,6 @@ tablacot.getSelectionModel().selectedItemProperty().addListener(new ChangeListen
        //pasa id a funcion
           llenartablados(papo3.getID_COT());
                 }}}
-     
-        
-        
 );
 
    
