@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="489.0" prefWidth="366.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="metodopro.Formulario_ProductosController">
+   <children>
+      <Label layoutX="94.0" layoutY="26.0" text="Ingresar datos" textFill="WHITE" underline="true">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nombreP_TF" layoutX="72.0" layoutY="123.0" prefHeight="25.0" prefWidth="223.0" />
+      <Button fx:id="productoBT" layoutX="131.0" layoutY="409.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Aceptar" />
+      <Label layoutX="93.0" layoutY="96.0" text="Nombre del producto" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="157.0" layoutY="177.0" text="Marca" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="marcaP_TF" layoutX="72.0" layoutY="203.0" prefHeight="25.0" prefWidth="223.0" />
+      <Label layoutX="157.0" layoutY="253.0" text="Precio" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="precioP_TF" layoutX="72.0" layoutY="280.0" prefHeight="25.0" prefWidth="223.0" />
+      <Label layoutX="106.0" layoutY="329.0" text="Unidad de medida" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="unidadP_TF" layoutX="72.0" layoutY="355.0" prefHeight="25.0" prefWidth="223.0" />
+      <Button fx:id="productoBTC" layoutX="336.0" layoutY="16.0" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" style="-fx-background-radius: 60;" text="X">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
