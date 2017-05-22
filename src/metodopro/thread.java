@@ -12,11 +12,11 @@ import javafx.scene.text.Text;
  *
  * @author jerson
  */
-public class Tablacotiza {
+public class thread {
     private Text actionStatus;
     private ObservableList data;
 
-    public Tablacotiza(Text actionStatus, ObservableList data) {
+    public thread(Text actionStatus, ObservableList data) {
         this.actionStatus = actionStatus;
         this.data = data;
     }
