@@ -104,7 +104,7 @@ public class cotizaController implements Initializable {
     tablapro.setItems(data2);
 
   } 
-   //abre el formulario alabado sea alaaa
+   //abre el formulario 
    public void Abrir_Formulario_Producto(ActionEvent event) throws IOException{
         Parent formulario= FXMLLoader.load(getClass().getResource("Formulario_Productos.fxml"));
         Scene scena= new Scene(formulario);

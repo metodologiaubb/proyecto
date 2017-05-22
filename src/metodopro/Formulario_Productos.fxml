@@ -44,6 +44,6 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="precioP_TF1" layoutX="72.0" layoutY="274.0" prefHeight="25.0" prefWidth="223.0" />
+      <TextField fx:id="precioP_TF" layoutX="72.0" layoutY="274.0" prefHeight="25.0" prefWidth="223.0" />
    </children>
 </AnchorPane>
