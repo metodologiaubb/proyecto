@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
@@ -12,7 +16,7 @@
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" cacheShape="false" prefHeight="796.0" prefWidth="1040.0" scaleShape="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="metodopro.cotizaController">
+<AnchorPane id="AnchorPane" cacheShape="false" prefHeight="796.0" prefWidth="1040.0" scaleShape="false" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="metodopro.cotizaController">
    <children>
       <TabPane layoutY="55.0" onMouseClicked="#llenartablacot" prefHeight="659.0" prefWidth="1040.0" stylesheets="@tabpane.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -73,6 +77,11 @@
                               <TableColumn minWidth="8.0" prefWidth="251.0" text="Plazo de entrega" />
                            </columns>
                         </TableView>
+                        <Button fx:id="introducirP_BT" layoutX="3.0" layoutY="36.0" mnemonicParsing="false" onAction="#Abrir_Formulario_Producto" onMouseClicked="#llenartablacot" prefHeight="29.0" prefWidth="170.0" text="introducir productos" textOverrun="CLIP">
+                           <effect>
+                              <Glow level="0.35" />
+                           </effect>
+                        </Button>
                      </children>
                   </AnchorPane>
               </content>

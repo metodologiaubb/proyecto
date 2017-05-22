@@ -9,40 +9,41 @@
 
 <AnchorPane id="AnchorPane" prefHeight="489.0" prefWidth="366.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="metodopro.Formulario_ProductosController">
    <children>
-      <Label layoutX="94.0" layoutY="26.0" text="Ingresar datos" textFill="WHITE" underline="true">
+      <Label layoutX="80.0" layoutY="28.0" text="Ingresar datos" textFill="WHITE" underline="true">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <TextField fx:id="nombreP_TF" layoutX="72.0" layoutY="123.0" prefHeight="25.0" prefWidth="223.0" />
+      <TextField fx:id="nombreP_TF" layoutX="72.0" layoutY="110.0" prefHeight="25.0" prefWidth="223.0" />
       <Button fx:id="productoBT" layoutX="131.0" layoutY="409.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" text="Aceptar" />
-      <Label layoutX="93.0" layoutY="96.0" text="Nombre del producto" textFill="WHITE">
+      <Label layoutX="72.0" layoutY="90.0" text="Nombre del producto:" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="157.0" layoutY="177.0" text="Marca" textFill="WHITE">
+      <Label layoutX="72.0" layoutY="143.0" text="Marca:" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="marcaP_TF" layoutX="72.0" layoutY="203.0" prefHeight="25.0" prefWidth="223.0" />
-      <Label layoutX="157.0" layoutY="253.0" text="Precio" textFill="WHITE">
+      <TextField fx:id="marcaP_TF" layoutX="72.0" layoutY="163.0" prefHeight="25.0" prefWidth="223.0" />
+      <Label layoutX="72.0" layoutY="196.0" text="Precio:" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="precioP_TF" layoutX="72.0" layoutY="280.0" prefHeight="25.0" prefWidth="223.0" />
-      <Label layoutX="106.0" layoutY="329.0" text="Unidad de medida" textFill="WHITE">
+      <TextField fx:id="precioP_TF" layoutX="72.0" layoutY="216.0" prefHeight="25.0" prefWidth="223.0" />
+      <Label layoutX="72.0" layoutY="254.0" text="Unidad de medida:" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="unidadP_TF" layoutX="72.0" layoutY="355.0" prefHeight="25.0" prefWidth="223.0" />
-      <Button fx:id="productoBTC" layoutX="336.0" layoutY="16.0" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" style="-fx-background-radius: 60;" text="X">
+      <DatePicker layoutX="72.0" layoutY="329.0" />
+      <Label layoutX="72.0" layoutY="309.0" text="Plazo de entrega:" textFill="WHITE">
          <font>
-            <Font size="9.0" />
+            <Font size="17.0" />
          </font>
-      </Button>
+      </Label>
+      <ComboBox fx:id="medidaP_CB" layoutX="72.0" layoutY="274.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

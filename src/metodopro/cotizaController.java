@@ -7,6 +7,7 @@ package metodopro;
 
 
 import bd.consultas;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,8 +18,12 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
@@ -27,6 +32,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import modelos.Cotizacion;
 import modelos.Tablaproducto;
 import sesion.Sesion;
@@ -97,12 +103,20 @@ public class cotizaController implements Initializable {
     data2 = gettablados(rawr);
     tablapro.setItems(data2);
 
-  }
+  } 
+   //abre el formulario alabado sea alaaa
+   public void Abrir_Formulario_Producto(ActionEvent event) throws IOException{
+        Parent formulario= FXMLLoader.load(getClass().getResource("Formulario_Productos.fxml"));
+        Scene scena= new Scene(formulario);
+        Stage stage = new Stage();
+        stage.setScene(scena);
+        stage.show();
+   }
     
     //extraer datos de BD :D (tabla cotizacion, loco)
     ObservableList gettablauno() { 
         IDcot.setCellValueFactory(new PropertyValueFactory<Cotizacion,String>("ID_COT"));
-       FechaCot.setCellValueFactory(new PropertyValueFactory<Cotizacion,String>("FECHA_COT"));
+        FechaCot.setCellValueFactory(new PropertyValueFactory<Cotizacion,String>("FECHA_COT"));
         Nproducot.setCellValueFactory(new PropertyValueFactory<Cotizacion,String>("N_PRODUCTOS"));
         descripcot.setCellValueFactory(new PropertyValueFactory<Cotizacion,String>("DESCRIPCION"));
         List list = new ArrayList();
