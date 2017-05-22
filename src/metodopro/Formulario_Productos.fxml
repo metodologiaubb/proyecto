@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="489.0" prefWidth="366.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="metodopro.Formulario_ProductosController">
+<AnchorPane id="AnchorPane" fx:id="unidadP_TF" prefHeight="489.0" prefWidth="366.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="metodopro.Formulario_ProductosController">
    <children>
       <Label layoutX="80.0" layoutY="28.0" text="Ingresar datos" textFill="WHITE" underline="true">
          <font>
@@ -44,6 +44,6 @@
             <Font size="17.0" />
          </font>
       </Label>
-      <ComboBox fx:id="medidaP_CB" layoutX="72.0" layoutY="274.0" prefWidth="150.0" />
+      <TextField fx:id="precioP_TF1" layoutX="72.0" layoutY="274.0" prefHeight="25.0" prefWidth="223.0" />
    </children>
 </AnchorPane>

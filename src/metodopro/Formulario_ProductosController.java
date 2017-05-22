@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 /**
@@ -25,7 +24,7 @@ public class Formulario_ProductosController implements Initializable {
     @FXML private TextField marcaP_TF;
     @FXML private TextField precioP_TF;
     @FXML private Button productoBTC;
-    @FXML private ComboBox<?> medidaP_CB;
+    @FXML private TextField unidadP_TF;
     
     /**
      * Initializes the controller class.
