@@ -149,14 +149,14 @@ public class cotizaController implements Initializable {
          pentregapro.setCellValueFactory(new PropertyValueFactory<Tablaproducto,String>("PENTREGA"));
              List list2 = new ArrayList();
         try{    
-ResultSet resultSet2=consultas.Select("SELECT t1.ID_PRODUCTO,t1.NOMBRE_PRODUCTO,t1.U_MEDIDA,t1.PENTREGA ,t3.PRECIO_PRODUCTO, t4.NOMBRE_PROVEEDOR, t6.NOMBRE_MARCA FROM producto t1,pertenece t2 , tiene t3 , proveedor t4, productom t5, marca t6 WHERE t4.ID_PROVEEDOR=t3.ID_PROVEEDOR AND t3.ID_PRODUCTO= t1.ID_PRODUCTO AND t1.ID_PRODUCTO=t5.ID_PRUDUCTO AND t5.ID_MARCA= t6.ID_MARCA AND t1.ID_PRODUCTO=t2.ID_PRODUCT AND t2.ID_COT='"+miau+"';");     
+ResultSet resultSet2=consultas.Select("SELECT t1.ID_PRODUCTO, t1.NOMBRE_PRODUCTO, t1.U_MEDIDA, t1.PENTREGA, t2.NOMBRE_PROVEEDOR, t4.NOMBRE_MARCA, VALOR FROM producto t1 ,proveedor t2,pertenece t3,marca t4 WHERE t2.ID_PROVEEDOR=t1.ID_PROVEEDOR AND t1.ID_MARCA= t4.ID_MARCA AND t3.ID_PRODUCT=t1.ID_PRODUCTO AND t3.ID_COT= '"+miau+"';");     
 
     while(resultSet2.next())
     {   Tablaproducto papo2= new Tablaproducto(); 
         papo2.setID_PRODUCTO(resultSet2.getInt("ID_PRODUCTO"));    
         papo2.setNOMBRE_PRODUCTO(resultSet2.getString("NOMBRE_PRODUCTO"));
         papo2.setU_MEDIDA(resultSet2.getString("U_MEDIDA")); 
-        papo2.setPRECIO_PRODUCTO(resultSet2.getInt("PRECIO_PRODUCTO"));
+        papo2.setPRECIO_PRODUCTO(resultSet2.getInt("VALOR"));
         papo2.setNOMBRE_MARCA(resultSet2.getString("NOMBRE_MARCA"));
         papo2.setNOMBRE_PROVEEDOR(resultSet2.getString("NOMBRE_PROVEEDOR"));
         papo2.setPENTREGA(resultSet2.getString("PENTREGA"));
