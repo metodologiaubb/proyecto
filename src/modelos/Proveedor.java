@@ -5,6 +5,7 @@
  */
 package modelos;
 
+import bd.consultas;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -32,13 +33,17 @@ public class Proveedor {
         return C_PRO_DCTO.get();
     }
     
-    public static String Insert_Proveedor(String Nombre_proveedor, int Dcto_proveedor,int C_pro_dcto){
+    public int Insert_Proveedor(String Nombre_proveedor, int Dcto_proveedor,int C_pro_dcto){
+        int x;
         String sql="INSERT INTO proveedor ( NOMBRE_PROVEEDOR, DCTO_PROVEEDOR, C_PRO_DCTO) VALUES ('"+Nombre_proveedor+"','"+Dcto_proveedor+"','"+C_pro_dcto+"');";
-        return sql;
+        x=consultas.Insert(sql);
+        return x;
     }
-    public static String Insert_Proveedor(String Nombre_proveedor, int Dcto_proveedor){
+    public int Insert_Proveedor(String Nombre_proveedor, int Dcto_proveedor){
+        int x;
         String sql="INSERT INTO proveedor ( NOMBRE_PROVEEDOR, DCTO_PROVEEDOR) VALUES ('"+Nombre_proveedor+"','"+Dcto_proveedor+"');";
-        return sql;
+        x=consultas.Insert(sql);
+        return x;
     }
 
     public void setID_PROVEEDOR(int ID_PROVEEDOR) {

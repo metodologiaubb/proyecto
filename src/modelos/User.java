@@ -9,6 +9,7 @@ package modelos;
  *
  * @author Pascal
  */
+import bd.consultas;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -79,9 +80,11 @@ public class User {
    
    
    
-    public static String Insert_User(String User_username,String User_pass,String User_fono,int User_rol,String User_nombre,String User_apellido){
+    public int Insert_User(String User_username,String User_pass,String User_fono,int User_rol,String User_nombre,String User_apellido){
+        int x;
         String sql="INSERT INTO user( USER_USERNAME, USER_PASS, USER_NOMBRE, USER_APELLIDO, USER_FONO, USER_ROL) VALUES ('"+User_username+"','"+User_pass+"','"+User_nombre+"','"+User_apellido+"','"+User_fono+"','"+User_rol+"')";
-        return sql;
+        x=consultas.Insert(sql);
+        return x;
     }
   
 }

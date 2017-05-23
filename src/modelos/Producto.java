@@ -6,6 +6,7 @@
 
 package modelos;
 
+import bd.consultas;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -21,7 +22,7 @@ public class Producto {
     private SimpleStringProperty PENTREGA = new SimpleStringProperty();
     private SimpleIntegerProperty ID_PROVEEDOR= new SimpleIntegerProperty();
     private SimpleIntegerProperty ID_MARCA = new SimpleIntegerProperty();  
-    private SimpleIntegerProperty PRECIO_PRODUCTO = new SimpleIntegerProperty();
+    private SimpleIntegerProperty VALOR = new SimpleIntegerProperty();
 
     
            
@@ -45,8 +46,8 @@ public class Producto {
     public String getPENTREGA(){
         return PENTREGA.get();
     }
-    public int getPRECIO_PRODUCTO(){
-        return PRECIO_PRODUCTO.get();
+    public int getVALOR(){
+        return VALOR.get();
     }
  
 
@@ -71,17 +72,19 @@ public class Producto {
         this.PENTREGA.set(PENTREGA);
     }
 
-    public void setPRECIO_PRODUCTO(int PRECIO_PRODUCTO) {
-        this.PRECIO_PRODUCTO.set(PRECIO_PRODUCTO);
+    public void setVALOR(int PRECIO_PRODUCTO) {
+        this.VALOR.set(PRECIO_PRODUCTO);
     }
     
     
     
     
     //por modificar el insert
-        public static String Insert_Producto(String Nombre_producto,String U_medida,String Pentrega,int Precio_producto,int Id_marca){
-        String sql="INSERT INTO producto( NOMBRE_PRODUCTO, U_MEDIDA, PENTREGA,PRECIO_PRODUCTO, ID_MARCA) VALUES ('"+Nombre_producto+"','"+U_medida+"','"+Pentrega+"','"+Precio_producto+"','"+Id_marca+"');";
-        return sql;
+    public int Insert_Producto(String Nombre_producto,String U_medida,String Pentrega,int Valor,int Id_marca){
+        int x;
+        String sql="INSERT INTO producto( NOMBRE_PRODUCTO, U_MEDIDA, PENTREGA,PRECIO_PRODUCTO, ID_MARCA) VALUES ('"+Nombre_producto+"','"+U_medida+"','"+Pentrega+"','"+Valor+"','"+Id_marca+"');";
+        x=consultas.Insert(sql);
+        return x;
     }
     
     
