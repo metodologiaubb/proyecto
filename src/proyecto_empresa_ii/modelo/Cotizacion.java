@@ -129,6 +129,26 @@ public class Cotizacion{
             }
             
         }
+        public static void llenarInformacion(ObservableList<Cotizacion>lista){
+            try {
+                ResultSet resultado = Cotizaciones();
+                
+                while (resultado.next()) {
+                    Cotizacion llena = new Cotizacion(
+                                    resultado.getInt("ID_COT"), 
+                                    resultado.getString("FECHA_COT"), 
+                                    resultado.getInt("ID_CREADOR"), 
+                                    resultado.getInt("N_PRODUCTOS"), 
+                                    resultado.getString("DESCRIPCION")
+                            );
+                    lista.add(llena);
+
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Cotizacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
         public static Cotizacion llenaOne( ResultSet resultado) throws SQLException{
              Cotizacion llena = new Cotizacion(
                                     resultado.getInt("ID_COT"), 
