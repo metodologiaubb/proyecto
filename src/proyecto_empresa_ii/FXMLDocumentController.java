@@ -401,8 +401,7 @@ public class FXMLDocumentController implements Initializable {
                     return true; //filtro por id proveedor
                 }else if(String.valueOf(cotizacion.getN_productos()).toLowerCase().contains(lowerCaseFilter)){
                     return true; // filtro por numero de productos
-                }else if(cotizacion.getToken().toLowerCase().contains(lowerCaseFilter)){
-                    return true; // filtro por token
+                
                 }return false; // Does not match.
             });
         });

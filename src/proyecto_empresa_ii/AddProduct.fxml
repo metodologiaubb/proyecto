@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -21,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="417.0" prefWidth="433.0" style="-fx-background-color: #383638;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.AddProductController">
+<AnchorPane id="AnchorPane" prefHeight="472.0" prefWidth="433.0" style="-fx-background-color: #383638;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.AddProductController">
    <children>
       <HBox alignment="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="417.0" prefWidth="433.0" styleClass="background" stylesheets="@css/killme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="465.0" prefWidth="407.0">
                <children>
                   <GridPane prefHeight="312.0" prefWidth="407.0">
                      <columnConstraints>
@@ -100,6 +94,11 @@
                         <JFXButton id="bevel-grey" fx:id="btnnuevo_producto" mnemonicParsing="false" onAction="#eventoLimpiar" prefHeight="23.0" prefWidth="84.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Nuevo" />
                      </children>
                   </HBox>
+                  <Label fx:id="mensajesql" textFill="WHITE">
+                     <font>
+                        <Font name="Consolas Bold" size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children>

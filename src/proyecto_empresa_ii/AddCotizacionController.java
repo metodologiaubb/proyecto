@@ -12,9 +12,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import proyecto_empresa_ii.modelo.Conexion;
 import proyecto_empresa_ii.modelo.consultas;
+import sesion.Sesion;
 
 /**
  *
@@ -29,6 +31,8 @@ public class AddCotizacionController {
     private JFXButton btninsertar_cotizacion;
     @FXML
     private TextArea txtdescripcion_cotizacion;
+    @FXML
+    private Label mensajesql;
 
     @FXML
     private void eventoLimpiar(ActionEvent event) {
@@ -47,14 +51,16 @@ public class AddCotizacionController {
       private void limpiar(){
          txtdescripcion_cotizacion.setText(null);
     };
-
     private void insertarcot(ActionEvent event) {
-        
-        consultas.Insert("");
+       
     }
 
     @FXML
-    private void insertarproducto(ActionEvent event) {
+    private void insertarcotizacion(ActionEvent event) {int x;
+    
+         x=consultas.Insert("INSERT INTO `cotizacion`(`ID_CREADOR`, `DESCRIPCION`) VALUES ('"+Sesion.CurrentUser.getID_USER()+"','"+txtdescripcion_cotizacion.getText()+"');");
+       if(x==0){
+    mensajesql.setText("Cotización ingresada exitosamente");
     }
     
-}
+}}

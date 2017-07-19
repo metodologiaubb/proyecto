@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import proyecto_empresa_ii.modelo.Conexion;
 import proyecto_empresa_ii.modelo.Marca;
 import proyecto_empresa_ii.modelo.Proveedor;
@@ -45,6 +46,8 @@ public class AddProductController implements Initializable {
     private JFXButton btnnuevo_producto;
     @FXML
     private DatePicker date_pentrega;
+    @FXML
+    private Label mensajesql;
     @FXML
     void eventoLimpiar(ActionEvent event) {
         limpiar();
@@ -85,12 +88,14 @@ public class AddProductController implements Initializable {
     };
 
     @FXML
-    private void insertarproducto(ActionEvent event) {
+    private void insertarproducto(ActionEvent event) {int x;
         date1();
-        consultas.Insert("");
-        System.out.println(cmbproveedor_producto.getValue().getId_proveedor());   
+        x=consultas.Insert("INSERT INTO `producto`(`NOMBRE_PRODUCTO`, `U_MEDIDA`, `PENTREGA`, `ID_PROVEEDOR`, `ID_MARCA`, `VALOR`) VALUES ('"+jtfnombre_producto.getText()+"','"+jtfum_producto.getText()+"','"+date1+"','"+cmbproveedor_producto.getValue().getId_proveedor()+"','"+cmbmarca_producto.getValue().getId_marca()+"','"+jtfvalor_producto.getText()+"');");
+       if(x==0){
+    mensajesql.setText("Producto ingresado exitosamente");
     }
     
     
     
+}
 }

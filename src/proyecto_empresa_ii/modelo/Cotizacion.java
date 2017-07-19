@@ -32,17 +32,16 @@ public class Cotizacion{
 	private IntegerProperty id_creador;
 	private IntegerProperty n_productos;
 	private StringProperty descripcion;
-	private StringProperty token;
 
 	public Cotizacion(int id_cot, String fecha_cot, int id_creador, 
-        int n_productos, String descripcion, String token) { 
+        int n_productos, String descripcion) { 
             
             this.id_cot     = new SimpleIntegerProperty(id_cot);
             this.fecha_cot  = new SimpleStringProperty(fecha_cot);
             this.id_creador = new SimpleIntegerProperty(id_creador);
             this.n_productos= new SimpleIntegerProperty(n_productos);
             this.descripcion= new SimpleStringProperty(descripcion);
-            this.token      = new SimpleStringProperty(token);
+         
 	}
 
 	//Metodos atributo: id_cot
@@ -96,23 +95,13 @@ public class Cotizacion{
 		return descripcion;
 	}
 	//Metodos atributo: token
-	public String getToken() {
-		return token.get();
-	}
-	public void setToken(String token) {
-		this.token = new SimpleStringProperty(token);
-	}
-	public StringProperty TokenProperty() {
-		return token;
-	}
-            
+
         public static  ResultSet Cotizaciones(){
         String sql= "SELECT ID_COT, "
                     + "FECHA_COT, "
                     + "ID_CREADOR, "
                     + "N_PRODUCTOS, "
-                    + "DESCRIPCION,  "
-                    + "TOKEN "        
+                    + "DESCRIPCION  "        
                     + "FROM  cotizacion";
         ResultSet resultSet=consultas.Select(sql); 
         return resultSet;
@@ -127,8 +116,7 @@ public class Cotizacion{
                                     resultado.getString("FECHA_COT"), 
                                     resultado.getInt("ID_CREADOR"), 
                                     resultado.getInt("N_PRODUCTOS"), 
-                                    resultado.getString("DESCRIPCION"),
-                                    resultado.getString("TOKEN")
+                                    resultado.getString("DESCRIPCION")
                             );
                     lista.add(llena);
                     listaCotiza.put(llena.getId_cot(), lista.indexOf(llena));
@@ -144,8 +132,7 @@ public class Cotizacion{
                                     resultado.getString("FECHA_COT"), 
                                     resultado.getInt("ID_CREADOR"), 
                                     resultado.getInt("N_PRODUCTOS"), 
-                                    resultado.getString("DESCRIPCION"),
-                                    resultado.getString("TOKEN")
+                                    resultado.getString("DESCRIPCION")
                             );
                     return llena;
         }
