@@ -52,7 +52,7 @@ public class Main extends Application {
         con=new Conexion();
         con.establecerConexion();
         cons=new consultas(con.getConnection());
-        
+        stage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));
     }
     public boolean userLogging(String username, String password){
         System.out.println("got user id " + username + " password " + password);

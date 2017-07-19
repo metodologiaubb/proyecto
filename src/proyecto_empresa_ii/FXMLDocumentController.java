@@ -85,6 +85,7 @@ public class FXMLDocumentController implements Initializable {
     private double xOffset = 0;
     private double yOffset = 0;
     private HashMap<Integer,Integer> listaCotiza;
+    thread hilo;
     @FXML
     private JFXButton btnagregar_producto11;
     @FXML
@@ -204,7 +205,8 @@ public class FXMLDocumentController implements Initializable {
         
         filtroProducto();
         filtroCotizacion();
-        
+        hilo=new thread(this);
+        hilo.start();
         
         
         
@@ -342,6 +344,13 @@ public class FXMLDocumentController implements Initializable {
             }
                 
         );
+    }
+    
+     public ObservableList getListCotiza(){
+         return listacotizacion;
+    }
+    public HashMap getMapCot(){
+        return listaCotiza;
     }
     private void filtroProducto(){
       filtereddataproduct= new FilteredList<>(listaproductos, p -> true);
