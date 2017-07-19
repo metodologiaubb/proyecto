@@ -197,7 +197,7 @@
                   <Blend mode="SCREEN" opacity="0.64" />
                </effect>
             </JFXButton>
-            <JFXButton fx:id="botoneliminarcot" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="7.0" layoutY="127.0" prefHeight="43.0" prefWidth="34.0" styleClass="plus" stylesheets="@css/killme.css">
+            <JFXButton fx:id="botoneliminarcot" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="7.0" layoutY="127.0" onAction="#eliminarcot" prefHeight="43.0" prefWidth="34.0" styleClass="plus" stylesheets="@css/killme.css">
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
                      <image>

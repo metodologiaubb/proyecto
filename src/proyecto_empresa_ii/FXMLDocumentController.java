@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +27,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -43,6 +46,7 @@ import proyecto_empresa_ii.modelo.Cotizacion;
 import proyecto_empresa_ii.modelo.Marca;
 import proyecto_empresa_ii.modelo.Producto;
 import proyecto_empresa_ii.modelo.Proveedor;
+import proyecto_empresa_ii.modelo.consultas;
 
 /**
  *
@@ -132,6 +136,22 @@ public class FXMLDocumentController implements Initializable {
                             Level.SEVERE, null, ex
                     );
         }
+        
+    }
+        @FXML
+    void eliminarcot(){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+alert.setTitle("Eliminar Cotización");
+alert.setHeaderText("");
+alert.setContentText("¿Seguro que desea eliminar la cotización "+wat+"?");
+
+Optional<ButtonType> result = alert.showAndWait();
+if (result.get() == ButtonType.OK){
+ 
+consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
+    
+} else {
+}
         
     }
     @FXML
@@ -321,7 +341,7 @@ public class FXMLDocumentController implements Initializable {
         );
     }
     
-    
+    public static int wat;
     /* 
     ** evento que detecta la cotización seleccionada y displaya los productos
     ** pertenecientes a ella
@@ -333,6 +353,7 @@ public class FXMLDocumentController implements Initializable {
                 listaproductos.removeAll(listaproductos);
                 Producto.llenarInformacion  (conexion.getConnection(), 
                 listaproductos, selectedValue.getId_cot());
+                wat=selectedValue.getId_cot();
             }
         );
     }
