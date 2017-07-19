@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03-06-2017, 17:35:29
+    Author     : balannor
+*/
+
+
+
+
+
+.background {
+    -fx-background-color: #1d1d1d;
+}
+.JFXTextField{
+    -fx-focus-color: #f37005   
+}
+.Label{
+    -fx-text-fill: #f37005;
+    -fx-font: 13 system;
+    -fx-font-weight: bold; 
+}

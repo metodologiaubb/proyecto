@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="417.0" prefWidth="433.0" style="-fx-background-color: #383638;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.AddCotizacionController">
+   <children>
+      <HBox alignment="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="417.0" prefWidth="433.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="375.0" prefWidth="407.0">
+               <children>
+                  <GridPane prefHeight="203.0" prefWidth="407.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="179.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="221.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="170.0" minHeight="10.0" prefHeight="170.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Datos Cotización" textFill="#f37005">
+                           <font>
+                              <Font name="Consolas Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="Descripción:" textFill="#f37005" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font></Label>
+                        <TextArea fx:id="txtdescripcion_cotizacion" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" prefHeight="73.0" prefWidth="407.0" spacing="20.0">
+                     <children>
+                        <JFXButton fx:id="btninsertar_cotizacion" onAction="#insertarcot" style="-fx-background-color: #f37005;" text="Guardar" />
+                        <JFXButton fx:id="btnnuevo_cotizacion" onAction="#eventoLimpiar" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: #f37005;" text="Nuevo" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
