@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
- 
-<AnchorPane id="AnchorPane" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="390.0" styleClass="background" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.LoginController">
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="390.0" styleClass="background" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.LoginController">
   <children>
     <AnchorPane id="anchorPane2" prefHeight="300.0" prefWidth="500.0" styleClass="top-segment" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-        <VBox id="VBox" alignment="CENTER" prefHeight="300.0" prefWidth="421.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="29.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0">
+        <VBox id="VBox" alignment="CENTER" layoutX="32.5" layoutY="3.5" prefHeight="308.0" prefWidth="318.0" spacing="5.0" AnchorPane.bottomAnchor="-9.0" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="2.0">
           <children>
             <AnchorPane id="AnchorPane" prefHeight="180.0" prefWidth="430.0">
               <children>
-                <Label id="label1" layoutX="14.0" layoutY="67.0" text="Usuario" />
-                <TextField id="textField1" fx:id="userId" layoutY="86.0" prefWidth="415.0" promptText="Usuario" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" />
-                <Label id="label1" layoutX="14.0" layoutY="139.0" text="Contraseña" />
-                <PasswordField id="passwordField1" fx:id="password" layoutY="157.0" prefWidth="415.0" promptText="Contraseña" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="0.0" />
-                <ImageView id="app-login-logo" layoutY="-12.0">
+                <Label id="label1" layoutX="21.0" layoutY="67.0" prefHeight="16.0" prefWidth="59.0" text="Usuario" />
+                <TextField id="textField1" fx:id="userId" layoutX="23.0" layoutY="86.0" prefHeight="31.0" prefWidth="318.0" promptText="Usuario" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="19.0" />
+                <Label id="label1" layoutX="21.0" layoutY="139.0" prefHeight="16.0" prefWidth="78.0" text="Contraseña" />
+                <PasswordField id="passwordField1" fx:id="password" layoutX="23.0" layoutY="157.0" prefHeight="31.0" prefWidth="318.0" promptText="Contraseña" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="19.0" />
+                <ImageView id="app-login-logo" fitHeight="107.0" fitWidth="318.0" layoutX="8.0" layoutY="-45.0">
                   <image>
                     <Image preserveRatio="true" smooth="true" url="@LoginLogo.png" />
                   </image>
+                           <effect>
+                              <Bloom threshold="0.06" />
+                           </effect>
                 </ImageView>
               </children>
             </AnchorPane>

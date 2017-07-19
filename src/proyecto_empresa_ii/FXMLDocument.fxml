@@ -20,7 +20,7 @@
     <children>
       <HBox alignment="CENTER_LEFT" layoutX="314.0" layoutY="43.0" prefHeight="660.0" prefWidth="770.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox prefHeight="660.0" prefWidth="128.0">
+            <VBox prefHeight="690.0" prefWidth="136.0">
                <children>
                   <JFXButton id="bevel-grey" fx:id="btnagregar_proveedor" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Proveedor">
                      <VBox.margin>
@@ -37,6 +37,14 @@
                         <Insets left="20.0" top="30.0" />
                      </VBox.margin>
                   </JFXButton>
+                  <ImageView fitHeight="132.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="15.0" top="340.0" />
+                     </VBox.margin>
+                     <image>
+                        <Image url="@mseal.png" />
+                     </image>
+                  </ImageView>
                </children>
             </VBox>
             <VBox alignment="TOP_RIGHT" prefHeight="660.0" prefWidth="885.0" HBox.hgrow="ALWAYS">
