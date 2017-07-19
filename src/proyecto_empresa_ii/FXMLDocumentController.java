@@ -33,6 +33,7 @@ import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.ChoiceBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -92,6 +93,12 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton btnactualizar_producto;
     @FXML
     private JFXButton btneliminar_producto;
+    @FXML
+    private JFXButton botonagregarcot;
+    @FXML
+    private JFXButton botoneliminarcot;
+    @FXML
+    private JFXButton botonagregarcot1;
     
     @FXML
     void agregarproducto(ActionEvent event) {//evento boton agregar
@@ -103,7 +110,7 @@ public class FXMLDocumentController implements Initializable {
             Parent root1 = (Parent) fXMLLoader.load();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UTILITY);
-            stage.setTitle("Agregar Datos");
+            stage.setTitle("Agregar Producto");
             stage.setScene(new Scene(root1));
             /*Evento Dragg and drop*/
             root1.setOnMousePressed((MouseEvent event1) -> {
@@ -124,7 +131,37 @@ public class FXMLDocumentController implements Initializable {
         }
         
     }
-    
+    @FXML
+    void agregarcotizacion(ActionEvent event) {//evento boton agregar
+        
+        try {
+            FXMLLoader fXMLLoader = new FXMLLoader(
+                    getClass().getResource("Addcotizacion.fxml")
+            );
+            Parent root1 = (Parent) fXMLLoader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UTILITY);
+            stage.setTitle("Agregar Cotización");
+            stage.setScene(new Scene(root1));
+            /*Evento Dragg and drop*/
+            root1.setOnMousePressed((MouseEvent event1) -> {
+                xOffset = event1.getSceneX();
+                yOffset = event1.getSceneY();
+            });
+            root1.setOnMouseDragged((MouseEvent event1) -> {
+                stage.setX(event1.getScreenX() - xOffset);
+                stage.setY(event1.getScreenY() - yOffset);
+            });
+            /*Fin del evento*/
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(
+                    FXMLDocumentController.class.getName()).log(
+                            Level.SEVERE, null, ex
+                    );
+        }
+        
+    }
     
     private Conexion                    conexion;
     private ObservableList<Marca>       listamarcas;
@@ -375,6 +412,7 @@ public class FXMLDocumentController implements Initializable {
         tv_cotizacion.setItems(sorteddatacotiza);
       
     }
+
 
             
     

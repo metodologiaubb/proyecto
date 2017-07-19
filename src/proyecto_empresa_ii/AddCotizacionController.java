@@ -22,9 +22,6 @@ import proyecto_empresa_ii.modelo.consultas;
  */
 public class AddCotizacionController {
 
-    private JFXTextField jtfid_cotizacion;
-    private JFXTextField jtffecha_cotizacion;
-    private JFXTextField jtfnum_productos_cotizacion;
     private JFXTextField jtfdescripcion_cotizacion;
     @FXML
     private JFXButton btnnuevo_cotizacion;
@@ -35,9 +32,7 @@ public class AddCotizacionController {
 
     @FXML
     private void eventoLimpiar(ActionEvent event) {
-        limpiar();
-
-        
+        limpiar();  
     }
             Conexion conexion;
     
@@ -50,17 +45,16 @@ public class AddCotizacionController {
    
     
       private void limpiar(){
-        jtfid_cotizacion.setText(null);
-        jtffecha_cotizacion.setText(null);
-        jtfnum_productos_cotizacion.setText(null);
-        jtfdescripcion_cotizacion.setText(null);
- 
+         txtdescripcion_cotizacion.setText(null);
     };
 
-    @FXML
     private void insertarcot(ActionEvent event) {
         
         consultas.Insert("");
+    }
+
+    @FXML
+    private void insertarproducto(ActionEvent event) {
     }
     
 }

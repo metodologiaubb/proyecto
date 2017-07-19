@@ -8,7 +8,12 @@
         radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
 }
 .plus{
- -fx-background-image: url("plus.png");
+  -fx-background-radius: 16.4, 15;
+  -fx-background-insets: -1.4, 0;
+  -fx-border-radius: 15;
+   -fx-border-width: 2;
+  -fx-padding: 0;
+-fx-font-size: 0;
 }
 
 .top-segment {
