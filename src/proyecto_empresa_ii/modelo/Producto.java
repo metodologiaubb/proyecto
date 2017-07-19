@@ -19,6 +19,9 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Tooltip;
+import proyecto_empresa_ii.ComboBoxAutoComplete;
 
 /**
  *
@@ -168,6 +171,11 @@ public class Producto{
         @Override
         public String toString(){
         return proveedor.getNombre_proveedor();
+        }
+                public static void autocompletar(ComboBox<Producto> cmb, ObservableList<Producto>list){
+            cmb.setTooltip(new Tooltip());
+            cmb.getItems().addAll(list);
+            new ComboBoxAutoComplete<Producto>(cmb);
         }
 
     public boolean getActivo() {

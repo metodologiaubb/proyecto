@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -44,6 +45,7 @@ public class Main extends Application {
         stage = primaryStage;
         stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
         stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
+        stage.getIcons().add(new Image(this.getClass().getResource("mseal32.png").toString()));
 //        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
 //        
 //        Scene scene = new Scene(root);
