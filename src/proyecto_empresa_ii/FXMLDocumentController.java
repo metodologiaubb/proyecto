@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -83,6 +84,7 @@ public class FXMLDocumentController implements Initializable {
     private TableView<Producto> tv_productos;
     private double xOffset = 0;
     private double yOffset = 0;
+    private HashMap<Integer,Integer> listaCotiza;
     @FXML
     private JFXButton btnagregar_producto11;
     @FXML
@@ -179,6 +181,7 @@ public class FXMLDocumentController implements Initializable {
         /*Me Conecto al servidor mysql y establezco conexión*/
         conexion = new Conexion();
         conexion.establecerConexion();
+        listaCotiza = new HashMap<Integer,Integer>();
         /*--------------------------------------------------*/
         listamarcas     =FXCollections.observableArrayList();
         listaproveedor  =FXCollections.observableArrayList();
@@ -186,7 +189,7 @@ public class FXMLDocumentController implements Initializable {
         listacotizacion =FXCollections.observableArrayList();
         /*--------------------------------------------------*/
         
-        Cotizacion.llenarInformacion(conexion.getConnection(), listacotizacion);
+        Cotizacion.llenarInformacion( listacotizacion,listaCotiza);
         Proveedor.llenarInformacion (conexion.getConnection(), listaproveedor);
         Marca.llenarInformacion     (conexion.getConnection(), listamarcas);
         /*--------------------------------------------------*/

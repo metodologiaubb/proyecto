@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.IntegerProperty;
@@ -104,36 +105,49 @@ public class Cotizacion{
 	public StringProperty TokenProperty() {
 		return token;
 	}
-        
-            public static void llenarInformacion(Connection connection , ObservableList<Cotizacion>lista){
-            try {
-                Statement statement = connection.createStatement();
-                ResultSet resultado = statement.executeQuery(
-                    "SELECT ID_COT, "
+            
+        public static  ResultSet Cotizaciones(){
+        String sql= "SELECT ID_COT, "
                     + "FECHA_COT, "
                     + "ID_CREADOR, "
                     + "N_PRODUCTOS, "
                     + "DESCRIPCION,  "
                     + "TOKEN "        
-                    + "FROM  cotizacion"
-                );
+                    + "FROM  cotizacion";
+        ResultSet resultSet=consultas.Select(sql); 
+        return resultSet;
+    }
+            public static void llenarInformacion(ObservableList<Cotizacion>lista, HashMap<Integer,Integer> listaCotiza){
+            try {
+                ResultSet resultado = Cotizaciones();
                 
                 while (resultado.next()) {
-                    lista.add(
-                            new Cotizacion(
+                    Cotizacion llena = new Cotizacion(
                                     resultado.getInt("ID_COT"), 
                                     resultado.getString("FECHA_COT"), 
                                     resultado.getInt("ID_CREADOR"), 
                                     resultado.getInt("N_PRODUCTOS"), 
                                     resultado.getString("DESCRIPCION"),
                                     resultado.getString("TOKEN")
-                            )
-                    );
+                            );
+                    lista.add(llena);
+                    listaCotiza.put(llena.getId_cot(), lista.indexOf(llena));
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(Cotizacion.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+        }
+        public static Cotizacion llenaOne( ResultSet resultado) throws SQLException{
+             Cotizacion llena = new Cotizacion(
+                                    resultado.getInt("ID_COT"), 
+                                    resultado.getString("FECHA_COT"), 
+                                    resultado.getInt("ID_CREADOR"), 
+                                    resultado.getInt("N_PRODUCTOS"), 
+                                    resultado.getString("DESCRIPCION"),
+                                    resultado.getString("TOKEN")
+                            );
+                    return llena;
         }
 
         @Override
