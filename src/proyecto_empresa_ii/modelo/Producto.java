@@ -131,7 +131,7 @@ public class Producto{
                         + "C.NOMBRE_MARCA "
                         + "FROM producto A "
                         + "INNER JOIN proveedor B "
-                        + "ON (A.ID_PRODUCTO=B.ID_PROVEEDOR) "
+                        + "ON (A.ID_PROVEEDOR=B.ID_PROVEEDOR) "
                         + "INNER JOIN marca C " 
                         + "ON (A.ID_MARCA=C.ID_MARCA) "
                         + "INNER JOIN pertenece D "
@@ -168,11 +168,10 @@ public class Producto{
             }
         
         }
-               public static void llenarInformacion(Connection connection, 
+               public static void llenarInformacion(
                 ObservableList<Producto> lista){
             try {
-                Statement statement = connection.createStatement();
-                ResultSet resultado =statement.executeQuery(
+                ResultSet resultado =consultas.Select(
                         "SELECT "
                         + "A.ID_PRODUCTO, "
                         + "A.NOMBRE_PRODUCTO, " 
@@ -187,13 +186,13 @@ public class Producto{
                         + "C.NOMBRE_MARCA "
                         + "FROM producto A "
                         + "INNER JOIN proveedor B "
-                        + "ON (A.ID_PRODUCTO=B.ID_PROVEEDOR) "
+                        + "ON (A.ID_PROVEEDOR=B.ID_PROVEEDOR) "
                         + "INNER JOIN marca C " 
                         + "ON (A.ID_MARCA=C.ID_MARCA) "
                         + "INNER JOIN pertenece D "
                         + "on(A.ID_PRODUCTO=D.ID_PRODUCT) "
                         + "INNER JOIN cotizacion E "
-                        + "on(D.ID_COT=E.ID_COT) "
+                        + "on(D.ID_COT=E.ID_COT)"
                   
                 );
                 while (resultado.next()) {        
@@ -227,14 +226,19 @@ public class Producto{
 
         @Override
         public String toString(){
-        return proveedor.getNombre_proveedor();
+        return id_producto.get()+"("+nombre_producto.get()+")";
         }
                 public static void autocompletar(ComboBox<Producto> cmb, ObservableList<Producto>list){
             cmb.setTooltip(new Tooltip());
             cmb.getItems().addAll(list);
             new ComboBoxAutoComplete<Producto>(cmb);
         }
-
+                   public static void autocompletar1(ComboBox<Producto1> cmb, ObservableList<Producto1>list){
+            cmb.setTooltip(new Tooltip());
+            cmb.getItems().addAll(list);
+            new ComboBoxAutoComplete<Producto1>(cmb);
+        }
+           
     public boolean getActivo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

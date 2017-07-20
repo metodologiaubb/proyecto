@@ -9,14 +9,13 @@ package proyecto_empresa_ii.modelo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
 
-/**
- * 
- * @author Sammy Guergachi <sguergachi at gmail.com>
- */
+
 public class Producto1 {
 
     private SimpleIntegerProperty ID_PRODUCTO = new SimpleIntegerProperty();
@@ -27,8 +26,6 @@ public class Producto1 {
     private SimpleIntegerProperty ID_MARCA = new SimpleIntegerProperty();  
     private SimpleIntegerProperty VALOR = new SimpleIntegerProperty();
 
-    
-           
     public int getID_PRODUCTO(){
         return ID_PRODUCTO.get();
     }
@@ -79,18 +76,21 @@ public class Producto1 {
         this.VALOR.set(PRECIO_PRODUCTO);
     }
     
+     @Override
+        public String toString(){
+        return ID_PRODUCTO.get()+"("+NOMBRE_PRODUCTO.get()+")";
+        }
     
-    
-    public static void llenarproducto(ObservableList lista) throws SQLException{
-            String sql="SELECT * FROM producto";
+    public static void llenarproducto(ObservableList<Producto1>list) throws SQLException{
+            String sql="SELECT * FROM producto;";
             ResultSet resultado = consultas.Select(sql);
             while(resultado.next()){
                 Producto1 pro=new Producto1();
-                pro.setID_PRODUCTO(resultado.getInt("ID_PRODUCTO"));
-                pro.setNOMBRE_PRODUCTO(resultado.getString("NOMBRE_PRODUCTO"));
-                lista.add(pro.getID_PRODUCTO()+"-"+pro.getNOMBRE_PRODUCTO());
+              pro.setID_PRODUCTO(resultado.getInt("ID_PRODUCTO"));
+               pro.setNOMBRE_PRODUCTO(resultado.getString("NOMBRE_PRODUCTO"));
+                
+                list.add(pro);
             }
-    
     }
     //por modificar el insert
     public int Insert_Producto(String Nombre_producto,String U_medida,String Pentrega,int Valor,int Id_marca){
