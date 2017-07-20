@@ -20,7 +20,7 @@
     <children>
       <HBox alignment="CENTER_LEFT" layoutX="314.0" layoutY="43.0" prefHeight="660.0" prefWidth="770.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox prefHeight="690.0" prefWidth="136.0">
+            <VBox prefHeight="690.0" prefWidth="165.0">
                <children>
                   <JFXButton id="bevel-grey" fx:id="btnagregar_proveedor" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Proveedor">
                      <VBox.margin>
@@ -37,9 +37,27 @@
                         <Insets left="20.0" top="30.0" />
                      </VBox.margin>
                   </JFXButton>
+                  <JFXButton id="bevel-grey" fx:id="btnprodacot" alignment="BASELINE_CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#agregarprodacot" prefHeight="69.0" prefWidth="87.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css">
+                     <VBox.margin>
+                        <Insets left="10.0" top="100.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Calibri" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="61.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icon1.png" />
+                           </image>
+                           <effect>
+                              <Blend opacity="0.3" />
+                           </effect>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
                   <ImageView fitHeight="132.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
-                        <Insets left="15.0" top="340.0" />
+                        <Insets left="15.0" top="170.0" />
                      </VBox.margin>
                      <image>
                         <Image url="@mseal.png" />
@@ -47,7 +65,7 @@
                   </ImageView>
                </children>
             </VBox>
-            <VBox alignment="TOP_RIGHT" prefHeight="660.0" prefWidth="885.0" HBox.hgrow="ALWAYS">
+            <VBox alignment="TOP_RIGHT" prefHeight="690.0" prefWidth="796.0" HBox.hgrow="ALWAYS">
                <children>
                   <AnchorPane prefHeight="22.0" prefWidth="669.0" VBox.vgrow="ALWAYS">
                      <VBox.margin>

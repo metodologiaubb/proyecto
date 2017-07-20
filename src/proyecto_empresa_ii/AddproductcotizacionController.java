@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import proyecto_empresa_ii.modelo.Conexion;
 import proyecto_empresa_ii.modelo.Cotizacion;
 import proyecto_empresa_ii.modelo.Producto;
+import proyecto_empresa_ii.modelo.consultas;
 
 /**
  * FXML Controller class
@@ -51,17 +52,20 @@ public class AddproductcotizacionController implements Initializable {
         
         listacot=FXCollections.observableArrayList();
         listaproducto=FXCollections.observableArrayList();
-        Cotizacion.llenarInformacion (conexion.getConnection(), listacot);
-        Producto.llenarInformacion (conexion.getConnection(), listaproducto,0);
+    Cotizacion.llenarInformacion (listacot);
+    Producto.llenarInformacion (conexion.getConnection(), listaproducto);
     Cotizacion.autocompletar(cmbcot, listacot);
     Producto.autocompletar(cmbproducto,listaproducto);
-    
     }    
 
     @FXML
     private void insertarprodencot(ActionEvent event) {
-        
-        
+    int x;
+  x=consultas.Insert("INSERT INTO `pertenece`(`ID_COT`, `ID_PRODUCT`) VALUES ('"+cmbcot.getValue().getId_cot()+"','"+cmbproducto.getValue().getId_producto()+"')");
+               if(x==0){
+    mensajesql.setText("Producto ingresado a cotización exitosamente");
+    }
+               
     }
 
     @FXML
@@ -70,7 +74,6 @@ public class AddproductcotizacionController implements Initializable {
     }
     
    private void limpiar(){
-       
         cmbcot.setValue(null);
         cmbproducto.setValue(null);
    }

@@ -106,6 +106,8 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton botoneliminarcot;
     @FXML
     private JFXButton botonagregarcot1;
+    @FXML
+    private JFXButton btnprodacot;
     
     @FXML
     void agregarproducto(ActionEvent event) {//evento boton agregar
@@ -443,6 +445,43 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         // 5. Add sorted (and filtered) data to the table.
         tv_cotizacion.setItems(sorteddatacotiza);
       
+    }
+
+    @FXML
+    private void agregarprodacot(ActionEvent event) {
+         
+        try {
+            FXMLLoader fXMLLoader = new FXMLLoader(
+                    getClass().getResource("addproductocotizacion.fxml")
+            );
+            Parent root1 = (Parent) fXMLLoader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UTILITY);
+            stage.setTitle("Agregar Cotización");
+            stage.setScene(new Scene(root1));
+            /*Evento Dragg and drop*/
+            root1.setOnMousePressed((MouseEvent event1) -> {
+                xOffset = event1.getSceneX();
+                yOffset = event1.getSceneY();
+            });
+            root1.setOnMouseDragged((MouseEvent event1) -> {
+                stage.setX(event1.getScreenX() - xOffset);
+                stage.setY(event1.getScreenY() - yOffset);
+            });
+            /*Fin del evento*/
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(
+                    FXMLDocumentController.class.getName()).log(
+                            Level.SEVERE, null, ex
+                    );
+        }
+        
+    
+        
+        
+        
+        
     }
 
 

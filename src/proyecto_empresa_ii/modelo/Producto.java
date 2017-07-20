@@ -168,6 +168,63 @@ public class Producto{
             }
         
         }
+               public static void llenarInformacion(Connection connection, 
+                ObservableList<Producto> lista){
+            try {
+                Statement statement = connection.createStatement();
+                ResultSet resultado =statement.executeQuery(
+                        "SELECT "
+                        + "A.ID_PRODUCTO, "
+                        + "A.NOMBRE_PRODUCTO, " 
+                        + "A.U_MEDIDA, "
+                        + "A.PENTREGA, "
+                        + "A.ID_PROVEEDOR, " 
+                        + "A.ID_MARCA, "
+                        + "A.VALOR, "
+                        + "B.NOMBRE_PROVEEDOR, "
+                        + "B.DCTO_PROVEEDOR, "
+                        + "B.C_PRO_DCTO, "
+                        + "C.NOMBRE_MARCA "
+                        + "FROM producto A "
+                        + "INNER JOIN proveedor B "
+                        + "ON (A.ID_PRODUCTO=B.ID_PROVEEDOR) "
+                        + "INNER JOIN marca C " 
+                        + "ON (A.ID_MARCA=C.ID_MARCA) "
+                        + "INNER JOIN pertenece D "
+                        + "on(A.ID_PRODUCTO=D.ID_PRODUCT) "
+                        + "INNER JOIN cotizacion E "
+                        + "on(D.ID_COT=E.ID_COT) "
+                  
+                );
+                while (resultado.next()) {        
+                    lista.add(
+                            new Producto(
+                                    resultado.getInt("A.ID_PRODUCTO"), 
+                                    resultado.getString("A.NOMBRE_PRODUCTO"), 
+                                    resultado.getString("A.U_MEDIDA"), 
+                                    resultado.getDate("A.PENTREGA"),
+                                    new Proveedor(
+                                            resultado.getInt("A.ID_PROVEEDOR"), 
+                                            resultado.getString("B.NOMBRE_PROVEEDOR"), 
+                                            resultado.getInt("B.DCTO_PROVEEDOR"), 
+                                            resultado.getInt("B.C_PRO_DCTO")
+                                    ),
+                                    new Marca(
+                                            resultado.getInt("A.ID_MARCA"), 
+                                            resultado.getString("C.NOMBRE_MARCA")
+                                    ),
+                                    resultado.getInt("A.VALOR")
+                            )
+                    );
+                    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
+                
+            }
+        
+        }
+
         @Override
         public String toString(){
         return proveedor.getNombre_proveedor();
