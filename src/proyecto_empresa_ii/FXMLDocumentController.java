@@ -10,6 +10,8 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -87,6 +89,7 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<Producto, Number> colvalor_producto;
     @FXML
     private TableView<Producto> tv_productos;
+    private PreparedStatement preparedStmt;
     private double xOffset = 0;
     private double yOffset = 0;
     private HashMap<Integer,Integer> listaCotiza;
@@ -310,12 +313,61 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
     ***************************************************************************/
     
     private void tvProducto(){
+        
+        
+        
+        
+        tv_productos.setEditable(true);//activo edición sobre tabla
+        /*--------------------------------------------------------------------*/
         colnombre_producto.setCellValueFactory(
             new PropertyValueFactory<Producto, String>("nombre_producto")
         );
+        colnombre_producto.setCellFactory(TextFieldTableCell.forTableColumn());
+        colnombre_producto.setOnEditCommit(data -> {
+            System.out.println("Antiguo Nombre: " + data.getOldValue());   
+            Producto p = data.getRowValue();
+            p.setNombre_producto(data.getNewValue());
+            System.out.println("Nuevo Nombre: " + data.getNewValue());             
+            System.out.println(p);
+            try {
+                String query = "UPDATE producto SET NOMBRE_PRODUCTO = ? where ID_PRODUCTO = ?";
+                preparedStmt = conexion.getConnection().prepareStatement(query);
+                preparedStmt.setString(1, data.getNewValue());
+                preparedStmt.setInt(2, p.getId_producto());
+                preparedStmt.executeUpdate();
+                preparedStmt.clearParameters();// no es necesario
+                preparedStmt.close();
+                //conexion.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }      
+        });
+        /*--------------------------------------------------------------------*/
+        //Evento modificar y actualizar U Medida
         columedida_producto.setCellValueFactory(
             new PropertyValueFactory<Producto, String>("u_medida")
         );
+        columedida_producto.setCellFactory(TextFieldTableCell.forTableColumn());
+        columedida_producto.setOnEditCommit(data -> {
+            System.out.println("Antiguo Nombre: " + data.getOldValue());   
+            Producto p = data.getRowValue();
+            p.setNombre_producto(data.getNewValue());
+            System.out.println("Nuevo Nombre: " + data.getNewValue());             
+            System.out.println(p);
+            try {
+                String query = "UPDATE producto SET U_MEDIDA = ? where ID_PRODUCTO = ?";
+                preparedStmt = conexion.getConnection().prepareStatement(query);
+                preparedStmt.setString(1, data.getNewValue());
+                preparedStmt.setInt(2, p.getId_producto());
+                preparedStmt.executeUpdate();
+                preparedStmt.clearParameters();// no es necesario
+                preparedStmt.close();
+                //conexion.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }      
+        });        
+        /*--------------------------------------------------------------------*/
         colpentrega_producto.setCellValueFactory(
             new PropertyValueFactory<Producto, Date>("pentrega")
         );
@@ -329,18 +381,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             new PropertyValueFactory<Producto, Number>("valor")
         );
         /*--------------------------------------------------------------------*/
-        tv_productos.setEditable(true);
-        colnombre_producto.setCellFactory(TextFieldTableCell.forTableColumn());
-        /*--------------------------------------------------------------------*/
-        colnombre_producto.setOnEditCommit(data -> {
-            System.out.println("Nuevo Nombre: " + data.getNewValue());
-            System.out.println("Antiguo Nombre: " + data.getOldValue());
-           
-            Producto p = data.getRowValue();
-            p.setNombre_producto(data.getNewValue());                    
-            System.out.println(p);
-
-        });
+        
         /*--------------------------------------------------------------------*/
         colmarca_producto.setCellFactory(
                 ChoiceBoxTableCell.forTableColumn(listamarcas)

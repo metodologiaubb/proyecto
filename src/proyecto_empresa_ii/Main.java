@@ -120,7 +120,7 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.sizeToScene();
-        stage.setResizable(false);
+        stage.setResizable(true);
         return (Initializable) loader.getController();
     }
     
