@@ -1,0 +1,25 @@
+.tab-pane .headers-region {
+    -fx-background-image: url("CoarseGrid.png");
+    -fx-background-repeat: repeat;
+	-fx-background-color:
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    
+}
+.tab-pane .tab-header-background {
+    -fx-background-image: url("CoarseGrid.png");
+    -fx-background-repeat: repeat;
+	-fx-background-color:
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+}
+
+.tab-pane .tab-selected-line {
+    -fx-stroke :WHITE;
+    -fx-stroke-width: 3pt;
+}
+.tab-pane .tab-selected-slider {
+    -fx-background-color: white
+    -fx-stroke-width: 3pt;
+}
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-effect: null;
+}
