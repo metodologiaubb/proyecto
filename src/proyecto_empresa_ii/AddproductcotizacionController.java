@@ -30,7 +30,7 @@ public class AddproductcotizacionController implements Initializable {
     @FXML
     private ComboBox<Cotizacion> cmbcot;
     @FXML
-    private ComboBox<Producto> cmbproducto;
+    private ComboBox cmbproducto;
     @FXML
     private JFXButton btninsertar;
     @FXML
@@ -39,7 +39,7 @@ public class AddproductcotizacionController implements Initializable {
     private Label mensajesql;
     
         private ObservableList<Cotizacion>       listacot;
-    private ObservableList<Producto>   listaproducto;
+    private ObservableList   listaproducto;
     Conexion conexion;
     
     /**
@@ -51,11 +51,8 @@ public class AddproductcotizacionController implements Initializable {
         conexion.establecerConexion();
         
         listacot=FXCollections.observableArrayList();
-        listaproducto=FXCollections.observableArrayList();
     Cotizacion.llenarInformacion (listacot);
-    Producto.llenarInformacion (conexion.getConnection(), listaproducto);
     Cotizacion.autocompletar(cmbcot, listacot);
-    Producto.autocompletar(cmbproducto,listaproducto);
     }    
 
     @FXML
