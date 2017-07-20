@@ -91,6 +91,7 @@ public class Main extends Application {
         loader.setBuilderFactory(new JavaFXBuilderFactory());
         loader.setLocation(Main.class.getResource(fxml));
         AnchorPane page;
+  
         try {
             page = (AnchorPane) loader.load(in);
         } finally {

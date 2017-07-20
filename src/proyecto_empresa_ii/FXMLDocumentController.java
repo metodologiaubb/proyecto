@@ -30,6 +30,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -93,8 +94,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private JFXButton btnagregar_producto11;
     @FXML
-    private JFXButton btnagregar_proveedor;
-    @FXML
     private JFXButton btnagregar_marca;
     @FXML
     private JFXButton btnactualizar_producto;
@@ -108,6 +107,50 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton botonagregarcot1;
     @FXML
     private JFXButton btnprodacot;
+    /*-----------------------tab2----------------------*/
+    @FXML
+    private ComboBox<Proveedor> cmbproveedor1;
+        private ObservableList<Marca>       listamarcas1;
+    private ObservableList<Proveedor>   listaproveedor1;
+    @FXML
+    private JFXButton btneditarthisproveedor;
+    @FXML
+    private JFXTextField jtfid_proveedor;
+    @FXML
+    private JFXTextField jtfnombre_proveedor;
+    @FXML
+    private JFXTextField jtf_c_prod_dcto_proveedor;
+    @FXML
+    private JFXTextField jtfdcto_proveedor;
+    @FXML
+    private JFXButton btnlimpiarcamposproveedor;
+    @FXML
+    private JFXButton btnagregar_proveedor;
+    
+    /*-----------------------tab2-----------------------*/
+  @FXML
+    private void llenarproveedorlist(ActionEvent event) {
+     jtfid_proveedor.setText(cmbproveedor1.getValue().getId_proveedor()+"");
+     jtfnombre_proveedor.setText(cmbproveedor1.getValue().getNombre_proveedor());
+     jtfdcto_proveedor.setText(cmbproveedor1.getValue().getDcto_proveedor()+"");
+     jtf_c_prod_dcto_proveedor.setText(cmbproveedor1.getValue().getC_pro_dcto()+"");
+    }
+       @FXML
+    private void limpialistaproveedor() {
+     jtfid_proveedor.setText(null);
+     jtfnombre_proveedor.setText(null);
+     jtfdcto_proveedor.setText(null);
+     jtf_c_prod_dcto_proveedor.setText(null);
+    }
+
+    @FXML
+    private void addnewproveedor(ActionEvent event) {
+        limpialistaproveedor();
+        
+        
+    }
+
+    
     
     @FXML
     void agregarproducto(ActionEvent event) {//evento boton agregar
@@ -229,7 +272,10 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         filtroCotizacion();
         hilo=new thread(this);
         hilo.start();
-        
+        /*-----------------------tab2-----------------------*/
+             listaproveedor1  =FXCollections.observableArrayList();
+        Proveedor.llenarInformacion (conexion.getConnection(), listaproveedor1);
+        Proveedor.autocompletar(cmbproveedor1, listaproveedor1);
         
         
         
@@ -484,6 +530,8 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         
     }
 
+ 
+  
 
             
     

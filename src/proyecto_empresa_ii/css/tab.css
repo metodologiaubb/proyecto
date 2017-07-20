@@ -17,9 +17,6 @@
     -fx-stroke-width: 3pt;
 }
 .tab-pane .tab-selected-slider {
-    -fx-background-color: white
+    -fx-background-color: white;
     -fx-stroke-width: 3pt;
-}
-.tab-pane .tab-header-area .tab-header-background {
-    -fx-effect: null;
 }

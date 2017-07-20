@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -14,40 +15,33 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane blendMode="MULTIPLY" cache="true" cacheHint="SPEED" prefHeight="652.0" prefWidth="967.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.FXMLDocumentController">
+<AnchorPane blendMode="MULTIPLY" cache="true" cacheHint="SPEED" prefHeight="652.0" prefWidth="967.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.FXMLDocumentController">
    <children>
       <TabPane prefHeight="750.0" prefWidth="967.0" stylesheets="@css/tab.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <Tab text="Cotizaciones">
                <content>
-                  <AnchorPane id="AnchorPane" prefHeight="716.0" prefWidth="951.0" style="-fx-border-width: 1; -fx-border-color: black;" styleClass="background" stylesheets="@css/killme.css">
+                  <AnchorPane id="AnchorPane" prefHeight="716.0" prefWidth="951.0" style="-fx-border-color: black;" styleClass="background" stylesheets="@css/killme.css">
                       <children>
                         <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="4.0" layoutY="4.0" prefHeight="710.0" prefWidth="961.0">
                            <children>
-                              <VBox prefHeight="690.0" prefWidth="165.0">
+                              <VBox prefHeight="709.0" prefWidth="147.0">
                                  <children>
-                                    <JFXButton id="bevel-grey" fx:id="btnagregar_proveedor" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" stylesheets="@css/killme2.css" text="Proveedor">
-                                       <VBox.margin>
-                                          <Insets left="20.0" top="30.0" />
-                                       </VBox.margin>
-                                    </JFXButton>
-                                    <JFXButton id="bevel-grey" fx:id="btnagregar_marca" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Marca">
-                                       <VBox.margin>
-                                          <Insets left="20.0" top="30.0" />
-                                       </VBox.margin>
-                                    </JFXButton>
-                                    <JFXButton id="bevel-grey" fx:id="btnagregar_producto11" mnemonicParsing="false" onAction="#agregarproducto" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Producto">
+                                    <JFXButton id="bevel-grey" fx:id="btnagregar_producto11" mnemonicParsing="false" onAction="#agregarproducto" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Nuevo Producto">
                                        <VBox.margin>
                                           <Insets left="20.0" top="30.0" />
                                        </VBox.margin>
                                     </JFXButton>
                                     <JFXButton id="bevel-grey" fx:id="btnprodacot" alignment="BASELINE_CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#agregarprodacot" prefHeight="69.0" prefWidth="87.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css">
                                        <VBox.margin>
-                                          <Insets left="10.0" top="100.0" />
+                                          <Insets left="10.0" top="240.0" />
                                        </VBox.margin>
                                        <font>
                                           <Font name="Calibri" size="12.0" />
@@ -264,18 +258,120 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab closable="false" text="Marcas y Productos">
+            <Tab closable="false" text="Proveedor y Marcas">
                <content>
-                  <AnchorPane id="AnchorPane" prefHeight="716.0" prefWidth="951.0" style="-fx-border-width: 1; -fx-border-color: black;" styleClass="background" stylesheets="@css/killme.css">
+                  <AnchorPane id="AnchorPane" prefHeight="721.0" prefWidth="953.0" style="-fx-border-width: 1; -fx-border-color: black;" styleClass="background" stylesheets="@css/killme.css">
                      <children>
-                        <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="4.0" layoutY="4.0" prefHeight="710.0" prefWidth="951.0">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets right="30.0" />
-                           </padding>
+                        <HBox layoutX="410.0" layoutY="113.0" prefHeight="38.0" prefWidth="635.0">
+                           <children>
+                              <JFXButton id="bevel-grey" fx:id="btneditarthisproveedor" mnemonicParsing="false" prefHeight="31.0" prefWidth="139.0" stylesheets="@css/killme2.css" text="Guardar Cambios" />
+                              <JFXButton id="bevel-grey" fx:id="btnlimpiarcamposproveedor" mnemonicParsing="false" onAction="#limpialistaproveedor" prefHeight="31.0" prefWidth="119.0" stylesheets="@css/killme2.css" text="Limpiar Campos">
+                                 <HBox.margin>
+                                    <Insets left="7.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                              <JFXButton id="bevel-grey" fx:id="btnagregar_proveedor" mnemonicParsing="false" onAction="#addnewproveedor" prefHeight="31.0" prefWidth="138.0" stylesheets="@css/killme2.css" text="Nuevo Proveedor">
+                                 <HBox.margin>
+                                    <Insets left="7.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
                         </HBox>
+                        <VBox layoutX="6.0" layoutY="103.0" prefHeight="60.0" prefWidth="397.0">
+                           <children>
+                              <ComboBox fx:id="cmbproveedor1" onAction="#llenarproveedorlist" prefHeight="45.0" prefWidth="275.0" promptText="Elegir proveedor" style="-fx-background-color: #E8E8E8;" stylesheets="@css/bootstrap2.css">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets left="-240.0" top="10.0" />
+                                 </VBox.margin>
+                              </ComboBox>
+                           </children>
+                           <padding>
+                              <Insets left="360.0" />
+                           </padding>
+                        </VBox>
+                        <VBox prefHeight="68.0" prefWidth="967.0">
+                           <padding>
+                              <Insets left="360.0" top="5.0" />
+                           </padding>
+                           <children>
+                              <Label prefHeight="70.0" prefWidth="334.0" text=" Proveedor" textFill="WHITE">
+                                 <font>
+                                    <Font name="Consolas Bold" size="25.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets top="40.0" />
+                                 </padding>
+                              </Label>
+                              <JFXButton id="bevel-grey" fx:id="btnagregar_marca" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Marca" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="-4.0" layoutY="163.0" prefHeight="329.0" prefWidth="969.0">
+                           <padding>
+                              <Insets left="360.0" />
+                           </padding>
+                           <children>
+                              <GridPane prefHeight="352.0" prefWidth="385.0" style="-fx-border-color: white;">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.0" minWidth="10.0" prefWidth="184.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="211.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label text="      Datos  del" textFill="WHITE">
+                                       <font>
+                                          <Font name="Consolas Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="ID del proveedor:" textFill="WHITE" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="jtfnombre_proveedor" focusColor="WHITE" style="-fx-text-inner-color: white;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label text="Nombre del proveedor:" textFill="WHITE" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Descuento ofrecido:" textFill="WHITE" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="19.0" prefWidth="164.0" text="Nº de productos por dcto:" textFill="WHITE" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="  Proveedor" textFill="WHITE" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font name="Consolas Bold" size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTextField fx:id="jtf_c_prod_dcto_proveedor" focusColor="WHITE" style="-fx-text-inner-color: white;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <JFXTextField fx:id="jtfdcto_proveedor" focusColor="WHITE" style="-fx-text-inner-color: white;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <JFXTextField fx:id="jtfid_proveedor" editable="false" focusColor="WHITE" style="-fx-text-inner-color: white;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="-120.0" right="260.0" />
+                                 </VBox.margin>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                        <Label fx:id="excepcion_proveedor" layoutX="275.0" layoutY="501.0" prefHeight="23.0" prefWidth="374.0" textFill="WHITE">
+                           <font>
+                              <Font name="Consolas Bold" size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                      <effect>
                         <DropShadow spread="0.11" />
@@ -283,7 +379,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab closable="false" text="Administrador">
+            <Tab closable="false" text="Datos Personales">
                <content>
                   <AnchorPane id="AnchorPane" prefHeight="716.0" prefWidth="951.0" style="-fx-border-width: 1; -fx-border-color: black;" styleClass="background" stylesheets="@css/killme.css">
                      <children>
