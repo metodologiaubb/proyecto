@@ -165,7 +165,40 @@ public class FXMLDocumentController implements Initializable {
      jtfdcto_proveedor.setText(cmbproveedor1.getValue().getDcto_proveedor()+"");
      jtf_c_prod_dcto_proveedor.setText(cmbproveedor1.getValue().getC_pro_dcto()+"");
     }
-       @FXML
+    @FXML
+    void evento_grafico_test(ActionEvent event) {
+        try {
+            FXMLLoader fXMLLoader = new FXMLLoader(
+                getClass().getResource("Graficos.fxml")
+            );
+            Parent root1 = (Parent) fXMLLoader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UTILITY);
+            stage.setTitle("Graficos");
+            stage.setScene(new Scene(root1));
+            /*Evento Dragg and drop*/
+            root1.setOnMousePressed((MouseEvent event1) -> {
+                xOffset = event1.getSceneX();
+                yOffset = event1.getSceneY();
+            });
+            root1.setOnMouseDragged((MouseEvent event1) -> {
+                stage.setX(event1.getScreenX() - xOffset);
+                stage.setY(event1.getScreenY() - yOffset);
+            });
+            /*Fin del evento*/
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(
+                    FXMLDocumentController.class.getName()).log(
+                            Level.SEVERE, null, ex
+                    );
+        }
+
+    }
+    
+    
+    
+    @FXML
     private void limpialistaproveedor() {
      jtfid_proveedor.setText(null);
      jtfnombre_proveedor.setText(null);

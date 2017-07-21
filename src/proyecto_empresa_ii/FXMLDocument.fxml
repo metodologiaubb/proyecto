@@ -143,7 +143,7 @@
                                                 <Insets left="30.0" right="30.0" />
                                              </HBox.margin>
                                           </JFXButton>
-                                          <JFXButton fx:id="btnactualizar_producto" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f37005;" text="Actualizar">
+                                          <JFXButton fx:id="btnactualizar_producto" mnemonicParsing="false" onAction="#evento_grafico_test" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f37005;" text="Actualizar">
                                              <HBox.margin>
                                                 <Insets left="30.0" right="30.0" />
                                              </HBox.margin>
