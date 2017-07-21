@@ -22,24 +22,24 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane blendMode="MULTIPLY" cache="true" cacheHint="SPEED" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.FXMLDocumentController">
+<AnchorPane blendMode="MULTIPLY" cache="true" cacheHint="SPEED" prefHeight="728.0" prefWidth="770.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.FXMLDocumentController">
    <children>
-      <TabPane prefHeight="754.0" prefWidth="971.0" stylesheets="@css/tab.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane prefHeight="660.0" prefWidth="770.0" stylesheets="@css/tab.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
             <Tab text="Cotizaciones">
                <content>
                   <AnchorPane id="AnchorPane" style="-fx-border-color: black;" styleClass="background" stylesheets="@css/killme.css">
                       <children>
-                        <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="4.0" layoutY="4.0" prefHeight="710.0" prefWidth="961.0">
+                        <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="4.0" layoutY="4.0" prefHeight="693.0" prefWidth="768.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <VBox prefHeight="709.0" prefWidth="147.0">
+                              <VBox alignment="TOP_CENTER">
                                  <children>
-                                    <JFXButton id="bevel-grey" fx:id="btnagregar_producto11" mnemonicParsing="false" onAction="#agregarproducto" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Nuevo Producto">
+                                    <JFXButton id="bevel-grey" fx:id="btnagregar_producto11" mnemonicParsing="false" onAction="#agregarproducto" prefHeight="31.0" prefWidth="132.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Nuevo Producto">
                                        <VBox.margin>
                                           <Insets left="20.0" top="30.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <JFXButton id="bevel-grey" fx:id="btnprodacot" alignment="BASELINE_CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#agregarprodacot" prefHeight="69.0" prefWidth="87.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css">
+                                    <JFXButton id="bevel-grey" fx:id="btnprodacot" alignment="BASELINE_CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#agregarprodacot" prefHeight="31.0" prefWidth="132.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css">
                                        <VBox.margin>
                                           <Insets left="10.0" top="240.0" />
                                        </VBox.margin>
@@ -74,7 +74,7 @@
                                           <Insets />
                                        </VBox.margin>
                                        <children>
-                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="669.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <HBox alignment="CENTER" prefHeight="35.0" prefWidth="611.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <padding>
                                                 <Insets bottom="3.0" />
                                              </padding>
@@ -90,7 +90,7 @@
                                                 <Bloom threshold="0.1" />
                                              </effect>
                                           </Label>
-                                          <JFXTextField fx:id="filterField1" focusColor="WHITE" layoutX="14.0" layoutY="7.0" promptText="Filtro cotizaciones" style="-fx-text-inner-color: white;" unFocusColor="#9a9494">
+                                          <JFXTextField fx:id="filterField1" focusColor="WHITE" layoutX="14.0" layoutY="7.0" promptText="Filtro cotizaciones" style="-fx-text-inner-color: white;" unFocusColor="#9a9494" AnchorPane.leftAnchor="30.0">
                                              <padding>
                                                 <Insets bottom="5.0" left="30.0" />
                                              </padding>
@@ -125,7 +125,7 @@
                                           <Insets />
                                        </VBox.margin>
                                        <children>
-                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="669.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <HBox alignment="CENTER" prefHeight="36.0" prefWidth="611.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
                                                 <Label alignment="CENTER" prefHeight="43.0" prefWidth="99.0" text="Productos" textFill="#dad3cc">
                                                    <font>
@@ -146,7 +146,7 @@
                                                 <Insets bottom="3.0" />
                                              </padding>
                                           </HBox>
-                                          <JFXTextField fx:id="filterField" focusColor="WHITE" layoutX="17.0" layoutY="6.0" maxWidth="194.0" minWidth="161.0" prefHeight="25.0" prefWidth="161.0" promptText="Filtro productos" style="-fx-text-inner-color: white; -fx-color: white;" unFocusColor="#908c87">
+                                          <JFXTextField fx:id="filterField" focusColor="WHITE" layoutX="17.0" layoutY="6.0" maxWidth="194.0" minWidth="161.0" prefHeight="25.0" prefWidth="161.0" promptText="Filtro productos" style="-fx-text-inner-color: white; -fx-color: white;" unFocusColor="#908c87" AnchorPane.leftAnchor="30.0">
                                              <padding>
                                                 <Insets bottom="5.0" left="30.0" />
                                              </padding>
@@ -175,7 +175,7 @@
                                           <Insets left="30.0" right="30.0" />
                                        </VBox.margin>
                                     </TableView>
-                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="877.0">
+                                    <HBox alignment="CENTER">
                                        <children>
                                           <JFXButton id="bevel-grey" fx:id="btnguardar_producto" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Modificar">
                                              <HBox.margin>
@@ -193,10 +193,16 @@
                                              </HBox.margin>
                                           </JFXButton>
                                        </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="690.0" prefWidth="128.0">
+                              <VBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT">
                                  <children>
                                     <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="698.0" prefWidth="50.0">
                                        <children>
@@ -247,9 +253,6 @@
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
-                           <padding>
-                              <Insets right="30.0" />
-                           </padding>
                         </HBox>
                       </children>
                      <effect>
