@@ -16,7 +16,7 @@ and open the template in the editor.
     -fx-background-color: #1d1d1d;
 }
 .JFXTextField{
-    -fx-focus-color: #f37005   
+    -fx-focus-color: #f37005;   
    -fx-text-fill: #f37005;
 }
 .Label{

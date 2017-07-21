@@ -61,6 +61,9 @@ public class Main extends Application {
         con.establecerConexion();
         cons=new consultas(con.getConnection());
         stage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));
+
+        
+        
     }
     public boolean userLogging(String username, String password){
         System.out.println("got user id " + username + " password " + password);
@@ -80,13 +83,8 @@ public class Main extends Application {
             login.setApp(this);
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        scene = new Scene(page);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.sizeToScene();
-        stage.setResizable(false);
-        stage.show();
+        }    
+
     }
        
        private void gotoCotiza() {
@@ -96,17 +94,6 @@ public class Main extends Application {
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        scene=null;
-        scene = new Scene(page);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));//Cierra todo
-        stage.setScene(scene);
-        stage.setTitle("MasterSeal");
-        stage.setMinHeight(600);
-        stage.setMinWidth(800);
-        stage.show();
-  
         
     }
         private Initializable replaceSceneContent(String fxml) throws Exception {
@@ -140,6 +127,15 @@ public class Main extends Application {
         if (!Double.isNaN(stageHeight)) {
             page.setPrefHeight(stageHeight);
         }
+                scene = new Scene(page);
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.setTitle("MasterSeal");
+        stage.centerOnScreen();
+        stage.setResizable(false);
+        stage.show();
+        
 
         return (Initializable) loader.getController();
     }
