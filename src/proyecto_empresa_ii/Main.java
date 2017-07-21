@@ -99,14 +99,12 @@ public class Main extends Application {
         scene=null;
         scene = new Scene(page);
         stage.setScene(scene);
-        stage.setResizable(true);
-        stage.setMaximized(true);
+        stage.setResizable(false);
         stage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));//Cierra todo
         stage.setScene(scene);
         stage.setTitle("MasterSeal");
         stage.setMinHeight(600);
         stage.setMinWidth(800);
-        stage.setMaximized(true);
         stage.show();
   
         

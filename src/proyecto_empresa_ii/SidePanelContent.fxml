@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="179.0" prefWidth="290.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="naivgationdrawer.SidePanelContentController">
+   <children>
+      <Label prefHeight="0.0" prefWidth="43.0" text=". . ." textFill="WHITE">
+         <VBox.margin>
+            <Insets left="130.0" />
+         </VBox.margin>
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="b1" buttonType="RAISED" onAction="#changeColor" prefHeight="60.0" prefWidth="290.0" ripplerFill="#ff7e15" style="-fx-background-color: #f1f1f1;" text="Cotizaciones y productos">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mseal32.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="b2" buttonType="RAISED" layoutX="10.0" layoutY="123.0" onAction="#changeColor" prefHeight="63.0" prefWidth="290.0" ripplerFill="#ff7e15" style="-fx-background-color: #f1f1f1;" text="  Marcas y proveedores">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mseal32.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+      <JFXButton fx:id="b3" buttonType="RAISED" layoutX="10.0" layoutY="197.0" onAction="#changeColor" prefHeight="60.0" prefWidth="290.0" ripplerFill="#ff7e15" style="-fx-background-color: #f1f1f1;" text="Datos Personales">
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@mseal32.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+   </children>
+   <padding>
+      <Insets top="30.0" />
+   </padding>
+</VBox>

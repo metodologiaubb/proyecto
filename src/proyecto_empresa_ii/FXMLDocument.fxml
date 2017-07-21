@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -9,8 +12,6 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.Blend?>
-<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,49 +23,31 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane blendMode="MULTIPLY" cache="true" cacheHint="SPEED" prefHeight="728.0" prefWidth="770.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.FXMLDocumentController">
+<AnchorPane blendMode="MULTIPLY" cache="true" cacheHint="SPEED" prefHeight="729.0" prefWidth="904.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.FXMLDocumentController">
    <children>
-      <TabPane prefHeight="660.0" prefWidth="770.0" stylesheets="@css/tab.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane fx:id="root" layoutX="-2.0" layoutY="-5.0" prefHeight="732.0" prefWidth="912.0" styleClass="background" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <Tab text="Cotizaciones">
                <content>
-                  <AnchorPane id="AnchorPane" style="-fx-border-color: black;" styleClass="background" stylesheets="@css/killme.css">
+                  <AnchorPane id="AnchorPane" prefHeight="726.0" prefWidth="926.0" style="-fx-border-color: black;">
                       <children>
-                        <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="4.0" layoutY="4.0" prefHeight="693.0" prefWidth="768.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="2.0" layoutY="2.0" prefHeight="724.0" prefWidth="912.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="1.0">
                            <children>
-                              <VBox alignment="TOP_CENTER">
+                              <VBox alignment="TOP_CENTER" prefHeight="86.0" prefWidth="477.0">
                                  <children>
-                                    <JFXButton id="bevel-grey" fx:id="btnagregar_producto11" mnemonicParsing="false" onAction="#agregarproducto" prefHeight="31.0" prefWidth="132.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Nuevo Producto">
+                                    <JFXButton fx:id="btnagregar_producto11" mnemonicParsing="false" onAction="#agregarproducto" prefHeight="31.0" prefWidth="132.0" styleClass="Label" text="Nuevo Producto">
                                        <VBox.margin>
-                                          <Insets left="20.0" top="30.0" />
+                                          <Insets left="20.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <JFXButton id="bevel-grey" fx:id="btnprodacot" alignment="BASELINE_CENTER" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#agregarprodacot" prefHeight="31.0" prefWidth="132.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css">
+                                    <JFXButton fx:id="btnprodacot" alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#agregarprodacot" prefHeight="31.0" prefWidth="175.0" styleClass="Label" text="Agregar producto a cotizacion">
                                        <VBox.margin>
-                                          <Insets left="10.0" top="240.0" />
+                                          <Insets left="10.0" top="5.0" />
                                        </VBox.margin>
                                        <font>
                                           <Font name="Calibri" size="12.0" />
                                        </font>
-                                       <graphic>
-                                          <ImageView fitHeight="61.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@icon1.png" />
-                                             </image>
-                                             <effect>
-                                                <Blend opacity="0.3" />
-                                             </effect>
-                                          </ImageView>
-                                       </graphic>
                                     </JFXButton>
-                                    <ImageView fitHeight="132.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true">
-                                       <VBox.margin>
-                                          <Insets left="15.0" top="180.0" />
-                                       </VBox.margin>
-                                       <image>
-                                          <Image url="@mseal.png" />
-                                       </image>
-                                    </ImageView>
                                  </children>
                               </VBox>
                               <VBox alignment="TOP_RIGHT" snapToPixel="false" HBox.hgrow="ALWAYS">
@@ -79,18 +62,15 @@
                                                 <Insets bottom="3.0" />
                                              </padding>
                                           </HBox>
-                                          <Label alignment="CENTER" layoutX="288.0" layoutY="11.0" prefHeight="39.0" prefWidth="877.0" text="Cotizaciones" textFill="#d3d0cd" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <Label alignment="CENTER" layoutX="288.0" layoutY="11.0" prefHeight="39.0" prefWidth="877.0" styleClass="Label" text="Cotizaciones" textFill="#d3d0cd" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <font>
                                                 <Font name="System Bold" size="16.0" />
                                              </font>
                                              <padding>
                                                 <Insets bottom="3.0" top="10.0" />
                                              </padding>
-                                             <effect>
-                                                <Bloom threshold="0.1" />
-                                             </effect>
                                           </Label>
-                                          <JFXTextField fx:id="filterField1" focusColor="WHITE" layoutX="14.0" layoutY="7.0" promptText="Filtro cotizaciones" style="-fx-text-inner-color: white;" unFocusColor="#9a9494" AnchorPane.leftAnchor="30.0">
+                                          <JFXTextField fx:id="filterField1" focusColor="WHITE" layoutX="14.0" layoutY="7.0" promptText="Filtro cotizaciones" stylesheets="@css/css.css" unFocusColor="#9a9494" AnchorPane.leftAnchor="30.0">
                                              <padding>
                                                 <Insets bottom="5.0" left="30.0" />
                                              </padding>
@@ -103,7 +83,7 @@
                                           </JFXTextField>
                                        </children>
                                     </AnchorPane>
-                                    <TableView fx:id="tv_cotizacion" prefHeight="204.0" prefWidth="606.0" style="-fx-background-color: #DBDADB; -fx-border-color: grey;" stylesheets="@css/bootstrap2.css">
+                                    <TableView fx:id="tv_cotizacion" prefHeight="204.0" prefWidth="606.0">
                                       <columns>
                                         <TableColumn fx:id="colid_cotizacion" prefWidth="114.0" text="ID" />
                                         <TableColumn fx:id="colfecha_cotizacion" minWidth="0.0" prefWidth="127.0" text="Fecha" />
@@ -120,23 +100,20 @@
                                           <Insets left="30.0" right="30.0" />
                                        </VBox.margin>
                                     </TableView>
-                                    <AnchorPane prefHeight="27.0" prefWidth="669.0" VBox.vgrow="ALWAYS">
+                                    <AnchorPane prefHeight="35.0" prefWidth="669.0" VBox.vgrow="ALWAYS">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
                                        <children>
                                           <HBox alignment="CENTER" prefHeight="36.0" prefWidth="611.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
-                                                <Label alignment="CENTER" prefHeight="43.0" prefWidth="99.0" text="Productos" textFill="#dad3cc">
+                                                <Label alignment="CENTER" prefHeight="43.0" prefWidth="99.0" styleClass="Label" text="Productos" textFill="#dad3cc">
                                                    <font>
                                                       <Font name="System Bold" size="16.0" />
                                                    </font>
                                                    <padding>
                                                       <Insets top="10.0" />
                                                    </padding>
-                                                   <effect>
-                                                      <Bloom threshold="0.08" />
-                                                   </effect>
                                                    <HBox.margin>
                                                       <Insets bottom="3.0" />
                                                    </HBox.margin>
@@ -146,7 +123,7 @@
                                                 <Insets bottom="3.0" />
                                              </padding>
                                           </HBox>
-                                          <JFXTextField fx:id="filterField" focusColor="WHITE" layoutX="17.0" layoutY="6.0" maxWidth="194.0" minWidth="161.0" prefHeight="25.0" prefWidth="161.0" promptText="Filtro productos" style="-fx-text-inner-color: white; -fx-color: white;" unFocusColor="#908c87" AnchorPane.leftAnchor="30.0">
+                                          <JFXTextField fx:id="filterField" focusColor="WHITE" layoutX="17.0" layoutY="6.0" maxWidth="194.0" minWidth="161.0" prefHeight="25.0" prefWidth="161.0" promptText="Filtro productos" unFocusColor="#908c87" AnchorPane.leftAnchor="30.0">
                                              <padding>
                                                 <Insets bottom="5.0" left="30.0" />
                                              </padding>
@@ -159,7 +136,7 @@
                                           </JFXTextField>
                                        </children>
                                     </AnchorPane>
-                                    <TableView fx:id="tv_productos" prefHeight="330.0" prefWidth="817.0" style="-fx-background-color: #DBDADB; -fx-border-color: grey;" stylesheets="@css/bootstrap2.css">
+                                    <TableView fx:id="tv_productos" prefHeight="330.0" prefWidth="817.0">
                                       <columns>
                                         <TableColumn fx:id="colnombre_producto" prefWidth="75.0" text="Nombre" />
                                         <TableColumn fx:id="columedida_producto" prefWidth="75.0" text="U. Medida" />
@@ -177,17 +154,17 @@
                                     </TableView>
                                     <HBox alignment="CENTER">
                                        <children>
-                                          <JFXButton id="bevel-grey" fx:id="btnguardar_producto" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Modificar">
+                                          <JFXButton fx:id="btnguardar_producto" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" text="Modificar">
                                              <HBox.margin>
                                                 <Insets left="30.0" right="30.0" />
                                              </HBox.margin>
                                           </JFXButton>
-                                          <JFXButton id="bevel-grey" fx:id="btnactualizar_producto" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Actualizar">
+                                          <JFXButton fx:id="btnactualizar_producto" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" text="Actualizar">
                                              <HBox.margin>
                                                 <Insets left="30.0" right="30.0" />
                                              </HBox.margin>
                                           </JFXButton>
-                                          <JFXButton id="bevel-grey" fx:id="btneliminar_producto" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Eliminar">
+                                          <JFXButton fx:id="btneliminar_producto" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" text="Eliminar">
                                              <HBox.margin>
                                                 <Insets left="30.0" right="30.0" />
                                              </HBox.margin>
@@ -204,44 +181,11 @@
                               </VBox>
                               <VBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT">
                                  <children>
-                                    <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="698.0" prefWidth="50.0">
+                                    <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="698.0" prefWidth="54.0">
                                        <children>
-                                          <JFXButton fx:id="botonagregarcot" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutY="44.0" onAction="#agregarcotizacion" prefHeight="43.0" prefWidth="34.0" styleClass="plus" stylesheets="@css/killme.css">
-                                             <graphic>
-                                                <ImageView fitHeight="35.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@plus.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <effect>
-                                                <Blend mode="SCREEN" opacity="0.64" />
-                                             </effect>
-                                          </JFXButton>
-                                          <JFXButton fx:id="botoneliminarcot" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutY="127.0" onAction="#eliminarcot" prefHeight="43.0" prefWidth="34.0" styleClass="plus" stylesheets="@css/killme.css">
-                                             <graphic>
-                                                <ImageView fitHeight="35.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@botonx.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <effect>
-                                                <Blend mode="SCREEN" opacity="0.32" />
-                                             </effect>
-                                          </JFXButton>
-                                          <JFXButton fx:id="botonagregarcot1" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutY="87.0" prefHeight="43.0" prefWidth="34.0" styleClass="plus" stylesheets="@css/killme.css">
-                                             <graphic>
-                                                <ImageView fitHeight="35.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@edit.png" />
-                                                   </image>
-                                                </ImageView>
-                                             </graphic>
-                                             <effect>
-                                                <Blend mode="SCREEN" opacity="0.55" />
-                                             </effect>
-                                          </JFXButton>
+                                          <JFXButton fx:id="botonagregarcot" contentDisplay="CENTER" graphicTextGap="0.0" layoutY="44.0" onAction="#agregarcotizacion" prefHeight="43.0" prefWidth="34.0" styleClass="Label" stylesheets="@css/killme.css" text="agregar" />
+                                          <JFXButton fx:id="botoneliminarcot" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutY="127.0" onAction="#eliminarcot" prefHeight="43.0" prefWidth="34.0" styleClass="Label" stylesheets="@css/killme.css" text="eliminar" />
+                                          <JFXButton fx:id="botonagregarcot1" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutY="87.0" prefHeight="43.0" prefWidth="34.0" styleClass="Label" stylesheets="@css/killme.css" text="editar" />
                                        </children>
                                        <VBox.margin>
                                           <Insets bottom="10.0" left="-26.0" top="-5.0" />
@@ -263,17 +207,17 @@
             </Tab>
             <Tab closable="false" text="Proveedor y Marcas">
                <content>
-                  <AnchorPane id="AnchorPane" prefHeight="721.0" prefWidth="953.0" style="-fx-border-width: 1; -fx-border-color: black;" styleClass="background" stylesheets="@css/killme.css">
+                  <AnchorPane prefHeight="721.0" prefWidth="953.0">
                      <children>
                         <HBox layoutX="410.0" layoutY="113.0" prefHeight="38.0" prefWidth="635.0">
                            <children>
-                              <JFXButton id="bevel-grey" fx:id="btneditarthisproveedor" mnemonicParsing="false" prefHeight="31.0" prefWidth="139.0" stylesheets="@css/killme2.css" text="Guardar Cambios" />
-                              <JFXButton id="bevel-grey" fx:id="btnlimpiarcamposproveedor" mnemonicParsing="false" onAction="#limpialistaproveedor" prefHeight="31.0" prefWidth="119.0" stylesheets="@css/killme2.css" text="Limpiar Campos">
+                              <JFXButton fx:id="btneditarthisproveedor" mnemonicParsing="false" prefHeight="31.0" prefWidth="139.0" text="Guardar Cambios" />
+                              <JFXButton fx:id="btnlimpiarcamposproveedor" mnemonicParsing="false" onAction="#limpialistaproveedor" prefHeight="31.0" prefWidth="119.0" text="Limpiar Campos">
                                  <HBox.margin>
                                     <Insets left="7.0" />
                                  </HBox.margin>
                               </JFXButton>
-                              <JFXButton id="bevel-grey" fx:id="btnagregar_proveedor" mnemonicParsing="false" onAction="#addnewproveedor" prefHeight="31.0" prefWidth="138.0" stylesheets="@css/killme2.css" text="Nuevo Proveedor">
+                              <JFXButton fx:id="btnagregar_proveedor" mnemonicParsing="false" onAction="#addnewproveedor" prefHeight="31.0" prefWidth="138.0" text="Nuevo Proveedor">
                                  <HBox.margin>
                                     <Insets left="7.0" />
                                  </HBox.margin>
@@ -282,7 +226,7 @@
                         </HBox>
                         <VBox layoutX="6.0" layoutY="103.0" prefHeight="60.0" prefWidth="397.0">
                            <children>
-                              <ComboBox fx:id="cmbproveedor1" onAction="#llenarproveedorlist" prefHeight="45.0" prefWidth="275.0" promptText="Elegir proveedor" style="-fx-background-color: #E8E8E8;" stylesheets="@css/bootstrap2.css">
+                              <ComboBox fx:id="cmbproveedor1" onAction="#llenarproveedorlist" prefHeight="45.0" prefWidth="275.0" promptText="Elegir proveedor">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
@@ -308,7 +252,7 @@
                                     <Insets top="40.0" />
                                  </padding>
                               </Label>
-                              <JFXButton id="bevel-grey" fx:id="btnagregar_marca" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Marca" />
+                              <JFXButton id="bevel-grey" fx:id="btnagregar_marca" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" text="Marca" />
                            </children>
                         </VBox>
                         <VBox layoutX="-4.0" layoutY="163.0" prefHeight="329.0" prefWidth="969.0">
@@ -316,7 +260,7 @@
                               <Insets left="360.0" />
                            </padding>
                            <children>
-                              <GridPane prefHeight="352.0" prefWidth="385.0" style="-fx-border-color: white;">
+                              <GridPane prefHeight="352.0" prefWidth="385.0">
                                  <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.0" minWidth="10.0" prefWidth="184.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="211.0" />
@@ -384,7 +328,7 @@
             </Tab>
             <Tab closable="false" text="Datos Personales">
                <content>
-                  <AnchorPane id="AnchorPane" prefHeight="716.0" prefWidth="951.0" style="-fx-border-width: 1; -fx-border-color: black;" styleClass="background" stylesheets="@css/killme.css">
+                  <AnchorPane prefHeight="716.0" prefWidth="951.0">
                      <children>
                         <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="4.0" layoutY="4.0" prefHeight="710.0" prefWidth="951.0">
                            <opaqueInsets>
@@ -402,6 +346,24 @@
                </content>
             </Tab>
         </tabs>
+         <padding>
+            <Insets top="-1.0" />
+         </padding>
+         <stylesheets>
+            <URL value="@css/tab.css" />
+            <URL value="@css/css.css" />
+         </stylesheets>
       </TabPane>
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="200.0" layoutY="119.0" prefHeight="191.0" prefWidth="194.0" AnchorPane.topAnchor="100.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXDrawer>
+      <JFXHamburger fx:id="hamburger" blendMode="SRC_ATOP" layoutX="63.0" layoutY="33.0" prefHeight="37.0" prefWidth="48.0" stylesheets="@css/css.css" AnchorPane.leftAnchor="82.0" AnchorPane.topAnchor="32.0" />
+      <ImageView fitHeight="132.0" fitWidth="149.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="15.0">
+         <image>
+            <Image url="@mseal.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

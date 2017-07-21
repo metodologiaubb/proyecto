@@ -6,7 +6,10 @@
 package proyecto_empresa_ii;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDrawer;
+import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -38,6 +41,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
@@ -46,6 +50,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.StringConverter;
@@ -138,7 +144,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private JFXButton btnagregar_proveedor;
     public static int wat;
-    
+    @FXML
+    private Label excepcion_proveedor;
+    @FXML
+    private JFXDrawer drawer;
+    @FXML
+    private JFXHamburger hamburger;
+    public static TabPane rootP;
+    @FXML
+    private TabPane root;
     /*-----------------------tab2-----------------------*/
   @FXML
     private void llenarproveedorlist(ActionEvent event) {
@@ -158,8 +172,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void addnewproveedor(ActionEvent event) {
         limpialistaproveedor();
-        
-        
     }
 
     
@@ -295,8 +307,35 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
              listaproveedor1  =FXCollections.observableArrayList();
         Proveedor.llenarInformacion (conexion.getConnection(), listaproveedor1);
         Proveedor.autocompletar(cmbproveedor1, listaproveedor1);
-          
+        /*-----------------------hamb-----------------------*/
+                rootP = root;
+        
+        try {
+            VBox box = FXMLLoader.load(getClass().getResource("SidePanelContent.fxml"));
+            drawer.setSidePane(box);
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        HamburgerBackArrowBasicTransition transition = new HamburgerBackArrowBasicTransition(hamburger);
+        transition.setRate(-1);
+        hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED,(e)->{
+            transition.setRate(transition.getRate()*-1);
+            transition.play();
+            
+            if(drawer.isShown())
+            {
+                drawer.close();
+            }else
+                drawer.open();
+        });
     }
+
+        
+        
+        
+        
+        
+    
     
     
     
