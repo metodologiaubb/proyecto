@@ -20,6 +20,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import proyecto_empresa_ii.modelo.Conexion;
 import proyecto_empresa_ii.modelo.consultas;
@@ -43,105 +44,31 @@ public class Main extends Application {
     
     @Override
     public void start(Stage primaryStage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-//        
-//        Scene scene = new Scene(root);
-//        stage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));//Cierra todo
-//        stage.setScene(scene);
-//        stage.show();
-        stage = primaryStage;
-        stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
-        stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
-        stage.getIcons().add(new Image(this.getClass().getResource("mseal32.png").toString()));
-//        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-//        
-//        Scene scene = new Scene(root);
-        gotoLogin();
-        //primaryStage.show();
-        con=new Conexion();
+            con=new Conexion();
         con.establecerConexion();
         cons=new consultas(con.getConnection());
-        stage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));
+   Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        primaryStage.setMinWidth(MINIMUM_WINDOW_WIDTH);
+        primaryStage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
+        primaryStage.setTitle("Iniciar Sesión");
+        primaryStage.getIcons().add(new Image(this.getClass().getResource("mseal32.png").toString()));
+//        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
 
+      
+       Scene scene = new Scene(root);
+    primaryStage.setScene(scene);        
+       primaryStage.show();
+            primaryStage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));//Cierra todo
         
-        
-    }
-    public boolean userLogging(String username, String password){
-        System.out.println("got user id " + username + " password " + password);
-        if (Autentificar.validar(username, password)) {
-            System.out.println("OK");
-            sesion =new Sesion(Autentificar.getSQLuser());
-            gotoCotiza();
-            return true;
-        } else {
-            System.out.println("NOT OK");
-            System.err.print("asdasd");
-            return false;
-        }
-    }
-    private void gotoLogin() {
-        try {
-            proyecto_empresa_ii.LoginController login = (proyecto_empresa_ii.LoginController) replaceSceneContent("Login.fxml");
-            login.setApp(this);
-        } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }    
-
-    }
-       
-       private void gotoCotiza() {
-        try {
-            FXMLDocumentController cotiza = (FXMLDocumentController) replaceSceneContent("FXMLDocument.fxml");
-            cotiza.setApp(this);
-        } catch (Exception ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
-        private Initializable replaceSceneContent(String fxml) throws Exception {
-        FXMLLoader loader = new FXMLLoader();
-        InputStream in = Main.class.getResourceAsStream(fxml);
-        loader.setBuilderFactory(new JavaFXBuilderFactory());
-        loader.setLocation(Main.class.getResource(fxml));
-        
-  
-        try {
-            page = (AnchorPane) loader.load(in);
-        } finally {
-            in.close();
-        }
-        
-        // Store the stage width and height in case the user has resized the window
-        double stageWidth = stage.getWidth();
-        if (!Double.isNaN(stageWidth)) {
-            stageWidth -= (stage.getWidth() - stage.getScene().getWidth());
-        }
-        
-        double stageHeight = stage.getHeight();
-        if (!Double.isNaN(stageHeight)) {
-            stageHeight -= (stage.getHeight() - stage.getScene().getHeight());
-        }
-        
-        
-        if (!Double.isNaN(stageWidth)) {
-            page.setPrefWidth(stageWidth);
-        }
-        if (!Double.isNaN(stageHeight)) {
-            page.setPrefHeight(stageHeight);
-        }
-                scene = new Scene(page);
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.setTitle("MasterSeal");
-        stage.centerOnScreen();
-        stage.setResizable(false);
-        stage.show();
-        
-
-        return (Initializable) loader.getController();
-    }
+//        Scene scene = new Scene(root);
+        //primaryStage.show();
     
+    
+
+     
+        
+    }
+   
 
     /**
      * @param args the command line arguments

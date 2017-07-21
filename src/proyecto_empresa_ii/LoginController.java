@@ -4,16 +4,26 @@
 package proyecto_empresa_ii;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
+import sesion.Autentificar;
+import sesion.Sesion;
 
 
 /**
@@ -34,29 +44,51 @@ public class LoginController extends AnchorPane implements Initializable {
     public static String id; 
     public static String pass; 
    
-    private Main application;
 
-    public void setApp(Main application){
-        this.application = application;
-    }
+
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
         errorMessage.setText("");
+        
+        
+        
+        
     }
 
-    public void processLogin(ActionEvent event) {
-        
-        if (application == null){
-            // We are running in isolated FXML, possibly in Scene Builder.
-            // NO-OP.
-            errorMessage.setText("Hola " + userId.getText());
-        } else {
-            if (!application.userLogging(userId.getText(), password.getText())){
+    public void processLogin(ActionEvent event) throws IOException {
+ 
+            if (!userLogging(userId.getText(), password.getText())){
                 errorMessage.setText("Usuario desconocido " + userId.getText());
             }
+            
         }
-       
+       private boolean userLogging(String username, String password) throws IOException{
+           
+                System.out.println("got user id " + username + " password " + password);
+        if (Autentificar.validar(username, password)) {
+            System.out.println("OK");
+                Stage stage1  = (Stage) login.getScene().getWindow();
+    stage1.close();
+
+        FXMLLoader fXMLLoader = new FXMLLoader(
+                    getClass().getResource("FXMLDocument.fxml")
+            );
+            Parent root1 = (Parent) fXMLLoader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.DECORATED);
+            stage.setTitle("Panel de cotizaciones");
+            stage.setScene(new Scene(root1));
+            stage.show();
+            stage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));//Cierra todo
+         stage.getIcons().add(new Image(this.getClass().getResource("mseal32.png").toString()));
+            return true;
+        } else {
+            System.out.println("NOT OK");
+            System.err.print("asdasd");
+            return false;
+        }
+       }
     }
-}
+

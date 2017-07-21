@@ -32,7 +32,7 @@ public class GraficosController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
        PieChart.Data sector1 = new PieChart.Data("Nicolás",  25);
        PieChart.Data sector2 = new PieChart.Data("Jerson",   25);
-       PieChart.Data sector3 = new PieChart.Data("Carlos",   25);
+       PieChart.Data sector3 = new PieChart.Data("PASCAL",  1000);
        PieChart.Data sector4 = new PieChart.Data("Abdel",    25);
 
        pieChart.getData().add(sector1);

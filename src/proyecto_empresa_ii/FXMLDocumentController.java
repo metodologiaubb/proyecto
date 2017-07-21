@@ -268,15 +268,7 @@ if (result.get() == ButtonType.OK){
     }
     
 } else {
-}
-     
-        
-        
-        
-     
-        
-    }
-
+}}
 /*-------------------------fintab2----------------------*/
 
     
@@ -350,12 +342,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                 stage.setY(event1.getScreenY() - yOffset);
             });
             
-            
 
-            
-            
-            
-            
             /*Fin del evento*/
             stage.show();
         } catch (IOException ex) {
