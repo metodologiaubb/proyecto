@@ -124,6 +124,7 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton botonagregarcot1;
     @FXML
     private JFXButton btnprodacot;
+    
     /*-----------------------tab2----------------------*/
     @FXML
     private ComboBox<Proveedor> cmbproveedor1;
@@ -153,7 +154,10 @@ public class FXMLDocumentController implements Initializable {
     public static TabPane rootP;
     @FXML
     private TabPane root;
-    /*-----------------------tab2-----------------------*/
+    @FXML
+    private Label mensajesql;
+    @FXML
+    private JFXButton btndelproveedor;
   @FXML
     private void llenarproveedorlist(ActionEvent event) {
      jtfid_proveedor.setText(cmbproveedor1.getValue().getId_proveedor()+"");
@@ -172,7 +176,56 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void addnewproveedor(ActionEvent event) {
         limpialistaproveedor();
+         try {
+            FXMLLoader fXMLLoader = new FXMLLoader(
+                    getClass().getResource("addproveedor.fxml")
+            );
+            Parent root1 = (Parent) fXMLLoader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UTILITY);
+            stage.setTitle("Agregar Proveedor");
+            stage.setScene(new Scene(root1));
+            /*Evento Dragg and drop*/
+            root1.setOnMousePressed((MouseEvent event1) -> {
+                xOffset = event1.getSceneX();
+                yOffset = event1.getSceneY();
+            });
+            root1.setOnMouseDragged((MouseEvent event1) -> {
+                stage.setX(event1.getScreenX() - xOffset);
+                stage.setY(event1.getScreenY() - yOffset);
+            });
+            /*Fin del evento*/
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(
+                    FXMLDocumentController.class.getName()).log(
+                            Level.SEVERE, null, ex
+                    );
+        }
+        
+        
     }
+      @FXML
+    private void editarproveedor(ActionEvent event) {int x;
+    
+  x=consultas.Insert("UPDATE `proveedor` SET `NOMBRE_PROVEEDOR`='"+jtfnombre_proveedor.getText()+"',`DCTO_PROVEEDOR`='"+jtfdcto_proveedor.getText()+"',`C_PRO_DCTO`='"+jtf_c_prod_dcto_proveedor.getText()+"' WHERE ID_PROVEEDOR='"+cmbproveedor1.getValue().getId_proveedor()+"';"); 
+  if(x==0){
+    mensajesql.setText("Proveedor '"+cmbproveedor1.getValue().getId_proveedor()+"' editado exitosamente");
+    }
+    }
+    
+     @FXML
+    private void deleteproveedor(ActionEvent event) {
+        int x;
+    
+  x=consultas.Insert("DELETE FROM `proveedor` WHERE ID_PROVEEDOR='"+cmbproveedor1.getValue().getId_proveedor()+"';"); 
+  if(x==0){
+    mensajesql.setText("Proveedor '"+cmbproveedor1.getValue().getNombre_proveedor()+"' eliminado exitosamente");
+    }
+        
+    }
+
+/*-------------------------fintab2----------------------*/
 
     
     
@@ -698,6 +751,8 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         
     }
 
+   
+  
  
   
 

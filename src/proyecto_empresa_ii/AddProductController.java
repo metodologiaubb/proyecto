@@ -41,13 +41,13 @@ public class AddProductController implements Initializable {
     @FXML
     private JFXTextField jtfvalor_producto;
     @FXML
-    private JFXButton btnguardar_producto;
-    @FXML
-    private JFXButton btnnuevo_producto;
-    @FXML
     private DatePicker date_pentrega;
     @FXML
     private Label mensajesql;
+    @FXML
+    private JFXButton btnguardar_producto;
+    @FXML
+    private JFXButton btnnuevo_producto;
     @FXML
     void eventoLimpiar(ActionEvent event) {
         limpiar();

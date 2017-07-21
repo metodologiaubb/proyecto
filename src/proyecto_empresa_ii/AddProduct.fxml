@@ -47,8 +47,8 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="jtfnombre_producto" focusColor="WHITE" style="-fx-text-inner-color: white;" styleClass="JFXTextField" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <JFXTextField fx:id="jtfum_producto" focusColor="WHITE" style="-fx-text-inner-color: white;" styleClass="JFXTextField" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="jtfnombre_producto" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" styleClass="JFXTextField" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXTextField fx:id="jtfum_producto" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" styleClass="JFXTextField" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <ComboBox fx:id="cmbproveedor_producto" prefHeight="26.0" prefWidth="210.0" promptText="Elegir proveedor" style="-fx-background-color: #E8E8E8;" stylesheets="@css/bootstrap2.css" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <opaqueInsets>
                               <Insets />
@@ -65,7 +65,7 @@
                               <Insets left="7.0" />
                            </GridPane.margin>
                         </ComboBox>
-                        <JFXTextField fx:id="jtfvalor_producto" focusColor="WHITE" style="-fx-text-inner-color: white;" styleClass="JFXTextField" unFocusColor="#808080" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <JFXTextField fx:id="jtfvalor_producto" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" styleClass="JFXTextField" unFocusColor="#808080" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <Label styleClass="Label" text="Unidad de medida:" textFill="WHITE" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="13.0" />
