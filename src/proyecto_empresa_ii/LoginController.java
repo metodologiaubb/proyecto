@@ -31,10 +31,11 @@ public class LoginController extends AnchorPane implements Initializable {
     Button login;
     @FXML
     Label errorMessage;
-
+    public static String id; 
+    public static String pass; 
+   
     private Main application;
-    
-    
+
     public void setApp(Main application){
         this.application = application;
     }
@@ -46,6 +47,7 @@ public class LoginController extends AnchorPane implements Initializable {
     }
 
     public void processLogin(ActionEvent event) {
+        
         if (application == null){
             // We are running in isolated FXML, possibly in Scene Builder.
             // NO-OP.

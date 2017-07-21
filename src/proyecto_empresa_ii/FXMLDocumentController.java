@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.lang.Integer;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -135,6 +137,7 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton btnlimpiarcamposproveedor;
     @FXML
     private JFXButton btnagregar_proveedor;
+    public static int wat;
     
     /*-----------------------tab2-----------------------*/
   @FXML
@@ -229,6 +232,13 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                 stage.setX(event1.getScreenX() - xOffset);
                 stage.setY(event1.getScreenY() - yOffset);
             });
+            
+            
+
+            
+            
+            
+            
             /*Fin del evento*/
             stage.show();
         } catch (IOException ex) {
@@ -268,7 +278,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         Proveedor.llenarInformacion (conexion.getConnection(), listaproveedor);
         Marca.llenarInformacion     (conexion.getConnection(), listamarcas);
         /*--------------------------------------------------*/
-        
+ 
         tvCotizacion();
         tv_cotizacion.setItems(listacotizacion);
         
@@ -322,7 +332,8 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                 //conexion.cerrarConexion();
             } catch (SQLException ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-            }      
+            } 
+            pepe(wat);
         });
         /*--------------------------------------------------------------------*/
         //Evento modificar y actualizar U Medida
@@ -348,6 +359,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             } catch (SQLException ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }      
+            pepe(wat);
         });        
         /*--------------------------------------------------------------------*/
         colpentrega_producto.setCellValueFactory(
@@ -374,6 +386,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             } catch (SQLException ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }      
+            pepe(wat);
         });
         /*--------------------------------------------------------------------*/
         colproveedor_producto.setCellValueFactory(
@@ -406,6 +419,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             } catch (SQLException ex) {
                 Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
             }      
+            pepe(wat);
         });
         /*--------------------------------------------------------------------*/
 
@@ -415,21 +429,58 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                 ChoiceBoxTableCell.forTableColumn(listamarcas)
         );
         colmarca_producto.setOnEditCommit(data -> {
-            Producto pp = data.getRowValue();
+            Producto p = data.getRowValue();
             Marca m = data.getNewValue();
+            p.setMarca(m);
+            try {
+                String query = "UPDATE producto SET ID_MARCA = ? where ID_PRODUCTO = ?";
+                preparedStmt = conexion.getConnection().prepareStatement(query);
+                preparedStmt.setInt(1, m.getId_marca());
+                preparedStmt.setInt(2, p.getId_producto());
+                preparedStmt.executeUpdate();
+                preparedStmt.clearParameters();// no es necesario
+                preparedStmt.close();
+                //conexion.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }      
+            pepe(wat);
+            
             //colmarca_producto.getCellData(pp);
             //jtfnombre_marca.setText(String.valueOf(m.getNombre_marca()));
         });
+        
+
+        
+        
         /*-----------------------------------------------FXMLDocument---------------------*/
         colproveedor_producto.setCellFactory(
                 ChoiceBoxTableCell.forTableColumn(listaproveedor)
         );
         colproveedor_producto.setOnEditCommit(data -> {
-            Producto pp = data.getRowValue();
+            Producto p = data.getRowValue();
             Proveedor pro = data.getNewValue();
+            p.setProveedor(pro);
+        try {
+                String query = "UPDATE producto SET ID_PROVEEDOR = ? where ID_PRODUCTO = ?";
+                preparedStmt = conexion.getConnection().prepareStatement(query);
+                preparedStmt.setInt(1, pro.getId_proveedor());
+                preparedStmt.setInt(2, p.getId_producto());
+                preparedStmt.executeUpdate();
+                preparedStmt.clearParameters();// no es necesario
+                preparedStmt.close();
+                //conexion.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }      
+            pepe(wat);
+            
+            
             //colmarca_producto.getCellData(pp);
             //jtfnombre_marca.setText(String.valueOf(m.getNombre_marca()));
         });
+        
+        
         /*---------------------------------------------------------------------*/
        
 //coleliminar_producto.setCellValueFactory(cell -> {
@@ -458,7 +509,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         );
     }
     
-    public static int wat;
+
     /* 
     ** evento que detecta la cotización seleccionada y displaya los productos
     ** pertenecientes a ella
@@ -474,6 +525,15 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             }
         );
     }
+    private void pepe(int wat){
+       listaproductos.removeAll(listaproductos);
+       Producto.llenarInformacion  (conexion.getConnection(), 
+       listaproductos, wat);          
+    }
+    
+    
+    
+    
     private void eventoTvProducto(){
         tv_productos.getSelectionModel().selectedItemProperty().addListener(
             (observable, oldValue, selectedValue) -> {
@@ -592,7 +652,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                     );
         }
         
-    
+
         
         
         
