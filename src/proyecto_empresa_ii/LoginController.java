@@ -22,6 +22,8 @@ import javafx.scene.layout.AnchorPane;
 public class LoginController extends AnchorPane implements Initializable {
 
     @FXML
+    private AnchorPane ap;
+    @FXML
     TextField userId;
     @FXML
     PasswordField password;
@@ -39,6 +41,7 @@ public class LoginController extends AnchorPane implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
         errorMessage.setText("");
     }
 

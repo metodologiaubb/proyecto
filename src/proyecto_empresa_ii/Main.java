@@ -15,6 +15,8 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -22,6 +24,7 @@ import proyecto_empresa_ii.modelo.Conexion;
 import proyecto_empresa_ii.modelo.consultas;
 import sesion.Autentificar;
 import sesion.Sesion;
+
 
 /**
  *
@@ -34,6 +37,9 @@ public class Main extends Application {
     Sesion sesion;
     private final double MINIMUM_WINDOW_WIDTH = 390.0;
     private final double MINIMUM_WINDOW_HEIGHT = 500.0;
+    AnchorPane page;
+    Scene scene;
+    
     @Override
     public void start(Stage primaryStage) throws Exception {
 //        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -50,7 +56,7 @@ public class Main extends Application {
 //        
 //        Scene scene = new Scene(root);
         gotoLogin();
-        primaryStage.show();
+        //primaryStage.show();
         con=new Conexion();
         con.establecerConexion();
         cons=new consultas(con.getConnection());
@@ -75,6 +81,12 @@ public class Main extends Application {
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+        scene = new Scene(page);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.sizeToScene();
+        stage.setResizable(false);
+        stage.show();
     }
        
        private void gotoCotiza() {
@@ -84,13 +96,27 @@ public class Main extends Application {
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+        scene=null;
+        scene = new Scene(page);
+        stage.setScene(scene);
+        stage.setResizable(true);
+        stage.setMaximized(true);
+        stage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));//Cierra todo
+        stage.setScene(scene);
+        stage.setTitle("MasterSeal");
+        stage.setMinHeight(600);
+        stage.setMinWidth(800);
+        stage.setMaximized(true);
+        stage.show();
+  
+        
     }
         private Initializable replaceSceneContent(String fxml) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         InputStream in = Main.class.getResourceAsStream(fxml);
         loader.setBuilderFactory(new JavaFXBuilderFactory());
         loader.setLocation(Main.class.getResource(fxml));
-        AnchorPane page;
+        
   
         try {
             page = (AnchorPane) loader.load(in);
@@ -109,18 +135,14 @@ public class Main extends Application {
             stageHeight -= (stage.getHeight() - stage.getScene().getHeight());
         }
         
-        Scene scene = new Scene(page);
+        
         if (!Double.isNaN(stageWidth)) {
             page.setPrefWidth(stageWidth);
         }
         if (!Double.isNaN(stageHeight)) {
             page.setPrefHeight(stageHeight);
         }
-    
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.sizeToScene();
-        stage.setResizable(true);
+
         return (Initializable) loader.getController();
     }
     

@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.property.IntegerProperty;
@@ -35,13 +36,13 @@ public class Producto{
 	private IntegerProperty id_producto;
 	private StringProperty nombre_producto;
 	private StringProperty u_medida;
-	private Date pentrega;
+	private LocalDate pentrega;
 	private Proveedor proveedor;
 	private Marca marca;
 	private IntegerProperty valor;
 
 	public Producto(int id_producto, String nombre_producto, String u_medida, 
-                Date pentrega, Proveedor proveedor, Marca marca, int valor) { 
+                LocalDate pentrega, Proveedor proveedor, Marca marca, int valor) { 
 		this.id_producto = new SimpleIntegerProperty(id_producto);
 		this.nombre_producto = new SimpleStringProperty(nombre_producto);
 		this.u_medida = new SimpleStringProperty(u_medida);
@@ -82,10 +83,10 @@ public class Producto{
 		return u_medida;
 	}
 	//Metodos atributo: pentrega
-	public Date getPentrega() {
+	public LocalDate getPentrega() {
 		return pentrega;
 	}
-	public void setPentrega(Date pentrega) {
+	public void setPentrega(LocalDate pentrega) {
 		this.pentrega = pentrega;
 	}
 	//Metodos atributo: proveedor
@@ -146,7 +147,7 @@ public class Producto{
                                     resultado.getInt("A.ID_PRODUCTO"), 
                                     resultado.getString("A.NOMBRE_PRODUCTO"), 
                                     resultado.getString("A.U_MEDIDA"), 
-                                    resultado.getDate("A.PENTREGA"),
+                                    resultado.getDate("A.PENTREGA").toLocalDate(),
                                     new Proveedor(
                                             resultado.getInt("A.ID_PROVEEDOR"), 
                                             resultado.getString("B.NOMBRE_PROVEEDOR"), 
@@ -201,7 +202,7 @@ public class Producto{
                                     resultado.getInt("A.ID_PRODUCTO"), 
                                     resultado.getString("A.NOMBRE_PRODUCTO"), 
                                     resultado.getString("A.U_MEDIDA"), 
-                                    resultado.getDate("A.PENTREGA"),
+                                    resultado.getDate("A.PENTREGA").toLocalDate(),
                                     new Proveedor(
                                             resultado.getInt("A.ID_PROVEEDOR"), 
                                             resultado.getString("B.NOMBRE_PROVEEDOR"), 

@@ -22,13 +22,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane blendMode="MULTIPLY" cache="true" cacheHint="SPEED" prefHeight="652.0" prefWidth="967.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.FXMLDocumentController">
+<AnchorPane blendMode="MULTIPLY" cache="true" cacheHint="SPEED" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.FXMLDocumentController">
    <children>
-      <TabPane prefHeight="750.0" prefWidth="967.0" stylesheets="@css/tab.css" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="754.0" prefWidth="971.0" stylesheets="@css/tab.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
             <Tab text="Cotizaciones">
                <content>
-                  <AnchorPane id="AnchorPane" prefHeight="716.0" prefWidth="951.0" style="-fx-border-color: black;" styleClass="background" stylesheets="@css/killme.css">
+                  <AnchorPane id="AnchorPane" style="-fx-border-color: black;" styleClass="background" stylesheets="@css/killme.css">
                       <children>
                         <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="4.0" layoutY="4.0" prefHeight="710.0" prefWidth="961.0">
                            <children>
@@ -67,7 +67,7 @@
                                     </ImageView>
                                  </children>
                               </VBox>
-                              <VBox alignment="TOP_RIGHT" prefHeight="688.0" prefWidth="1052.0" snapToPixel="false" HBox.hgrow="ALWAYS">
+                              <VBox alignment="TOP_RIGHT" snapToPixel="false" HBox.hgrow="ALWAYS">
                                  <children>
                                     <AnchorPane prefHeight="22.0" prefWidth="669.0" VBox.vgrow="ALWAYS">
                                        <VBox.margin>
@@ -196,9 +196,9 @@
                                     </HBox>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="690.0" prefWidth="128.0">
+                              <VBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="690.0" prefWidth="128.0">
                                  <children>
-                                    <AnchorPane prefHeight="698.0" prefWidth="50.0">
+                                    <AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="698.0" prefWidth="50.0">
                                        <children>
                                           <JFXButton fx:id="botonagregarcot" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutY="44.0" onAction="#agregarcotizacion" prefHeight="43.0" prefWidth="34.0" styleClass="plus" stylesheets="@css/killme.css">
                                              <graphic>

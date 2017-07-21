@@ -12,6 +12,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -44,6 +45,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.StringConverter;
+import javafx.util.converter.DateStringConverter;
+import javafx.util.converter.LocalDateStringConverter;
 import proyecto_empresa_ii.modelo.Conexion;
 import proyecto_empresa_ii.modelo.Cotizacion;
 import proyecto_empresa_ii.modelo.Marca;
@@ -80,7 +84,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TableColumn<Producto, String> columedida_producto;
     @FXML
-    private TableColumn<Producto, Date> colpentrega_producto;
+    private TableColumn<Producto, LocalDate> colpentrega_producto;
     @FXML
     private TableColumn<Producto, Proveedor> colproveedor_producto;
     @FXML
@@ -313,10 +317,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
     ***************************************************************************/
     
     private void tvProducto(){
-        
-        
-        
-        
+       
         tv_productos.setEditable(true);//activo edición sobre tabla
         /*--------------------------------------------------------------------*/
         colnombre_producto.setCellValueFactory(
@@ -369,8 +370,33 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         });        
         /*--------------------------------------------------------------------*/
         colpentrega_producto.setCellValueFactory(
-            new PropertyValueFactory<Producto, Date>("pentrega")
+            new PropertyValueFactory<Producto,LocalDate>("pentrega")
         );
+        LocalDateStringConverter converter = new LocalDateStringConverter();
+        colpentrega_producto.setCellFactory(TextFieldTableCell.<Producto, LocalDate>forTableColumn(converter));
+        colpentrega_producto.setOnEditCommit(data -> { 
+            System.out.println("Antiguo Nombre: " + data.getOldValue());   
+            Producto p = data.getRowValue();
+            p.setPentrega(data.getNewValue());
+            System.out.println("Nuevo Nombre: " + data.getNewValue());             
+            System.out.println(p);
+            Date date = java.sql.Date.valueOf(p.getPentrega());
+            try {
+                String query = "UPDATE producto SET PENTREGA= ? where ID_PRODUCTO = ?";
+                preparedStmt = conexion.getConnection().prepareStatement(query);
+                preparedStmt.setDate(1,date);
+                preparedStmt.setInt(2, p.getId_producto());
+                preparedStmt.executeUpdate();
+                preparedStmt.clearParameters();// no es necesario
+                preparedStmt.close();
+                //conexion.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }      
+        });
+        /*--------------------------------------------------------------------*/
+
+        
         colproveedor_producto.setCellValueFactory(
             new PropertyValueFactory<Producto, Proveedor>("proveedor")
         );
@@ -480,7 +506,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                     return true; //filltro por marca
                 }else if(producto.getProveedor().toString().toLowerCase().contains(lowerCaseFilter)){
                     return true; //fitro por proveedor
-                }else if(String.valueOf(producto.getPentrega().toLocalDate()).toLowerCase().contains(lowerCaseFilter)){
+                }else if(String.valueOf(producto.getPentrega()).toLowerCase().contains(lowerCaseFilter)){
                     return true; //filtro por fecha de entrega
                 }else if(producto.getU_medida().toLowerCase().contains(lowerCaseFilter)){
                     return true; // filtro por unidad de medida
