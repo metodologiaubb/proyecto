@@ -75,6 +75,7 @@ public class Main extends Application {
             return true;
         } else {
             System.out.println("NOT OK");
+            System.err.print("asdasd");
             return false;
         }
     }
