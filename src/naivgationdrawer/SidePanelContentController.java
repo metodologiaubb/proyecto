@@ -43,7 +43,6 @@ public class SidePanelContentController implements Initializable {
     private void changeColor(ActionEvent event) {
            JFXButton btn = (JFXButton) event.getSource();
            SingleSelectionModel<Tab> selectionModel = rootP.getSelectionModel();
-        System.out.println(btn.getText());
         switch(btn.getText())
         {
             case "Cotizaciones y productos":selectionModel.select(0);

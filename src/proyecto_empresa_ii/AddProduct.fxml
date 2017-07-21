@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -15,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="472.0" prefWidth="433.0" style="-fx-background-color: #383638;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.AddProductController">
+<AnchorPane id="AnchorPane" prefHeight="472.0" prefWidth="433.0" style="-fx-background-color: #383638;" styleClass="background" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.AddProductController">
    <children>
-      <HBox alignment="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="417.0" prefWidth="433.0" styleClass="background" stylesheets="@css/killme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="417.0" prefWidth="433.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox alignment="CENTER" prefHeight="465.0" prefWidth="407.0">
                <children>
@@ -36,18 +37,18 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label text="Datos producto" textFill="WHITE">
+                        <Label styleClass="Label" text="Datos producto" textFill="WHITE">
                            <font>
                               <Font name="Consolas Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Label text="Nombre:" textFill="WHITE" GridPane.rowIndex="1">
+                        <Label styleClass="Label" text="Nombre:" textFill="WHITE" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="jtfnombre_producto" focusColor="WHITE" style="-fx-text-inner-color: white;" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <JFXTextField fx:id="jtfum_producto" focusColor="WHITE" style="-fx-text-inner-color: white;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <JFXTextField fx:id="jtfnombre_producto" focusColor="WHITE" style="-fx-text-inner-color: white;" styleClass="JFXTextField" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXTextField fx:id="jtfum_producto" focusColor="WHITE" style="-fx-text-inner-color: white;" styleClass="JFXTextField" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <ComboBox fx:id="cmbproveedor_producto" prefHeight="26.0" prefWidth="210.0" promptText="Elegir proveedor" style="-fx-background-color: #E8E8E8;" stylesheets="@css/bootstrap2.css" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <opaqueInsets>
                               <Insets />
@@ -64,24 +65,24 @@
                               <Insets left="7.0" />
                            </GridPane.margin>
                         </ComboBox>
-                        <JFXTextField fx:id="jtfvalor_producto" focusColor="WHITE" style="-fx-text-inner-color: white;" unFocusColor="#808080" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Label text="Unidad de medida:" textFill="WHITE" GridPane.rowIndex="2">
+                        <JFXTextField fx:id="jtfvalor_producto" focusColor="WHITE" style="-fx-text-inner-color: white;" styleClass="JFXTextField" unFocusColor="#808080" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label styleClass="Label" text="Unidad de medida:" textFill="WHITE" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></Label>
-                        <Label text="Plazo de entrega:" textFill="WHITE" GridPane.rowIndex="3">
+                        <Label styleClass="Label" text="Plazo de entrega:" textFill="WHITE" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></Label>
-                        <Label text="Marca:" textFill="WHITE" GridPane.rowIndex="5">
+                        <Label styleClass="Label" text="Marca:" textFill="WHITE" GridPane.rowIndex="5">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></Label>
-                        <Label text="Proveedor:" textFill="WHITE" GridPane.rowIndex="4">
+                        <Label styleClass="Label" text="Proveedor:" textFill="WHITE" GridPane.rowIndex="4">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></Label>
-                        <Label text="Valor:" textFill="WHITE" GridPane.rowIndex="6">
+                        <Label styleClass="Label" text="Valor:" textFill="WHITE" GridPane.rowIndex="6">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></Label>
@@ -90,8 +91,8 @@
                   </GridPane>
                   <HBox alignment="CENTER" prefHeight="73.0" prefWidth="407.0" spacing="20.0">
                      <children>
-                        <JFXButton id="bevel-grey" fx:id="btnguardar_producto" mnemonicParsing="false" onAction="#insertarproducto" prefHeight="23.0" prefWidth="84.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Guardar" />
-                        <JFXButton id="bevel-grey" fx:id="btnnuevo_producto" mnemonicParsing="false" onAction="#eventoLimpiar" prefHeight="23.0" prefWidth="84.0" style="-fx-background-color: #f2f2f2;" stylesheets="@css/killme2.css" text="Nuevo" />
+                        <JFXButton fx:id="btnguardar_producto" mnemonicParsing="false" onAction="#insertarproducto" prefHeight="23.0" prefWidth="84.0" style="-fx-background-color: #f37005;" stylesheets="@css/css.css" text="Guardar" />
+                        <JFXButton fx:id="btnnuevo_producto" mnemonicParsing="false" onAction="#eventoLimpiar" prefHeight="23.0" prefWidth="84.0" style="-fx-background-color: #f37005;" text="Nuevo" />
                      </children>
                   </HBox>
                   <Label fx:id="mensajesql" textFill="WHITE">
@@ -102,6 +103,10 @@
                </children>
             </VBox>
          </children>
+         <styleClass>
+            <String fx:value="background" />
+            <String fx:value="JFXTextField" />
+         </styleClass>
       </HBox>
    </children>
    <effect>
