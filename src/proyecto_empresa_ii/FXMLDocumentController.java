@@ -18,6 +18,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.lang.Integer;
 import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -47,6 +48,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.StringConverter;
 import javafx.util.converter.DateStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.LocalDateStringConverter;
 import proyecto_empresa_ii.modelo.Conexion;
 import proyecto_empresa_ii.modelo.Cotizacion;
@@ -90,7 +92,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TableColumn<Producto, Marca> colmarca_producto;
     @FXML
-    private TableColumn<Producto, Number> colvalor_producto;
+    private TableColumn<Producto, Integer> colvalor_producto;
     @FXML
     private TableView<Producto> tv_productos;
     private PreparedStatement preparedStmt;
@@ -283,33 +285,12 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
              listaproveedor1  =FXCollections.observableArrayList();
         Proveedor.llenarInformacion (conexion.getConnection(), listaproveedor1);
         Proveedor.autocompletar(cmbproveedor1, listaproveedor1);
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+          
     }
+    
+    
+    
+    
     /***************************************************************************
     ****************************************************************************
     ************************   Sección de metodos   ****************************
@@ -395,18 +376,39 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             }      
         });
         /*--------------------------------------------------------------------*/
-
-        
         colproveedor_producto.setCellValueFactory(
             new PropertyValueFactory<Producto, Proveedor>("proveedor")
         );
         colmarca_producto.setCellValueFactory(
             new PropertyValueFactory<Producto, Marca>("marca")
         );
-        colvalor_producto.setCellValueFactory(
-            new PropertyValueFactory<Producto, Number>("valor")
-        );
         /*--------------------------------------------------------------------*/
+        colvalor_producto.setCellValueFactory(
+            new PropertyValueFactory<Producto, Integer>("valor")
+        );
+        IntegerStringConverter converter2 = new IntegerStringConverter();
+        colvalor_producto.setCellFactory(TextFieldTableCell.<Producto, Integer>forTableColumn(converter2));
+        colvalor_producto.setOnEditCommit(data -> {
+            System.out.println("Antiguo Nombre: " + data.getOldValue());   
+            Producto p = data.getRowValue();
+            p.setValor(data.getNewValue());
+            System.out.println("Nuevo Nombre: " + data.getNewValue());             
+            System.out.println(p);
+            try {
+                String query = "UPDATE producto SET VALOR = ? where ID_PRODUCTO = ?";
+                preparedStmt = conexion.getConnection().prepareStatement(query);
+                preparedStmt.setDouble(1, data.getNewValue());
+                preparedStmt.setInt(2, p.getId_producto());
+                preparedStmt.executeUpdate();
+                preparedStmt.clearParameters();// no es necesario
+                preparedStmt.close();
+                //conexion.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }      
+        });
+        /*--------------------------------------------------------------------*/
+
         
         /*--------------------------------------------------------------------*/
         colmarca_producto.setCellFactory(
