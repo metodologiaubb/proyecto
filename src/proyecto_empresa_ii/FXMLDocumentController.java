@@ -171,6 +171,7 @@ public class FXMLDocumentController implements Initializable {
      jtfnombre_proveedor.setText(null);
      jtfdcto_proveedor.setText(null);
      jtf_c_prod_dcto_proveedor.setText(null);
+     mensajesql.setText(null);
     }
 
     @FXML
@@ -216,12 +217,30 @@ public class FXMLDocumentController implements Initializable {
     
      @FXML
     private void deleteproveedor(ActionEvent event) {
-        int x;
+       
+        
+             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+alert.setTitle("Eliminar Proveedor");
+alert.setHeaderText("");
+alert.setContentText("¿Seguro que desea eliminar al proveedor "+cmbproveedor1.getValue().getNombre_proveedor()+"?");
+
+Optional<ButtonType> result = alert.showAndWait();
+if (result.get() == ButtonType.OK){
+ 
+   int x;
     
   x=consultas.Insert("DELETE FROM `proveedor` WHERE ID_PROVEEDOR='"+cmbproveedor1.getValue().getId_proveedor()+"';"); 
   if(x==0){
     mensajesql.setText("Proveedor '"+cmbproveedor1.getValue().getNombre_proveedor()+"' eliminado exitosamente");
     }
+    
+} else {
+}
+     
+        
+        
+        
+     
         
     }
 
