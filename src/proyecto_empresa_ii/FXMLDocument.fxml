@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
@@ -223,132 +224,121 @@
             </Tab>
             <Tab closable="false" text="Proveedor y Marcas">
                <content>
-                  <AnchorPane prefHeight="721.0" prefWidth="953.0">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <HBox layoutX="410.0" layoutY="113.0" prefHeight="38.0" prefWidth="635.0">
+                        <VBox layoutX="409.0" layoutY="198.0" prefHeight="717.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXButton fx:id="btneditarthisproveedor" mnemonicParsing="false" onAction="#editarproveedor" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #f37005;" text="Guardar Cambios" />
-                              <JFXButton fx:id="btnlimpiarcamposproveedor" mnemonicParsing="false" onAction="#limpialistaproveedor" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #f37005;" text="Limpiar Campos">
-                                 <HBox.margin>
-                                    <Insets left="7.0" />
-                                 </HBox.margin>
-                              </JFXButton>
-                              <JFXButton fx:id="btndelproveedor" mnemonicParsing="false" onAction="#deleteproveedor" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #f37005;" text="Eliminar Proveedor">
-                                 <HBox.margin>
-                                    <Insets left="4.0" />
-                                 </HBox.margin>
-                              </JFXButton>
-                              <JFXButton fx:id="btnagregar_proveedor" mnemonicParsing="false" onAction="#addnewproveedor" prefHeight="31.0" prefWidth="138.0" style="-fx-background-color: #f37005;" text="Nuevo Proveedor">
-                                 <HBox.margin>
-                                    <Insets left="7.0" />
-                                 </HBox.margin>
-                              </JFXButton>
-                           </children>
-                        </HBox>
-                        <VBox layoutX="6.0" layoutY="103.0" prefHeight="60.0" prefWidth="397.0">
-                           <children>
-                              <ComboBox fx:id="cmbproveedor1" onAction="#llenarproveedorlist" prefHeight="45.0" prefWidth="275.0" promptText="Elegir proveedor" stylesheets="@css/bootstrap3.css">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                                 <VBox.margin>
-                                    <Insets left="-240.0" top="10.0" />
-                                 </VBox.margin>
-                              </ComboBox>
-                           </children>
-                           <padding>
-                              <Insets left="360.0" />
-                           </padding>
-                        </VBox>
-                        <VBox prefHeight="68.0" prefWidth="967.0">
-                           <padding>
-                              <Insets left="360.0" top="5.0" />
-                           </padding>
-                           <children>
-                              <Label prefHeight="70.0" prefWidth="334.0" style="-fx-text-fill: #f37005;" text=" Proveedor" textFill="WHITE">
-                                 <font>
-                                    <Font name="Consolas Bold" size="25.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets top="40.0" />
-                                 </padding>
-                              </Label>
-                              <JFXButton id="bevel-grey" fx:id="btnagregar_marca" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" text="Marca" />
-                           </children>
-                        </VBox>
-                        <VBox layoutX="-4.0" layoutY="163.0" prefHeight="377.0" prefWidth="969.0">
-                           <padding>
-                              <Insets left="360.0" />
-                           </padding>
-                           <children>
-                              <GridPane prefHeight="361.0" prefWidth="469.0" style="-fx-border-color: #f37005;">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.0" minWidth="10.0" prefWidth="184.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="211.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <Label style="-fx-text-fill: #f37005;" text="        Datos  del" textFill="WHITE">
-                                       <font>
-                                          <Font name="Consolas Bold" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Label styleClass="Label" text="ID del proveedor:" textFill="WHITE" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Label>
-                                    <JFXTextField fx:id="jtfnombre_proveedor" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <Label styleClass="Label" text="Nombre del proveedor:" textFill="WHITE" GridPane.rowIndex="2">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Label>
-                                    <Label styleClass="Label" text="Descuento ofrecido:" textFill="WHITE" GridPane.rowIndex="3">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Label>
-                                    <Label prefHeight="19.0" prefWidth="164.0" styleClass="Label" text="Nº de productos por dcto:" textFill="WHITE" GridPane.rowIndex="4">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                    </Label>
-                                    <Label style="-fx-text-fill: #f37005;" text="  Proveedor" textFill="WHITE" GridPane.columnIndex="1">
-                                       <font>
-                                          <Font name="Consolas Bold" size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <JFXTextField fx:id="jtf_c_prod_dcto_proveedor" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <JFXTextField fx:id="jtfdcto_proveedor" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <JFXTextField fx:id="jtfid_proveedor" editable="false" focusColor="WHITE" style="-fx-text-fill: #f37005;" styleClass="JFXTextField" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label styleClass="LabelTitle" text="Agregar Proveedores y marcas" />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="413.0" prefWidth="950.0">
+                                 <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label text="Datos proveedor">
+                                             <styleClass>
+                                                <String fx:value="Label" />
+                                                <String fx:value="LabelTitle" />
+                                             </styleClass>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <GridPane prefHeight="361.0" prefWidth="469.0" style="-fx-border-color: #f37005;">
+                                             <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.0" minWidth="10.0" prefWidth="184.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.0" minWidth="10.0" prefWidth="211.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                             </rowConstraints>
+                                             <children>
+                                                <Label styleClass="Label" text="ID del proveedor:" textFill="WHITE">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <JFXTextField fx:id="jtfnombre_proveedor" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label styleClass="Label" text="Nombre del proveedor:" textFill="WHITE" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label styleClass="Label" text="Descuento ofrecido:" textFill="WHITE" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label prefHeight="19.0" prefWidth="164.0" styleClass="Label" text="Nº de productos por dcto:" textFill="WHITE" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font name="System Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <JFXTextField fx:id="jtf_c_prod_dcto_proveedor" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <JFXTextField fx:id="jtfdcto_proveedor" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <JFXTextField fx:id="jtfid_proveedor" editable="false" focusColor="WHITE" style="-fx-text-fill: #f37005;" styleClass="JFXTextField" unFocusColor="#979797" GridPane.columnIndex="1" />
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="10.0" right="5.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Label styleClass="LabelTitle" text="Datos Marca">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <GridPane prefHeight="221.0" prefWidth="460.0" style="-fx-border-color: #f37005;">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label styleClass="Label" text="ID de la marca:" />
+                                                <Label styleClass="Label" text="Nombre de la marca:" GridPane.rowIndex="1" />
+                                                <JFXTextField editable="false" focusColor="WHITE" style="-fx-text-fill: #f37005;" styleClass="JFXTextField" unFocusColor="#979797" GridPane.columnIndex="1" />
+                                                <JFXTextField editable="false" focusColor="WHITE" style="-fx-text-fill: #f37005;" styleClass="JFXTextField" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets left="5.0" right="10.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="TOP_CENTER" prefHeight="173.0" prefWidth="950.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <ComboBox fx:id="cmbproveedor1" onAction="#llenarproveedorlist" prefHeight="45.0" prefWidth="204.0" promptText="Elegir proveedor" stylesheets="@css/bootstrap3.css">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </ComboBox>
+                                    <JFXButton fx:id="btneditarthisproveedor" mnemonicParsing="false" onAction="#editarproveedor" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #f37005;" text="Guardar Cambios" />
+                                    <JFXButton fx:id="btnlimpiarcamposproveedor" mnemonicParsing="false" onAction="#limpialistaproveedor" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #f37005;" text="Limpiar Campos" />
+                                    <JFXButton fx:id="btndelproveedor" mnemonicParsing="false" onAction="#deleteproveedor" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #f37005;" text="Eliminar Proveedor" />
+                                    <JFXButton fx:id="btnagregar_proveedor" mnemonicParsing="false" onAction="#addnewproveedor" prefHeight="31.0" prefWidth="138.0" style="-fx-background-color: #f37005;" text="Nuevo Proveedor" />
+                                    <JFXButton fx:id="btnagregar_marca" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f37005;" text="Marca" />
                                  </children>
                                  <VBox.margin>
-                                    <Insets left="-120.0" right="260.0" />
+                                    <Insets />
                                  </VBox.margin>
-                              </GridPane>
+                              </HBox>
                            </children>
                         </VBox>
-                        <Label fx:id="excepcion_proveedor" layoutX="275.0" layoutY="501.0" prefHeight="23.0" prefWidth="374.0" textFill="WHITE">
-                           <font>
-                              <Font name="Consolas Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="mensajesql" layoutX="279.0" layoutY="569.0" prefHeight="23.0" prefWidth="404.0" style="-fx-text-fill: #f37005;" textFill="WHITE">
-                           <font>
-                              <Font name="Consolas Bold" size="20.0" />
-                           </font>
-                        </Label>
                      </children>
-                     <effect>
-                        <DropShadow spread="0.11" />
-                     </effect>
                   </AnchorPane>
                </content>
             </Tab>
