@@ -158,6 +158,24 @@ public class FXMLDocumentController implements Initializable {
     private Label mensajesql;
     @FXML
     private JFXButton btndelproveedor;
+    
+    //-------------------------------------tab 3------------------------------
+        @FXML
+    private JFXTextField tfDatosNombre;
+
+    @FXML
+    private JFXTextField tfDatosApellidos;
+
+    @FXML
+    private JFXTextField tfDatosCuenta;
+
+    @FXML
+    private JFXTextField tfDatosTelefono;
+
+    @FXML
+    private JFXTextField tfDatosTipoCuenta;
+    
+    
   @FXML
     private void llenarproveedorlist(ActionEvent event) {
      jtfid_proveedor.setText(cmbproveedor1.getValue().getId_proveedor()+"");
