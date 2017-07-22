@@ -73,6 +73,7 @@ public class LoginController extends AnchorPane implements Initializable {
             System.out.println("OK");
                 Stage stage1  = (Stage) login.getScene().getWindow();
     stage1.close();
+            Sesion sesion =new Sesion(Autentificar.getSQLuser());
 
         FXMLLoader fXMLLoader = new FXMLLoader(
                     getClass().getResource("FXMLDocument.fxml")
