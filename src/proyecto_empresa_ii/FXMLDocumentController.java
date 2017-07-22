@@ -177,6 +177,10 @@ public class FXMLDocumentController implements Initializable {
     private JFXTextField tfDatosTipoCuenta;
     
     
+    @FXML
+    private JFXButton btnCrearCuentas;
+    
+    
   @FXML
     private void llenarproveedorlist(ActionEvent event) {
      jtfid_proveedor.setText(cmbproveedor1.getValue().getId_proveedor()+"");
@@ -817,18 +821,37 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                     );
         }
         
-
-        
-        
-        
-        
     }
-
-   
-  
- 
-  
-
-            
-    
+        
+  @FXML
+  private void NuevasCuentas (ActionEvent event){
+       try {
+            FXMLLoader fXMLLoader = new FXMLLoader(
+            getClass().getResource("NuevasCuentas.fxml")
+            );
+            Parent root1 = (Parent) fXMLLoader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UTILITY);
+            stage.setTitle("NuevasCuentas");
+            stage.setScene(new Scene(root1));
+            /*Evento Dragg and drop*/
+            root1.setOnMousePressed((MouseEvent event1) -> {
+                xOffset = event1.getSceneX();
+                yOffset = event1.getSceneY();
+            });
+            root1.setOnMouseDragged((MouseEvent event1) -> {
+                stage.setX(event1.getScreenX() - xOffset);
+                stage.setY(event1.getScreenY() - yOffset);
+            });
+            /*Fin del evento*/
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(
+                    FXMLDocumentController.class.getName()).log(
+                            Level.SEVERE, null, ex
+                    );
+        }
+    }
 }
+
+
