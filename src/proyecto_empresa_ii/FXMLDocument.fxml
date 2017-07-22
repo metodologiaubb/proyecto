@@ -188,7 +188,7 @@
                                           <Insets top="190.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <JFXButton fx:id="btnprodacot" alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#agregarprodacot" prefHeight="31.0" prefWidth="124.0" style="-fx-background-color: #f37005;" text="Agregar producto a cotizacion">
+                                    <JFXButton fx:id="btnprodacot" alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#agregarprodacot" prefHeight="31.0" prefWidth="124.0" style="-fx-background-color: #f37005;" text="Vincular cuenta">
                                        <font>
                                           <Font name="Calibri" size="12.0" />
                                        </font>
@@ -308,10 +308,19 @@
                                              <children>
                                                 <Label styleClass="Label" text="ID de la marca:" />
                                                 <Label styleClass="Label" text="Nombre de la marca:" GridPane.rowIndex="1" />
-                                                <JFXTextField editable="false" focusColor="WHITE" style="-fx-text-fill: #f37005;" styleClass="JFXTextField" unFocusColor="#979797" GridPane.columnIndex="1" />
-                                                <JFXTextField editable="false" focusColor="WHITE" style="-fx-text-fill: #f37005;" styleClass="JFXTextField" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <JFXTextField fx:id="jtfid_marca" editable="false" focusColor="WHITE" style="-fx-text-fill: #f37005;" styleClass="JFXTextField" unFocusColor="#979797" GridPane.columnIndex="1" />
+                                                <JFXTextField fx:id="jtfnombre_marca" focusColor="WHITE" style="-fx-text-fill: #f37005;" styleClass="JFXTextField" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                              </children>
                                           </GridPane>
+                                          <Label fx:id="mensajesql">
+                                             <styleClass>
+                                                <String fx:value="Label" />
+                                                <String fx:value="LabelTitle" />
+                                             </styleClass>
+                                             <VBox.margin>
+                                                <Insets top="50.0" />
+                                             </VBox.margin>
+                                          </Label>
                                        </children>
                                        <HBox.margin>
                                           <Insets left="5.0" right="10.0" />
@@ -319,18 +328,42 @@
                                     </VBox>
                                  </children>
                               </HBox>
-                              <HBox alignment="TOP_CENTER" prefHeight="173.0" prefWidth="950.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                              <HBox alignment="TOP_CENTER" prefHeight="79.0" prefWidth="950.0" spacing="10.0" VBox.vgrow="ALWAYS">
                                  <children>
-                                    <ComboBox fx:id="cmbproveedor1" onAction="#llenarproveedorlist" prefHeight="45.0" prefWidth="204.0" promptText="Elegir proveedor" stylesheets="@css/bootstrap3.css">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                    </ComboBox>
-                                    <JFXButton fx:id="btneditarthisproveedor" mnemonicParsing="false" onAction="#editarproveedor" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #f37005;" text="Guardar Cambios" />
-                                    <JFXButton fx:id="btnlimpiarcamposproveedor" mnemonicParsing="false" onAction="#limpialistaproveedor" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #f37005;" text="Limpiar Campos" />
-                                    <JFXButton fx:id="btndelproveedor" mnemonicParsing="false" onAction="#deleteproveedor" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #f37005;" text="Eliminar Proveedor" />
-                                    <JFXButton fx:id="btnagregar_proveedor" mnemonicParsing="false" onAction="#addnewproveedor" prefHeight="31.0" prefWidth="138.0" style="-fx-background-color: #f37005;" text="Nuevo Proveedor" />
-                                    <JFXButton fx:id="btnagregar_marca" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f37005;" text="Marca" />
+                                    <GridPane>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <ComboBox fx:id="cmbproveedor1" onAction="#llenarproveedorlist" prefHeight="45.0" prefWidth="204.0" promptText="Elegir proveedor" stylesheets="@css/bootstrap3.css">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </ComboBox>
+                                          <JFXButton fx:id="btneditarthisproveedor" mnemonicParsing="false" onAction="#editarproveedor" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #f37005;" text="Guardar Cambios" GridPane.columnIndex="1" />
+                                          <JFXButton fx:id="btnlimpiarcamposproveedor" mnemonicParsing="false" onAction="#limpialistaproveedor" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #f37005;" text="Limpiar Campos" GridPane.columnIndex="2" />
+                                          <JFXButton fx:id="btndelproveedor" mnemonicParsing="false" onAction="#deleteproveedor" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #f37005;" text="Eliminar Proveedor" GridPane.columnIndex="3" />
+                                          <JFXButton fx:id="btnagregar_proveedor" mnemonicParsing="false" onAction="#addnewproveedor" prefHeight="31.0" prefWidth="138.0" style="-fx-background-color: #f37005;" text="Nuevo Proveedor" GridPane.columnIndex="4" />
+                                          <JFXButton fx:id="btnagregar_marca" mnemonicParsing="false" onAction="#newmarca" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f37005;" text="Nueva Marca" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                          <JFXButton fx:id="btnguardar_marca" mnemonicParsing="false" onAction="#editarmarca" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #f37005;" text="Guardar Cambios" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <JFXButton fx:id="btnlimpiar_campos_marca" mnemonicParsing="false" onAction="#limpialistamarca" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #f37005;" text="Limpiar Campos" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <JFXButton fx:id="btneliminar_marca" mnemonicParsing="false" onAction="#deletemarca" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: #f37005;" text="Eliminar Marca" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                          <ComboBox fx:id="cmbmarca" onAction="#llenarmarcalist" prefHeight="26.0" prefWidth="210.0" promptText="Elegir marca" style="-fx-background-color: #E8E8E8;" stylesheets="@css/bootstrap2.css" GridPane.rowIndex="1">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </ComboBox>
+                                       </children>
+                                    </GridPane>
                                  </children>
                                  <VBox.margin>
                                     <Insets />

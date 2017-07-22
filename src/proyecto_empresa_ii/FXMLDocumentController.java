@@ -147,8 +147,6 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton btnagregar_proveedor;
     public static int wat;
     @FXML
-    private Label excepcion_proveedor;
-    @FXML
     private JFXDrawer drawer;
     @FXML
     private JFXHamburger hamburger;
@@ -159,6 +157,18 @@ public class FXMLDocumentController implements Initializable {
     private Label mensajesql;
     @FXML
     private JFXButton btndelproveedor;
+    
+      @FXML
+    private JFXButton btnCrearCuentas;
+    @FXML
+    private JFXButton btnguardar_marca;
+    @FXML
+    private JFXButton btnlimpiar_campos_marca;
+    @FXML
+    private JFXButton btneliminar_marca;
+    @FXML
+    private ComboBox<Marca> cmbmarca;
+    
     
     //-------------------------------------tab 3------------------------------
         @FXML
@@ -175,13 +185,118 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private JFXTextField tfDatosTipoCuenta;
+    @FXML
+    private JFXTextField jtfid_marca;
+    @FXML
+    private JFXTextField jtfnombre_marca;
+    
+    /*--------------------tab2--------------------------------------*/
+    
+        @FXML
+    private void newmarca(ActionEvent event) {
+ limpialistamarca();
+        try {
+            FXMLLoader fXMLLoader = new FXMLLoader(
+                    getClass().getResource("addmarca.fxml")
+            );
+            Parent root1 = (Parent) fXMLLoader.load();
+            Stage stage1 = new Stage();
+            stage1.initStyle(StageStyle.UTILITY);
+            stage1.setTitle("Agregar Marca");
+            stage1.setScene(new Scene(root1));
+            /*Evento Dragg and drop*/
+            root1.setOnMousePressed((MouseEvent event1) -> {
+                xOffset = event1.getSceneX();
+                yOffset = event1.getSceneY();
+            });
+            root1.setOnMouseDragged((MouseEvent event1) -> {
+                stage1.setX(event1.getScreenX() - xOffset);
+                stage1.setY(event1.getScreenY() - yOffset);
+            });
+
+            
+            /*Fin del evento*/
+            stage1.show();
+      
+        } catch (IOException ex) {
+            Logger.getLogger(
+                    FXMLDocumentController.class.getName()).log(
+                            Level.SEVERE, null, ex
+                    );
+        } 
+    }
+
+    @FXML
+    private void editarmarca(ActionEvent event) {
+        int x;
+  x=consultas.Insert("UPDATE `marca` SET `NOMBRE_MARCA`='"+jtfnombre_marca.getText()+"' WHERE ID_MARCA='"+cmbmarca.getValue().getId_marca()+"';"); 
+  if(x==0){
+    mensajesql.setText("Marca '"+cmbmarca.getValue().getId_marca()+"' editada exitosamente");
+  actualizarcmbmarca();
+    }
+        
+    }
+
+    private void actualizarcmbmarca(){
+             listamarcas1=null;
+       cmbmarca.setValue(null);
+  cmbmarca.getItems().clear();
+    listamarcas1  =FXCollections.observableArrayList();
+           Marca.llenarInformacion(conexion.getConnection(), listamarcas1);
+            Marca.autocompletar(cmbmarca, listamarcas1); 
+    }
+    private void actualizarcmbproveedor(){
+        listaproveedor=null;
+        cmbproveedor1.setValue(null);
+        cmbproveedor1.getItems().clear();
+        listaproveedor=FXCollections.observableArrayList();
+        Proveedor.llenarInformacion(conexion.getConnection(), listaproveedor);
+        Proveedor.autocompletar(cmbproveedor1, listaproveedor);
+    }
+    
+    @FXML
+    private void limpialistamarca()  {
+        jtfid_marca.setText(null);
+        jtfnombre_marca.setText(null);
+        mensajesql.setText(null);
+        actualizarcmbmarca();
+    
+    }
+
+    @FXML
+    private void deletemarca(ActionEvent event) {
+        
+             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+alert.setTitle("Eliminar Marca");
+alert.setHeaderText("");
+alert.setContentText("¿Seguro que desea eliminar la marca "+cmbmarca.getValue().getId_marca()+"?");
+Optional<ButtonType> result = alert.showAndWait();
+if (result.get() == ButtonType.OK){
+ 
+   int x;
+  x=consultas.Insert("DELETE FROM `marca` WHERE ID_MARCA='"+cmbmarca.getValue().getId_marca()+"'"); 
+  if(x==0){
+    mensajesql.setText("Marca '"+cmbmarca.getValue().getNombre_marca()+"' eliminada exitosamente");
+actualizarcmbmarca();
+
+    }
+    
+} else {
+}
+        
+    }
+    
     
     
     @FXML
-    private JFXButton btnCrearCuentas;
+    private void llenarmarcalist(ActionEvent event) {
+       jtfid_marca.setText(cmbmarca.getValue().getId_marca()+"");
+       jtfnombre_marca.setText(cmbmarca.getValue().getNombre_marca()+"");
+    }
+
+  
     
-    
-  @FXML
+    @FXML
     private void llenarproveedorlist(ActionEvent event) {
      jtfid_proveedor.setText(cmbproveedor1.getValue().getId_proveedor()+"");
      jtfnombre_proveedor.setText(cmbproveedor1.getValue().getNombre_proveedor());
@@ -228,6 +343,7 @@ public class FXMLDocumentController implements Initializable {
      jtfdcto_proveedor.setText(null);
      jtf_c_prod_dcto_proveedor.setText(null);
      mensajesql.setText(null);
+     actualizarcmbproveedor();
     }
 
     @FXML
@@ -238,29 +354,30 @@ public class FXMLDocumentController implements Initializable {
                     getClass().getResource("addproveedor.fxml")
             );
             Parent root1 = (Parent) fXMLLoader.load();
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UTILITY);
-            stage.setTitle("Agregar Proveedor");
-            stage.setScene(new Scene(root1));
+            Stage stage1 = new Stage();
+            stage1.initStyle(StageStyle.UTILITY);
+            stage1.setTitle("Agregar Proveedor");
+            stage1.setScene(new Scene(root1));
             /*Evento Dragg and drop*/
             root1.setOnMousePressed((MouseEvent event1) -> {
                 xOffset = event1.getSceneX();
                 yOffset = event1.getSceneY();
             });
             root1.setOnMouseDragged((MouseEvent event1) -> {
-                stage.setX(event1.getScreenX() - xOffset);
-                stage.setY(event1.getScreenY() - yOffset);
+                stage1.setX(event1.getScreenX() - xOffset);
+                stage1.setY(event1.getScreenY() - yOffset);
             });
+
+            
             /*Fin del evento*/
-            stage.show();
+            stage1.show();
+      
         } catch (IOException ex) {
             Logger.getLogger(
                     FXMLDocumentController.class.getName()).log(
                             Level.SEVERE, null, ex
                     );
-        }
-        
-        
+        } 
     }
       @FXML
     private void editarproveedor(ActionEvent event) {int x;
@@ -268,6 +385,7 @@ public class FXMLDocumentController implements Initializable {
   x=consultas.Insert("UPDATE `proveedor` SET `NOMBRE_PROVEEDOR`='"+jtfnombre_proveedor.getText()+"',`DCTO_PROVEEDOR`='"+jtfdcto_proveedor.getText()+"',`C_PRO_DCTO`='"+jtf_c_prod_dcto_proveedor.getText()+"' WHERE ID_PROVEEDOR='"+cmbproveedor1.getValue().getId_proveedor()+"';"); 
   if(x==0){
     mensajesql.setText("Proveedor '"+cmbproveedor1.getValue().getId_proveedor()+"' editado exitosamente");
+      actualizarcmbproveedor();
     }
     }
     
@@ -288,6 +406,8 @@ if (result.get() == ButtonType.OK){
   x=consultas.Insert("DELETE FROM `proveedor` WHERE ID_PROVEEDOR='"+cmbproveedor1.getValue().getId_proveedor()+"';"); 
   if(x==0){
     mensajesql.setText("Proveedor '"+cmbproveedor1.getValue().getNombre_proveedor()+"' eliminado exitosamente");
+  actualizarcmbproveedor();
+
     }
     
 } else {
@@ -422,6 +542,10 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
              listaproveedor1  =FXCollections.observableArrayList();
         Proveedor.llenarInformacion (conexion.getConnection(), listaproveedor1);
         Proveedor.autocompletar(cmbproveedor1, listaproveedor1);
+           listamarcas1  =FXCollections.observableArrayList();
+           Marca.llenarInformacion(conexion.getConnection(), listamarcas1);
+            Marca.autocompletar(cmbmarca, listamarcas1);
+        
         /*-----------------------hamb-----------------------*/
                 rootP = root;
         
@@ -852,6 +976,8 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                     );
         }
     }
+
+
 }
 
 
