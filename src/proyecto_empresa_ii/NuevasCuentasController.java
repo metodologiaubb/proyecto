@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package proyecto_empresa_ii;
 
 import java.net.URL;
@@ -15,6 +16,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import proyecto_empresa_ii.modelo.consultas;
 
 /**
  * FXML Controller class
@@ -24,23 +27,22 @@ import javafx.scene.control.ComboBox;
 public class NuevasCuentasController implements Initializable {
 
    
+ 
     @FXML
     private JFXTextField tfCuentaCuenta;
-     
-    @FXML
-    private JFXTextField tfCuentaNombre;
 
     @FXML
     private JFXTextField tfCuentaContraseña;
+
+    @FXML
+    private JFXTextField tfCuentaNombre;
 
     @FXML
     private JFXTextField tfCuentaApellidos;
 
     @FXML
     private JFXTextField tfCuentaTelefono;
-    
     ObservableList<String> items = FXCollections.observableArrayList("Administrador", "Usuario");
-
     @FXML
     private ComboBox<String> cbCuentaTipo;
 
@@ -50,7 +52,13 @@ public class NuevasCuentasController implements Initializable {
     @FXML
     private JFXButton btnGuardarCambios;
 
+    @FXML
+    private Label Mensaje;
 
+    
+   
+
+ 
 
     public void initialize(URL url, ResourceBundle rb) {
          cbCuentaTipo.setItems(items);
@@ -58,7 +66,7 @@ public class NuevasCuentasController implements Initializable {
             
        }
      @FXML
-    void LimpiarDatos(ActionEvent event) {
+    private void LimpiarDatos(ActionEvent event) {
         tfCuentaCuenta.setText(null);
         tfCuentaNombre.setText(null);
         tfCuentaContraseña.setText(null);
@@ -66,7 +74,35 @@ public class NuevasCuentasController implements Initializable {
         tfCuentaTelefono.setText(null);
         cbCuentaTipo.setItems(null);
         cbCuentaTipo.setItems(items);
+         Mensaje.setText(null);
     }
+ @FXML
+   private void GuardarCuenta(ActionEvent event) {
+       int x = 0;
+        if(cbCuentaTipo.getValue() == "Administrador"){
+             x=consultas.Insert("INSERT INTO `"
+                              + "user`"
+                              + "( `USER_USERNAME`,"
+                              + " `USER_PASS`,"
+                              + " `USER_NOMBRE`,"
+                              + " `USER_APELLIDO`,"
+                              + " `USER_FONO`,"
+                              + " `USER_ROL`)VALUES('"+tfCuentaCuenta.getText()+"','"+tfCuentaContraseña.getText()+"','"+tfCuentaNombre.getText()+"','"+tfCuentaApellidos.getText()+"','"+tfCuentaTelefono.getText()+"','"+2+"');");
+         Mensaje.setText("   La cuenta se creo exitosamente");
+             x=0;
+        }
+         if(cbCuentaTipo.getValue() == "Usuario"){
+            x=consultas.Insert("INSERT INTO `"
+                              + "user`"
+                              + "(`USER_USERNAME`,"
+                              + " `USER_PASS`,"
+                              + " `USER_NOMBRE`,"
+                              + " `USER_APELLIDO`,"
+                              + " `USER_FONO`,"
+                              + " `USER_ROL`)VALUES('"+tfCuentaCuenta.getText()+"','"+tfCuentaContraseña.getText()+"','"+tfCuentaNombre.getText()+"','"+tfCuentaApellidos.getText()+"','"+tfCuentaTelefono.getText()+"','"+2+"');");
+           Mensaje.setText("   La cuenta se creo exitosamente");
+             x=0;
+         }
 
 }
-    
+}
