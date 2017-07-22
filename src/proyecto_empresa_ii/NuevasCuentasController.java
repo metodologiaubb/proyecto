@@ -78,7 +78,7 @@ public class NuevasCuentasController implements Initializable {
     }
  @FXML
    private void GuardarCuenta(ActionEvent event) {
-       int x = 0;
+       int x = 2;
         if(cbCuentaTipo.getValue() == "Administrador"){
              x=consultas.Insert("INSERT INTO `"
                               + "user`"
