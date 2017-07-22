@@ -67,6 +67,6 @@ public class NuevasCuentasController implements Initializable {
         cbCuentaTipo.setItems(null);
         cbCuentaTipo.setItems(items);
     }
-
+  
 }
     

@@ -456,7 +456,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                 else
                  {
                  tfDatosTipoCuenta.setText("Usuario"); 
-                // btnCrearCuentas.setVisible(false);
+                  btnCrearCuentas.setVisible(false);
                    }
     }
 
@@ -853,5 +853,4 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         }
     }
 }
-
 
