@@ -369,6 +369,14 @@
                                           <Insets left="350.0" />
                                        </padding>
                                     </Label>
+                                    <JFXButton fx:id="btnCrearCuentas" mnemonicParsing="false" onAction="#NuevasCuentas" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #f37005;" text="Crear Cuentas">
+                                       <opaqueInsets>
+                                          <Insets top="50.0" />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets left="15.0" top="50.0" />
+                                       </HBox.margin>
+                                    </JFXButton>
                                  </children>
                               </HBox>
                               <GridPane prefHeight="437.0" prefWidth="401.0" style="-fx-border-color: #f37005;">
