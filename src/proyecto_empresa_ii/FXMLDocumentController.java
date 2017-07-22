@@ -64,6 +64,7 @@ import proyecto_empresa_ii.modelo.Marca;
 import proyecto_empresa_ii.modelo.Producto;
 import proyecto_empresa_ii.modelo.Proveedor;
 import proyecto_empresa_ii.modelo.consultas;
+import sesion.Sesion;
 
 /**
  *
@@ -438,6 +439,21 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             }else
                 drawer.open();
         });
+        
+        // tab3 ------------------llenar textfield----------------
+         tfDatosNombre.setText(Sesion.CurrentUser.getUSER_NOMBRE());
+         tfDatosTelefono.setText(String.valueOf(Sesion.CurrentUser.getFONO_USER()));
+         tfDatosApellidos.setText(Sesion.CurrentUser.getUSER_APELLIDO());
+         tfDatosCuenta.setText(Sesion.CurrentUser.getUSER_USERNAME());
+         if (Sesion.CurrentUser.getROL()==2){
+   
+             tfDatosTipoCuenta.setText("Administrador");
+                 }
+                else
+                 {
+                 tfDatosTipoCuenta.setText("Usuario"); 
+                // btnCrearCuentas.setVisible(false);
+                   }
     }
 
         
