@@ -18,6 +18,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -80,6 +82,13 @@ public class LoginController extends AnchorPane implements Initializable {
             stage.initStyle(StageStyle.DECORATED);
             stage.setTitle("Panel de cotizaciones");
             stage.setScene(new Scene(root1));
+            root1.addEventFilter(
+                KeyEvent.KEY_PRESSED, eventt -> {
+                    if (eventt.getCode().equals(KeyCode.F11)) {
+                        stage.setFullScreen(true);
+                    }
+                }
+            );
             stage.show();
             stage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));//Cierra todo
          stage.getIcons().add(new Image(this.getClass().getResource("mseal32.png").toString()));

@@ -33,7 +33,7 @@ public class GraficosController implements Initializable {
        PieChart.Data sector1 = new PieChart.Data("Nicolás",  25);
        PieChart.Data sector2 = new PieChart.Data("Jerson",   25);
        PieChart.Data sector3 = new PieChart.Data("PASCAL",  1000);
-       PieChart.Data sector4 = new PieChart.Data("Abdel",    25);
+       PieChart.Data sector4 = new PieChart.Data("Abdel",    4000);
 
        pieChart.getData().add(sector1);
        pieChart.getData().add(sector2);
