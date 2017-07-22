@@ -88,8 +88,7 @@ public class NuevasCuentasController implements Initializable {
                               + " `USER_APELLIDO`,"
                               + " `USER_FONO`,"
                               + " `USER_ROL`)VALUES('"+tfCuentaCuenta.getText()+"','"+tfCuentaContraseña.getText()+"','"+tfCuentaNombre.getText()+"','"+tfCuentaApellidos.getText()+"','"+tfCuentaTelefono.getText()+"','"+2+"');");
-         Mensaje.setText("   La cuenta se creo exitosamente");
-             x=0;
+
         }
          if(cbCuentaTipo.getValue() == "Usuario"){
             x=consultas.Insert("INSERT INTO `"
@@ -99,10 +98,12 @@ public class NuevasCuentasController implements Initializable {
                               + " `USER_NOMBRE`,"
                               + " `USER_APELLIDO`,"
                               + " `USER_FONO`,"
-                              + " `USER_ROL`)VALUES('"+tfCuentaCuenta.getText()+"','"+tfCuentaContraseña.getText()+"','"+tfCuentaNombre.getText()+"','"+tfCuentaApellidos.getText()+"','"+tfCuentaTelefono.getText()+"','"+2+"');");
-           Mensaje.setText("   La cuenta se creo exitosamente");
-             x=0;
-         }
+                              + " `USER_ROL`)VALUES('"+tfCuentaCuenta.getText()+"','"+tfCuentaContraseña.getText()+"','"+tfCuentaNombre.getText()+"','"+tfCuentaApellidos.getText()+"','"+tfCuentaTelefono.getText()+"','"+1+"');");
+    
 
+         }
+   if (x==0){
+        Mensaje.setText("   La cuenta se creo exitosamente");
+   }
 }
 }
