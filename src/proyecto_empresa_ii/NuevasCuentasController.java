@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package proyecto_empresa_ii;
 
 import java.net.URL;
@@ -87,7 +83,7 @@ public class NuevasCuentasController implements Initializable {
                               + " `USER_APELLIDO`,"
                               + " `USER_FONO`,"
                               + " `USER_ROL`)VALUES('"+tfCuentaCuenta.getText()+"','"+tfCuentaContraseña.getText()+"','"+tfCuentaNombre.getText()+"','"+tfCuentaApellidos.getText()+"','"+tfCuentaTelefono.getText()+"','"+2+"');");
-             System.out.println("pasooooo por Administrador");
+             Mensaje.setText("La cuenta se creo");
              x=0;
         }
          if(cbCuentaTipo.getValue() == "Usuario"){
