@@ -283,18 +283,16 @@ actualizarcmbmarca();
     
 } else {
 }
-        
+       
     }
-    
-    
-    
+  
     @FXML
     private void llenarmarcalist(ActionEvent event) {
        jtfid_marca.setText(cmbmarca.getValue().getId_marca()+"");
        jtfnombre_marca.setText(cmbmarca.getValue().getNombre_marca()+"");
     }
 
-  
+ 
     
     @FXML
     private void llenarproveedorlist(ActionEvent event) {
@@ -912,7 +910,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
 
         // 5. Add sorted (and filtered) data to the table.
         tv_cotizacion.setItems(sorteddatacotiza);
-      
+ 
     }
 
     @FXML
@@ -956,8 +954,10 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             Parent root1 = (Parent) fXMLLoader.load();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UTILITY);
-            stage.setTitle("NuevasCuentas");
+            stage.setTitle("Crear Nuevas Cuentas");
             stage.setScene(new Scene(root1));
+            stage.centerOnScreen();
+            stage.setResizable(false);
             /*Evento Dragg and drop*/
             root1.setOnMousePressed((MouseEvent event1) -> {
                 xOffset = event1.getSceneX();

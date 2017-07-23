@@ -360,148 +360,142 @@
             </Tab>
             <Tab closable="false" text="Datos Personales">
                <content>
-                  <AnchorPane prefHeight="716.0" prefWidth="951.0">
+                  <AnchorPane>
                      <children>
-                        <HBox alignment="CENTER_LEFT" fillHeight="false" layoutX="4.0" layoutY="4.0" prefHeight="710.0" prefWidth="951.0">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets right="30.0" />
-                           </padding>
-                        </HBox>
-                        <VBox layoutX="20.0" layoutY="20.0" prefHeight="553.0" prefWidth="921.0">
+                        <VBox layoutX="425.0" layoutY="310.0" prefHeight="719.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <HBox prefHeight="93.0" prefWidth="921.0">
+                              <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="122.0" prefWidth="950.0">
                                  <children>
-                                    <Label prefHeight="70.0" prefWidth="691.0" style="-fx-text-fill: #f37005;" text="Datos Personales" textFill="WHITE" underline="true">
+                                    <Label style="-fx-text-fill: #f37005;" text="Datos Personales" textFill="WHITE" underline="true">
                                        <font>
                                           <Font name="Consolas Bold" size="25.0" />
                                        </font>
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
-                                       <padding>
-                                          <Insets left="350.0" />
-                                       </padding>
                                     </Label>
-                                    <JFXButton fx:id="btnCrearCuentas" mnemonicParsing="false" onAction="#NuevasCuentas" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #f37005;" text="Crear Cuentas">
-                                       <opaqueInsets>
-                                          <Insets top="50.0" />
-                                       </opaqueInsets>
-                                       <HBox.margin>
-                                          <Insets left="15.0" top="50.0" />
-                                       </HBox.margin>
-                                    </JFXButton>
                                  </children>
-                              </HBox>
-                              <GridPane prefHeight="437.0" prefWidth="401.0" style="-fx-border-color: #f37005;">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="336.0" minWidth="10.0" prefWidth="103.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="581.0" minWidth="10.0" prefWidth="296.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                                 <VBox.margin>
-                                    <Insets left="260.0" right="260.0" />
-                                 </VBox.margin>
+                              </VBox>
+                              <VBox prefHeight="71.0" prefWidth="950.0">
                                  <children>
-                                    <Label styleClass="Label" text="Cuenta:" textFill="WHITE" GridPane.rowIndex="2">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="2.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <Label styleClass="Label" text="Apellidos:" textFill="WHITE" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="2.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <Label styleClass="Label" text="Nombre:" textFill="WHITE">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="2.0" />
-                                       </GridPane.margin>
+                                    <JFXButton fx:id="btnCrearCuentas" mnemonicParsing="false" onAction="#NuevasCuentas" style="-fx-background-color: #f37005;" text="Crear Cuentas">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
-                                    </Label>
-                                    <Label styleClass="Label" text="Telefono:" textFill="WHITE" GridPane.rowIndex="3">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="2.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <Label styleClass="Label" text="Tipo de cuenta:" textFill="WHITE" GridPane.rowIndex="4">
-                                       <font>
-                                          <Font name="System Bold" size="13.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="2.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <JFXTextField fx:id="tfDatosNombre" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <opaqueInsets>
-                                          <Insets left="10.0" />
-                                       </opaqueInsets>
-                                    </JFXTextField>
-                                    <JFXTextField fx:id="tfDatosApellidos" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <opaqueInsets>
-                                          <Insets left="10.0" />
-                                       </opaqueInsets>
-                                    </JFXTextField>
-                                    <JFXTextField fx:id="tfDatosCuenta" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <opaqueInsets>
-                                          <Insets left="10.0" />
-                                       </opaqueInsets>
-                                    </JFXTextField>
-                                    <JFXTextField fx:id="tfDatosTelefono" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <opaqueInsets>
-                                          <Insets left="10.0" />
-                                       </opaqueInsets>
-                                    </JFXTextField>
-                                    <JFXTextField fx:id="tfDatosTipoCuenta" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                       <opaqueInsets>
-                                          <Insets left="10.0" />
-                                       </opaqueInsets>
-                                    </JFXTextField>
+                                       <VBox.margin>
+                                          <Insets left="800.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
                                  </children>
-                              </GridPane>
+                              </VBox>
+                              <VBox prefHeight="529.0" prefWidth="950.0">
+                                 <children>
+                                    <GridPane prefHeight="392.0" prefWidth="188.0" style="-fx-border-color: #f37005;">
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="336.0" minWidth="10.0" prefWidth="111.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="581.0" minWidth="10.0" prefWidth="237.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label styleClass="Label" text="Cuenta:" textFill="WHITE" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="System Bold" size="13.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="2.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label styleClass="Label" text="Apellidos:" textFill="WHITE" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="System Bold" size="13.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="2.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label styleClass="Label" text="Nombre:" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="13.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="2.0" />
+                                             </GridPane.margin>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </Label>
+                                          <Label styleClass="Label" text="Telefono:" textFill="WHITE" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font name="System Bold" size="13.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="2.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <Label styleClass="Label" text="Tipo de cuenta:" textFill="WHITE" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font name="System Bold" size="13.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="2.0" />
+                                             </GridPane.margin>
+                                          </Label>
+                                          <JFXTextField fx:id="tfDatosNombre" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                             <opaqueInsets>
+                                                <Insets left="10.0" />
+                                             </opaqueInsets>
+                                          </JFXTextField>
+                                          <JFXTextField fx:id="tfDatosApellidos" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                             <opaqueInsets>
+                                                <Insets left="10.0" />
+                                             </opaqueInsets>
+                                          </JFXTextField>
+                                          <JFXTextField fx:id="tfDatosCuenta" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                             <opaqueInsets>
+                                                <Insets left="10.0" />
+                                             </opaqueInsets>
+                                          </JFXTextField>
+                                          <JFXTextField fx:id="tfDatosTelefono" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                             <opaqueInsets>
+                                                <Insets left="10.0" />
+                                             </opaqueInsets>
+                                          </JFXTextField>
+                                          <JFXTextField fx:id="tfDatosTipoCuenta" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                             <opaqueInsets>
+                                                <Insets left="10.0" />
+                                             </opaqueInsets>
+                                          </JFXTextField>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="300.0" right="300.0" />
+                                       </VBox.margin>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
                            </children>
                         </VBox>
                      </children>
-                     <effect>
-                        <DropShadow spread="0.11" />
-                     </effect>
                   </AnchorPane>
                </content>
             </Tab>
@@ -518,6 +512,9 @@
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
+         <children>
+            <VBox prefHeight="265.0" prefWidth="100.0" />
+         </children>
       </JFXDrawer>
       <JFXHamburger fx:id="hamburger" blendMode="SRC_ATOP" layoutX="62.0" layoutY="33.0" prefHeight="37.0" prefWidth="48.0" stylesheets="@css/css.css" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="33.0" />
       <ImageView fitHeight="119.0" fitWidth="108.0" layoutX="17.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="16.0">
