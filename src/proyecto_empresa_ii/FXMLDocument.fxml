@@ -136,36 +136,14 @@
                                           <Insets left="30.0" right="20.0" />
                                        </VBox.margin>
                                     </TableView>
-                                    <HBox alignment="CENTER">
-                                       <children>
-                                          <JFXButton fx:id="btnguardar_producto" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f37005;" text="Modificar">
-                                             <HBox.margin>
-                                                <Insets left="30.0" right="30.0" />
-                                             </HBox.margin>
-                                          </JFXButton>
-                                          <JFXButton fx:id="btnactualizar_producto" mnemonicParsing="false" onAction="#evento_grafico_test" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f37005;" text="Actualizar">
-                                             <HBox.margin>
-                                                <Insets left="30.0" right="30.0" />
-                                             </HBox.margin>
-                                          </JFXButton>
-                                          <JFXButton fx:id="btneliminar_producto" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #f37005;" text="Eliminar">
-                                             <HBox.margin>
-                                                <Insets left="30.0" right="30.0" />
-                                             </HBox.margin>
-                                          </JFXButton>
-                                       </children>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <VBox.margin>
-                                          <Insets bottom="10.0" top="10.0" />
-                                       </VBox.margin>
-                                    </HBox>
                                  </children>
+                                 <HBox.margin>
+                                    <Insets bottom="30.0" />
+                                 </HBox.margin>
                               </VBox>
                               <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="703.0" prefWidth="120.0">
                                  <HBox.margin>
-                                    <Insets top="40.0" />
+                                    <Insets top="48.0" />
                                  </HBox.margin>
                                  <children>
                                     <JFXButton fx:id="botonagregarcot" contentDisplay="CENTER" graphicTextGap="0.0" onAction="#agregarcotizacion" prefHeight="37.0" prefWidth="124.0" style="-fx-background-color: #f37005;" stylesheets="@css/killme.css" text="Agregar">
@@ -183,18 +161,23 @@
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <JFXButton fx:id="btnagregar_producto11" mnemonicParsing="false" onAction="#agregarproducto" prefHeight="31.0" prefWidth="142.0" style="-fx-background-color: #f37005;" text="Nuevo Producto">
+                                    <JFXButton fx:id="btnagregar_producto11" mnemonicParsing="false" onAction="#agregarproducto" prefHeight="37.0" prefWidth="124.0" style="-fx-background-color: #f37005;" text="Nuevo">
                                        <VBox.margin>
-                                          <Insets top="190.0" />
+                                          <Insets top="200.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <JFXButton fx:id="btnprodacot" alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#agregarprodacot" prefHeight="31.0" prefWidth="124.0" style="-fx-background-color: #f37005;" text="Vincular cuenta">
+                                    <JFXButton fx:id="btnprodacot" alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#agregarprodacot" prefHeight="37.0" prefWidth="124.0" style="-fx-background-color: #f37005;" text="Vincular cuenta">
                                        <font>
                                           <Font name="Calibri" size="12.0" />
                                        </font>
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets top="10.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                    <JFXButton fx:id="btnactualizar_producto" mnemonicParsing="false" onAction="#evento_grafico_test" prefHeight="37.0" prefWidth="124.0" style="-fx-background-color: #f37005;" text="Gráficos">
                                        <VBox.margin>
                                           <Insets top="10.0" />
                                        </VBox.margin>
