@@ -184,7 +184,7 @@
                                     </JFXButton>
                                     <VBox alignment="BOTTOM_RIGHT" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <JFXButton prefHeight="43.0" prefWidth="46.0" text="Button">
+                                          <JFXButton onAction="#abrirSoporte" prefHeight="43.0" prefWidth="46.0" text="Button">
                                              <graphic>
                                                 <ImageView fitHeight="37.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
@@ -196,7 +196,7 @@
                                                 <Insets top="50.0" />
                                              </VBox.margin>
                                           </JFXButton>
-                                          <JFXButton prefHeight="47.0" prefWidth="41.0" text="Button">
+                                          <JFXButton onAction="#abrirReclamos" prefHeight="47.0" prefWidth="41.0" text="Button">
                                              <graphic>
                                                 <ImageView fitHeight="37.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>

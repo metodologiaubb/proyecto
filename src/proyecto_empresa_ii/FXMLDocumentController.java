@@ -494,6 +494,34 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         }
         
     }
+        @FXML
+    void abrirReclamos(ActionEvent event) {
+
+    }
+
+    @FXML
+    void abrirSoporte(ActionEvent event) {
+        try {
+            FXMLLoader fXMLLoader = new FXMLLoader(
+                    getClass().getResource("Soporte.fxml")
+            );
+            Parent root1 = (Parent) fXMLLoader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UTILITY);
+            stage.setTitle("Soporte");
+            stage.setScene(new Scene(root1));
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(
+                    FXMLDocumentController.class.getName()).log(
+                            Level.SEVERE, null, ex
+                    );
+        }
+
+    }
+    
+    
     
     private Conexion                    conexion;
     private ObservableList<Marca>       listamarcas;

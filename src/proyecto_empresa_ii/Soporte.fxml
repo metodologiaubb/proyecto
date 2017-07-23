@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@css/css.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.SoporteController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="6.0" layoutY="-14.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -37,7 +36,7 @@
             </HBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <JFXButton prefHeight="53.0" prefWidth="114.0" style="-fx-background-color: #F37004;" text="Descargar">
+                  <JFXButton fx:id="btndescargar" onAction="#accionDescargar" prefHeight="53.0" prefWidth="114.0" style="-fx-background-color: #F37004;" text="Descargar">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
