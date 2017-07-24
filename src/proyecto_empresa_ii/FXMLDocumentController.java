@@ -158,7 +158,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private JFXButton btndelproveedor;
     
-      @FXML
+    @FXML
     private JFXButton btnCrearCuentas;
     @FXML
     private JFXButton btnguardar_marca;
@@ -189,6 +189,8 @@ public class FXMLDocumentController implements Initializable {
     private JFXTextField jtfid_marca;
     @FXML
     private JFXTextField jtfnombre_marca;
+    @FXML
+    private JFXButton btnGestionarCuenta;
     
     /*--------------------tab2--------------------------------------*/
     
@@ -607,6 +609,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                  {
                  tfDatosTipoCuenta.setText("Usuario"); 
                  btnCrearCuentas.setVisible(false);
+                 btnGestionarCuenta.setVisible(false);
                    }
     }
 
