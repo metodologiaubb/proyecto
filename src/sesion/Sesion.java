@@ -20,7 +20,7 @@ public class Sesion {
     public static User CurrentUser;
     public Sesion(ResultSet res) {
         try {
-            CurrentUser=new User();
+            CurrentUser=new User(res.getString("USER_USERNAME"));
             res.first();
             CurrentUser.setID_USER(res.getInt("ID_USER"));
             CurrentUser.setUSER_USERNAME(res.getString("USER_USERNAME"));

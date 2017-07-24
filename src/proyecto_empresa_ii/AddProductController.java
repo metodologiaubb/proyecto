@@ -56,7 +56,6 @@ public class AddProductController implements Initializable {
     private ObservableList<Proveedor>   listaproveedor;
     Conexion conexion;
     String date1;
-
     /**
      * Initializes the controller class.
      */

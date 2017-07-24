@@ -952,6 +952,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UTILITY);
             stage.setTitle("Agregar Cotización");
+            stage.setResizable(false);
             stage.setScene(new Scene(root1));
             /*Evento Dragg and drop*/
             root1.setOnMousePressed((MouseEvent event1) -> {
@@ -1005,7 +1006,38 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         }
     }
 
+@FXML
+    void GestionarCuentas(ActionEvent event) {
+            try {
+            FXMLLoader fXMLLoader = new FXMLLoader(
+            getClass().getResource("GestionarCuentas.fxml")
+            );
+            Parent root1 = (Parent) fXMLLoader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UTILITY);
+            stage.setTitle("Cuentas");
+            stage.setScene(new Scene(root1));
+            stage.setResizable(false);
+            /*Evento Dragg and drop*/
+            root1.setOnMousePressed((MouseEvent event1) -> {
+                xOffset = event1.getSceneX();
+                yOffset = event1.getSceneY();
+            });
+            root1.setOnMouseDragged((MouseEvent event1) -> {
+                stage.setX(event1.getScreenX() - xOffset);
+                stage.setY(event1.getScreenY() - yOffset);
+            });
+            /*Fin del evento*/
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(
+                    FXMLDocumentController.class.getName()).log(
+                            Level.SEVERE, null, ex
+                    );
+        }
+    }
+    }
 
-}
+
 
 

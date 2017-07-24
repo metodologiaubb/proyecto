@@ -45,9 +45,6 @@ public class AddCotizacionController {
         conexion.establecerConexion();
     }    
     
-     
-   
-    
       private void limpiar(){
          txtdescripcion_cotizacion.setText(null);
     };

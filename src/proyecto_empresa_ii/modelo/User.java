@@ -9,14 +9,33 @@ package proyecto_empresa_ii.modelo;
  *
  * @author Pascal
  */
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author jerson
  */
 public class User {
+
+  
+    /*private IntegerProperty ID_USER; 
+    private StringProperty USER_USERNAME; 
+    private StringProperty USER_PASS; 
+    private StringProperty USER_NOMBRE; 
+    private StringProperty USER_APELLIDO; 
+    private StringProperty USER_FONO; 
+    private IntegerProperty USER_ROL;
+   */
     private SimpleIntegerProperty ID_USER = new SimpleIntegerProperty();
     private SimpleStringProperty USER_USERNAME = new SimpleStringProperty();
     private SimpleStringProperty USER_PASS = new SimpleStringProperty();
@@ -24,8 +43,24 @@ public class User {
     private SimpleStringProperty USER_APELLIDO = new SimpleStringProperty();
     private SimpleStringProperty USER_FONO = new SimpleStringProperty();
     private SimpleIntegerProperty USER_ROL = new SimpleIntegerProperty();
-    
+  
        
+    public User(String USER_USERNAME) 
+    {
+      //this.ID_USER =new SimpleIntegerProperty(ID_USER);
+      this.USER_USERNAME=new SimpleStringProperty (USER_USERNAME);
+      /*this.USER_PASS= new SimpleStringProperty (USER_PASS);
+      this.USER_NOMBRE= new SimpleStringProperty (USER_NOMBRE);
+      this.USER_APELLIDO= new SimpleStringProperty (USER_APELLIDO);
+      this.USER_FONO=new SimpleStringProperty (USER_FONO);
+      this.USER_ROL=new SimpleIntegerProperty(USER_ROL);
+     */   
+    }
+
+
+    /*public User() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
     public int getID_USER(){
         return ID_USER.get();
     }
@@ -76,7 +111,30 @@ public class User {
         this.USER_ROL.set(USER_ROL); 
     }
    
-   
+    @Override
+    public String toString(){
+        
+    return USER_USERNAME.get();
+    }
+    
+    public static void llenar_informacion(Connection connection, ObservableList<User> lista){
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet res = statement.executeQuery("Select USER_USERNAME "
+                                                     + "FROM user"
+            );
+            while(res.next()){
+            lista.add(
+                    new User( 
+                             res.getString("USER_USERNAME")
+                    )
+            );
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
    
    
     public int Insert_User(String User_username,String User_pass,String User_fono,int User_rol,String User_nombre,String User_apellido){
