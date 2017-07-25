@@ -425,7 +425,7 @@
                                     </Label>
                                  </children>
                               </VBox>
-                              <VBox prefHeight="71.0" prefWidth="950.0">
+                              <VBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT">
                                  <children>
                                     <JFXButton fx:id="btnCrearCuentas" mnemonicParsing="false" onAction="#NuevasCuentas" style="-fx-background-color: #f37005;" text="Crear Cuentas">
                                        <opaqueInsets>
@@ -435,7 +435,7 @@
                                           <Insets left="800.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <JFXButton fx:id="btnGestionarCuenta" mnemonicParsing="false" onAction="#GestionarCuentas" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #f37005;" text="Cuentas">
+                                    <JFXButton fx:id="btnGestionarCuenta" mnemonicParsing="false" onAction="#GestionarCuentas" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #f37005;" text="Cuentas">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
