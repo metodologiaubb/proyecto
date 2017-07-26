@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import proyecto_empresa_ii.modelo.Conexion;
 import proyecto_empresa_ii.modelo.User;
 import proyecto_empresa_ii.modelo.consultas;
@@ -35,7 +36,8 @@ import sesion.Sesion;
  */
 public class ModificarcuentasController implements Initializable {
 
-  
+    @FXML
+    private Label texto;
     @FXML
     private JFXTextField tfMirarCuenta;
 
@@ -126,7 +128,6 @@ public class ModificarcuentasController implements Initializable {
             tfMirarApellidos.setText(res.getString("USER_APELLIDO"));
             tfMirarTelefono.setText(res.getString("USER_FONO"));
             tfMirarTipo.setText("Usuario");
-
         
         }else{
             tfMirarID1.setText(String.valueOf(res.getInt("ID_USER")));
@@ -142,6 +143,11 @@ public class ModificarcuentasController implements Initializable {
             Logger.getLogger(ModificarcuentasController.class.getName()).log(Level.SEVERE, null, ex);
         }
       confirmar.setVisible(true);
+      if(String.valueOf(Sesion.CurrentUser.getID_USER()).equals(tfMirarID1.getText()))
+           { 
+              cbCuenta.setVisible(false);
+              texto.setVisible(false);
+           }
     }
 
     @FXML
@@ -150,40 +156,23 @@ public class ModificarcuentasController implements Initializable {
          if(cbCuenta.getValue()=="Administrador"&& tfcuenta.getText().length()!=0  && tfcontraseña.getText().length()!=0 && tfnombre.getText().length()!=0 && tfapellidos.getText().length()!=0 && tftelefono.getText().length()!=0){
           x=consultas.Insert("UPDATE `user` SET `USER_USERNAME` ='"+tfcuenta.getText()+"',`USER_PASS`='"+tfcontraseña.getText()+"',`USER_NOMBRE`='"+tfnombre.getText()+"',`USER_APELLIDO`='"+tfapellidos.getText()+"',`USER_FONO`='"+tftelefono.getText()+"',`USER_ROL`='"+2+"'WHERE ID_USER='"+tfMirarID1.getText()+"';");
          } 
-          if(cbCuenta.getValue()=="Usuario" && tfcuenta.getText().length()!=0 && tfcontraseña.getText().length()!=0 && tfnombre.getText().length()!=0 && tfapellidos.getText().length()!=0 && tftelefono.getText().length()!=0){
+         if(cbCuenta.getValue()=="Usuario" && tfcuenta.getText().length()!=0 && tfcontraseña.getText().length()!=0 && tfnombre.getText().length()!=0 && tfapellidos.getText().length()!=0 && tftelefono.getText().length()!=0){
           x=consultas.Insert("UPDATE `user` SET `USER_USERNAME` ='"+tfcuenta.getText()+"',`USER_PASS`='"+tfcontraseña.getText()+"',`USER_NOMBRE`='"+tfnombre.getText()+"',`USER_APELLIDO`='"+tfapellidos.getText()+"',`USER_FONO`='"+tftelefono.getText()+"',`USER_ROL`='"+1+"'WHERE ID_USER='"+tfMirarID1.getText()+"';");
          }
-         
+         if(String.valueOf(Sesion.CurrentUser.getID_USER()).equals(tfMirarID1.getText()))
+           { 
+          x=consultas.Insert("UPDATE `user` SET `USER_USERNAME` ='"+tfcuenta.getText()+"',`USER_PASS`='"+tfcontraseña.getText()+"',`USER_NOMBRE`='"+tfnombre.getText()+"',`USER_APELLIDO`='"+tfapellidos.getText()+"',`USER_FONO`='"+tftelefono.getText()+"',`USER_ROL`='"+2+"'WHERE ID_USER='"+tfMirarID1.getText()+"';");
+ 
+           }
        //  x=consultas.Insert("UPDATE `user` SET `USER_USERNAME` ='"+tfcuenta.getText()+"',`USER_PASS`='"+tfcontraseña.getText()+"',`USER_NOMBRE`='"+tfnombre.getText()+"',`USER_APELLIDO`='"+tfapellidos.getText()+"',`USER_FONO`='"+tftelefono.getText()+"'WHERE ID_USER='"+tfMirarID1.getText()+"';");
        
        if(x==0)
        { 
-           if(String.valueOf(Sesion.CurrentUser.getID_USER()).equals(tfMirarID1.getText()))
-           { 
-               Alert alert = new Alert(Alert.AlertType.INFORMATION);
-               alert.setHeaderText("");      
-               alert.setTitle("Datos cambiados");
-               alert.setContentText("Se han cambiado datos de la cuenta que esta usando, el programa se cerrara para guardar los nuevos datos");
-               Optional<ButtonType> result = alert.showAndWait();
-                if (result.get() == ButtonType.OK){
-                     System.exit(0);
-                      }
-                if(result.get() == ButtonType.CLOSE){
-                     System.exit(0);
-                      }
-                if(result.get() == ButtonType.NO){
-                     System.exit(0);
-                }
-         
-        
-      } else {
-        Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
             alert2.setHeaderText("");      
             alert2.setTitle("Datos cambiados");
             alert2.setContentText("Se han cambiado los datos ");
             Optional<ButtonType> result = alert2.showAndWait();
-    
-      }
             lista=null;
             cbCuentaTipo.setValue(null);
             cbCuentaTipo.getItems().clear();
@@ -203,8 +192,10 @@ public class ModificarcuentasController implements Initializable {
             tfMirarApellidos.setText(null);
             confirmar.setVisible(false);
             tfMirarTelefono.setText(null);
+       }
+            
     }
     
 }
 
-}
+

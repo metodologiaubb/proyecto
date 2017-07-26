@@ -96,7 +96,7 @@ public class GestionarCuentasController implements Initializable {
                                              + "USER_FONO,"
                                              + "USER_ROL "
                                              + "FROM user "
-                                             + "where USER_USERNAME = '"+cbCuentaTipo.getValue()+"'");
+                                             + "WHERE USER_USERNAME = '"+cbCuentaTipo.getValue()+"'");
     while (res.next()){  
         if(res.getInt("USER_ROL")== 1){
             tfIDcuenta.setText(String.valueOf(res.getInt("ID_USER")));
@@ -116,6 +116,9 @@ public class GestionarCuentasController implements Initializable {
             tfMirarApellidos.setText(res.getString("USER_APELLIDO"));
             tfMirarTelefono.setText(res.getString("USER_FONO"));
             tfMirarTipo.setText("Administrador");
+            if(String.valueOf(Sesion.CurrentUser.getID_USER()).equals(tfIDcuenta.getText())){
+                    btnEliminarCuenta.setVisible(false); 
+            }
 
         }
        } }catch (SQLException ex) {
@@ -132,21 +135,6 @@ public class GestionarCuentasController implements Initializable {
               + "WHERE ID_USER="+tfIDcuenta.getText()+";");
                           
      if(x==0){
-             if(String.valueOf(Sesion.CurrentUser.getID_USER()).equals(tfIDcuenta.getText())){
-             Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
-             alert2.setHeaderText("");      
-             alert2.setTitle("Datos cambiados");
-             alert2.setContentText("Se han Eliminado los datos de la cuenta que estaba usando, el programa se cerrara");
-             Optional<ButtonType> result2 = alert2.showAndWait();
-             if (result2.get() == ButtonType.OK){
-             System.exit(0);
-             }if (result2.get() == ButtonType.CLOSE){
-                 System.exit(0);  
-             }
-             if (result2.get() == ButtonType.NO){
-                 System.exit(0);  
-             }
-          }else{
              Alert alert = new Alert(Alert.AlertType.INFORMATION);
              alert.setHeaderText("");      
              alert.setTitle("Datos Eliminados");
@@ -165,8 +153,7 @@ public class GestionarCuentasController implements Initializable {
              lista=FXCollections.observableArrayList();
              User.llenar_informacion(con.getConnection(), lista);
              cbCuentaTipo.setItems(lista);
-
-              btnEliminarCuenta.setVisible(false);
+             btnEliminarCuenta.setVisible(false);
 
              }
         }
@@ -176,5 +163,5 @@ public class GestionarCuentasController implements Initializable {
   
   
 
-}
+
 

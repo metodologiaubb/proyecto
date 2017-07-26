@@ -193,6 +193,11 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton btnGestionarCuenta;
     @FXML
     private JFXButton btnModificar;
+    @FXML
+     private JFXButton btnActualizar;
+    @FXML
+    private JFXTextField tfDatospass;
+    
     
     /*--------------------tab2--------------------------------------*/
     
@@ -603,6 +608,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
          tfDatosTelefono.setText(String.valueOf(Sesion.CurrentUser.getFONO_USER()));
          tfDatosApellidos.setText(Sesion.CurrentUser.getUSER_APELLIDO());
          tfDatosCuenta.setText(Sesion.CurrentUser.getUSER_USERNAME());
+         tfDatospass.setText(Sesion.CurrentUser.getPASS_USER());
          if (Sesion.CurrentUser.getROL()==2){
    
              tfDatosTipoCuenta.setText("Administrador");
@@ -613,11 +619,12 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                  btnCrearCuentas.setVisible(false);
                  btnGestionarCuenta.setVisible(false);
                  btnModificar.setVisible(false);
+                 
                    }
     }
 
         
-        
+       
         
         
         
@@ -1072,11 +1079,37 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                             Level.SEVERE, null, ex
                     );
         }
-
+ 
     }
-    
-    }
+    private Conexion con;
+    @FXML
+    void Actualizar(ActionEvent event) {
+         con=new Conexion();
+         con.establecerConexion();
+        try {
 
-
-
-
+            Statement statement;
+            statement = con.getConnection().createStatement();
+            ResultSet res;
+            res=statement.executeQuery("SELECT ID_USER,"
+                                             +"USER_USERNAME,"
+                                             + "USER_PASS, "
+                                             + "USER_NOMBRE,"
+                                             + "USER_APELLIDO,"
+                                             + "USER_FONO,"
+                                             + "USER_ROL "
+                                             + "FROM user "
+                                             + "WHERE ID_USER = '"+Sesion.CurrentUser.getID_USER()+"'");while (res.next()){
+            tfDatosCuenta.setText(res.getString("USER_USERNAME"));
+            tfDatospass.setText(res.getString("USER_PASS")); 
+            tfDatosNombre.setText(res.getString("USER_NOMBRE"));
+            tfDatosApellidos.setText(res.getString("USER_APELLIDO"));
+            tfDatosTelefono.setText(res.getString("USER_FONO"));
+            }
+            
+            }       catch (SQLException ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+          
+        }
+}

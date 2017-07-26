@@ -223,7 +223,7 @@
                               <Insets left="50.0" top="20.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label styleClass="Label" text="Tipo de Cuenta:" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+                        <Label fx:id="texto" styleClass="Label" text="Tipo de Cuenta:" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="7">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
