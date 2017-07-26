@@ -427,7 +427,7 @@
                               </VBox>
                               <VBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT">
                                  <children>
-                                    <JFXButton fx:id="btnCrearCuentas" mnemonicParsing="false" onAction="#NuevasCuentas" style="-fx-background-color: #f37005;" text="Crear Cuentas">
+                                    <JFXButton fx:id="btnCrearCuentas" mnemonicParsing="false" onAction="#NuevasCuentas" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #f37005;" text="Crear Cuentas">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -435,7 +435,7 @@
                                           <Insets left="800.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <JFXButton fx:id="btnGestionarCuenta" mnemonicParsing="false" onAction="#GestionarCuentas" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: #f37005;" text="Cuentas">
+                                    <JFXButton fx:id="btnGestionarCuenta" mnemonicParsing="false" onAction="#GestionarCuentas" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #f37005;" text="Eliminar Cuentas">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -443,11 +443,19 @@
                                           <Insets left="800.0" top="20.0" />
                                        </VBox.margin>
                                     </JFXButton>
+                                    <JFXButton fx:id="btnModificar" mnemonicParsing="false" onAction="#ventanaModificar" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #f37005;" text="Modificar cuentas">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
                                  </children>
                               </VBox>
                               <VBox prefHeight="529.0" prefWidth="950.0">
                                  <children>
-                                    <GridPane prefHeight="392.0" prefWidth="188.0" style="-fx-border-color: #f37005;">
+                                    <GridPane prefHeight="428.0" prefWidth="350.0" style="-fx-border-color: #f37005;">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="336.0" minWidth="10.0" prefWidth="111.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="581.0" minWidth="10.0" prefWidth="237.0" />

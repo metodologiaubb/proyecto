@@ -11,12 +11,14 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import java.util.Optional;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import proyecto_empresa_ii.modelo.consultas;
 
 /**
@@ -45,15 +47,9 @@ public class NuevasCuentasController implements Initializable {
     ObservableList<String> items = FXCollections.observableArrayList("Administrador", "Usuario");
     @FXML
     private ComboBox<String> cbCuentaTipo;
-
-    @FXML
-    private JFXButton LimpiarCambios;
-
+    
     @FXML
     private JFXButton btnGuardarCambios;
-
-    @FXML
-    private Label Mensaje;
 
     
    
@@ -65,8 +61,9 @@ public class NuevasCuentasController implements Initializable {
     
             
        }
+      /*
      @FXML
-    private void LimpiarDatos(ActionEvent event) {
+  private void LimpiarDatos(ActionEvent event) {
         tfCuentaCuenta.setText(null);
         tfCuentaNombre.setText(null);
         tfCuentaContraseña.setText(null);
@@ -74,8 +71,8 @@ public class NuevasCuentasController implements Initializable {
         tfCuentaTelefono.setText(null);
         cbCuentaTipo.setItems(null);
         cbCuentaTipo.setItems(items);
-         Mensaje.setText(null);
-    }
+    }*/
+     
  @FXML
    private void GuardarCuenta(ActionEvent event) {
        int x = 2;
@@ -103,7 +100,18 @@ public class NuevasCuentasController implements Initializable {
 
          }
    if (x==0){
-        Mensaje.setText("   La cuenta se creo exitosamente");
+             Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+             alert2.setHeaderText("");      
+             alert2.setTitle("Cuenta creada");
+             alert2.setContentText("Se ha creado la cuenta: "+tfCuentaCuenta.getText());
+             Optional<ButtonType> result2 = alert2.showAndWait();
+             tfCuentaCuenta.setText(null);
+             tfCuentaNombre.setText(null);
+             tfCuentaContraseña.setText(null);
+             tfCuentaApellidos.setText(null);
+             tfCuentaTelefono.setText(null);
+             cbCuentaTipo.setItems(null);
+             cbCuentaTipo.setItems(items);
    }
 }
 }

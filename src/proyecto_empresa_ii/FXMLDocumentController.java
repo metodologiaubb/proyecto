@@ -191,6 +191,8 @@ public class FXMLDocumentController implements Initializable {
     private JFXTextField jtfnombre_marca;
     @FXML
     private JFXButton btnGestionarCuenta;
+    @FXML
+    private JFXButton btnModificar;
     
     /*--------------------tab2--------------------------------------*/
     
@@ -268,13 +270,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void deletemarca(ActionEvent event) {
         
-             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 alert.setTitle("Eliminar Marca");
 alert.setHeaderText("");
 alert.setContentText("¿Seguro que desea eliminar la marca "+cmbmarca.getValue().getId_marca()+"?");
 Optional<ButtonType> result = alert.showAndWait();
 if (result.get() == ButtonType.OK){
- 
+
    int x;
   x=consultas.Insert("DELETE FROM `marca` WHERE ID_MARCA='"+cmbmarca.getValue().getId_marca()+"'"); 
   if(x==0){
@@ -1039,6 +1041,39 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                     );
         }
     }
+    
+    @FXML
+    void ventanaModificar(ActionEvent event) {
+    try {
+            FXMLLoader fXMLLoader = new FXMLLoader(
+            getClass().getResource("Modificarcuentas.fxml")
+            );
+            Parent root1 = (Parent) fXMLLoader.load();
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.UTILITY);
+            stage.setTitle("Modificar cuentas");
+            stage.setScene(new Scene(root1));
+            stage.setResizable(false);
+            /*Evento Dragg and drop*/
+            root1.setOnMousePressed((MouseEvent event1) -> {
+                xOffset = event1.getSceneX();
+                yOffset = event1.getSceneY();
+            });
+            root1.setOnMouseDragged((MouseEvent event1) -> {
+                stage.setX(event1.getScreenX() - xOffset);
+                stage.setY(event1.getScreenY() - yOffset);
+            });
+            /*Fin del evento*/
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(
+                    FXMLDocumentController.class.getName()).log(
+                            Level.SEVERE, null, ex
+                    );
+        }
+
+    }
+    
     }
 
 

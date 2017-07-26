@@ -130,11 +130,6 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <children>
-                  <JFXButton fx:id="LimpiarCambios" mnemonicParsing="false" onAction="#LimpiarDatos" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #f37005;" text="Limpiar">
-                     <HBox.margin>
-                        <Insets top="25.0" />
-                     </HBox.margin>
-                  </JFXButton>
                   <JFXButton fx:id="btnGuardarCambios" mnemonicParsing="false" onAction="#GuardarCuenta" prefHeight="31.0" prefWidth="139.0" style="-fx-background-color: #f37005;" text="Guardar">
                      <HBox.margin>
                         <Insets left="30.0" top="25.0" />
@@ -144,17 +139,6 @@
             </HBox>
          </children>
       </GridPane>
-      <HBox layoutX="-4.0" layoutY="416.0" prefHeight="68.0" prefWidth="579.0">
-         <children>
-            <Label fx:id="Mensaje" prefHeight="55.0" prefWidth="576.0" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="60.0" />
-               </HBox.margin>
-            </Label>
-         </children>
-      </HBox>
+      <HBox layoutX="-4.0" layoutY="416.0" prefHeight="68.0" prefWidth="579.0" />
    </children>
 </AnchorPane>

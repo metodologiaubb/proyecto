@@ -17,7 +17,7 @@
    <children>
       <VBox layoutX="6.0" layoutY="7.0" prefHeight="93.0" prefWidth="583.0">
          <children>
-            <Label prefHeight="70.0" prefWidth="356.0" style="-fx-text-fill: #f37005;" text="Cuentas" textFill="WHITE" underline="true">
+            <Label prefHeight="70.0" prefWidth="487.0" style="-fx-text-fill: #f37005;" text="Eliminar Cuentas" textFill="WHITE" underline="true">
                <font>
                   <Font name="Consolas Bold" size="25.0" />
                </font>
@@ -28,7 +28,7 @@
                   <Insets left="190.0" />
                </padding>
                <VBox.margin>
-                  <Insets left="70.0" />
+                  <Insets left="50.0" />
                </VBox.margin>
             </Label>
          </children>
@@ -38,20 +38,12 @@
       </VBox>
       <HBox layoutX="-3.0" layoutY="445.0" prefHeight="73.0" prefWidth="600.0">
          <children>
-            <JFXButton fx:id="btnEliminarCuenta" mnemonicParsing="false" onAction="#EliminarCuentas" prefHeight="25.0" prefWidth="114.0" style="-fx-background-color: #f37005;" text="Eliminar cuenta">
+            <JFXButton fx:id="btnEliminarCuenta" mnemonicParsing="false" onAction="#EliminarCuentas" prefHeight="25.0" prefWidth="154.0" style="-fx-background-color: #f37005;" text="Eliminar cuenta">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
                <HBox.margin>
-                  <Insets left="200.0" />
-               </HBox.margin>
-            </JFXButton>
-            <JFXButton fx:id="btnModificarCuenta" mnemonicParsing="false" onAction="#ModificarCuentas" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: #f37005;" text="Modificar cuenta">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <HBox.margin>
-                  <Insets left="50.0" />
+                  <Insets left="260.0" />
                </HBox.margin>
             </JFXButton>
          </children></HBox>
@@ -171,7 +163,7 @@
                   <ComboBox fx:id="cbCuentaTipo" onAction="#Mostrarcuentas" prefWidth="150.0" promptText="Escoger cuenta ..." GridPane.columnIndex="1" />
                   <HBox prefHeight="45.0" prefWidth="401.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                      <children>
-                        <JFXTextField fx:id="tfMirarTipo" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797">
+                        <JFXTextField fx:id="tfMirarTipo" editable="false" focusColor="WHITE" prefHeight="38.0" prefWidth="349.0" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -179,11 +171,6 @@
                               <Insets left="10.0" />
                            </opaqueInsets>
                         </JFXTextField>
-                        <ComboBox fx:id="cbcambiartipo" onAction="#cambiar" prefHeight="25.0" prefWidth="157.0" promptText="Cambiar tipo ">
-                           <HBox.margin>
-                              <Insets left="20.0" top="20.0" />
-                           </HBox.margin>
-                        </ComboBox>
                      </children>
                   </HBox>
                   <Label prefHeight="19.0" prefWidth="63.0" styleClass="Label" text=" Cuenta:" textFill="WHITE" GridPane.rowIndex="2">
