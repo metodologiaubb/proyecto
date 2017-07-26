@@ -127,10 +127,8 @@ public class User {
     
     public static void llenar_informacion(Connection connection, ObservableList<User> lista){
         try {
-            Statement statement = connection.createStatement();
-            ResultSet res = statement.executeQuery("Select USER_USERNAME "
-                                                     + "FROM user"
-            );
+            String sql="SELECT USER_USERNAME FROM user WHERE HABILITADO=1;";
+            ResultSet res = consultas.Select(sql);
             while(res.next()){
             lista.add(
                     new User( 

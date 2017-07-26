@@ -127,9 +127,10 @@ public class GestionarCuentasController implements Initializable {
     @FXML
     void EliminarCuentas(ActionEvent event){ 
       int x;
-      x=consultas.Insert("DELETE  "
-                       + "FROM user Join cotizacion "
-                       + "WHERE ID_USER ='"+tfIDcuenta.getText()+"'");   
+      x=consultas.Insert("UPDATE `user` SET "
+              + "`HABILITADO`=0 "
+              + "WHERE ID_USER="+tfIDcuenta.getText()+";");
+                          
      if(x==0){
              if(String.valueOf(Sesion.CurrentUser.getID_USER()).equals(tfIDcuenta.getText())){
              Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
