@@ -36,6 +36,7 @@ public class User {
     private StringProperty USER_FONO; 
     private IntegerProperty USER_ROL;
    */
+    private SimpleIntegerProperty HABILITADO = new SimpleIntegerProperty();
     private SimpleIntegerProperty ID_USER = new SimpleIntegerProperty();
     private SimpleStringProperty USER_USERNAME = new SimpleStringProperty();
     private SimpleStringProperty USER_PASS = new SimpleStringProperty();
@@ -75,6 +76,12 @@ public class User {
     }
        public int getROL(){
         return USER_ROL.get();
+    }
+      public int getHABILITADO(){
+       return HABILITADO.get();
+    }
+     public void setHABILITADOR(int HABILITADO) {
+        this.HABILITADO.set(HABILITADO);
     }
      public String getUSER_NOMBRE(){
         return USER_NOMBRE.get();
