@@ -46,7 +46,7 @@ public class User {
     private SimpleIntegerProperty USER_ROL = new SimpleIntegerProperty();
     private SimpleIntegerProperty HABILITADO = new SimpleIntegerProperty();
   
-       
+   
     public User(String USER_USERNAME) 
     {
       //this.ID_USER =new SimpleIntegerProperty(ID_USER);
@@ -58,8 +58,7 @@ public class User {
       this.USER_ROL=new SimpleIntegerProperty(USER_ROL);
      */   
     }
-
-
+        
     /*public User() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }*/

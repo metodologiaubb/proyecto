@@ -54,7 +54,7 @@ public class ModificarcuentasController implements Initializable {
     @FXML
     private ComboBox<User> cbCuentaTipo;
     private ObservableList<User> lista;
-
+    
     @FXML
     private JFXTextField tfMirarTipo;
 
