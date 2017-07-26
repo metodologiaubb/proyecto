@@ -29,6 +29,8 @@ public class Sesion {
             CurrentUser.setUSER_APELLIDO(res.getString("USER_APELLIDO"));
             CurrentUser.setUSER_FONO(res.getString("USER_FONO"));
             CurrentUser.setUSER_ROL(res.getInt("USER_ROL"));
+            CurrentUser.setHABILITADOR(res.getInt("HABILITADO"));
+            
                     } catch (SQLException ex) {
             Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
         }

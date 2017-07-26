@@ -20,12 +20,12 @@ public class Autentificar {
     private static ResultSet res;
     public static boolean validar(String username,String password){
         boolean x=false;
-       res= consultas.Select("SELECT ID_USER, USER_USERNAME, USER_PASS, USER_NOMBRE, USER_APELLIDO, USER_FONO, USER_ROL FROM user WHERE USER_USERNAME='"+username+"' LIMIT 1;");
+       res= consultas.Select("SELECT ID_USER, USER_USERNAME, USER_PASS, USER_NOMBRE, USER_APELLIDO, USER_FONO, USER_ROL,HABILITADO FROM user WHERE USER_USERNAME='"+username+"' LIMIT 1;");
         try {
             if(res.first()){
                     System.out.println("encontro ");
                     
-                    if(res.getString("USER_PASS").equals(password)){
+                    if(res.getString("USER_PASS").equals(password)&& res.getBoolean("HABILITADO")){
                         x=true;
                     }
             }

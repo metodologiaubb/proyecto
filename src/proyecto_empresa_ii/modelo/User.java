@@ -36,7 +36,7 @@ public class User {
     private StringProperty USER_FONO; 
     private IntegerProperty USER_ROL;
    */
-    private SimpleIntegerProperty HABILITADO = new SimpleIntegerProperty();
+    
     private SimpleIntegerProperty ID_USER = new SimpleIntegerProperty();
     private SimpleStringProperty USER_USERNAME = new SimpleStringProperty();
     private SimpleStringProperty USER_PASS = new SimpleStringProperty();
@@ -44,6 +44,7 @@ public class User {
     private SimpleStringProperty USER_APELLIDO = new SimpleStringProperty();
     private SimpleStringProperty USER_FONO = new SimpleStringProperty();
     private SimpleIntegerProperty USER_ROL = new SimpleIntegerProperty();
+    private SimpleIntegerProperty HABILITADO = new SimpleIntegerProperty();
   
        
     public User(String USER_USERNAME) 
