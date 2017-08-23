@@ -76,7 +76,7 @@ public class NuevasCuentasController implements Initializable {
  @FXML
    private void GuardarCuenta(ActionEvent event) {
        int x = 2;
-        if(cbCuentaTipo.getValue() == "Administrador"){
+        if(cbCuentaTipo.getValue() == "Administrador" && tfCuentaCuenta.getText().length()!=0  && tfCuentaContraseña.getText().length()!=0 && tfCuentaNombre.getText().length()!=0 && tfCuentaApellidos.getText().length()!=0 && tfCuentaTelefono.getText().length()!=0){
              x=consultas.Insert("INSERT INTO `"
                               + "user`"
                               + "( `USER_USERNAME`,"
@@ -86,8 +86,8 @@ public class NuevasCuentasController implements Initializable {
                               + " `USER_FONO`,"
                               + " `USER_ROL`)VALUES('"+tfCuentaCuenta.getText()+"','"+tfCuentaContraseña.getText()+"','"+tfCuentaNombre.getText()+"','"+tfCuentaApellidos.getText()+"','"+tfCuentaTelefono.getText()+"','"+2+"');");
 
-        }
-         if(cbCuentaTipo.getValue() == "Usuario"){
+        }else{
+         if(cbCuentaTipo.getValue() == "Usuario"&& tfCuentaCuenta.getText().length()!=0  && tfCuentaContraseña.getText().length()!=0 && tfCuentaNombre.getText().length()!=0 && tfCuentaApellidos.getText().length()!=0 && tfCuentaTelefono.getText().length()!=0){
             x=consultas.Insert("INSERT INTO `"
                               + "user`"
                               + "(`USER_USERNAME`,"
@@ -98,7 +98,14 @@ public class NuevasCuentasController implements Initializable {
                               + " `USER_ROL`)VALUES('"+tfCuentaCuenta.getText()+"','"+tfCuentaContraseña.getText()+"','"+tfCuentaNombre.getText()+"','"+tfCuentaApellidos.getText()+"','"+tfCuentaTelefono.getText()+"','"+1+"');");
     
 
+         }else{
+             Alert alertnull = new Alert(Alert.AlertType.INFORMATION);
+             alertnull.setHeaderText("");      
+             alertnull.setTitle("Datos incompletos");
+             alertnull.setContentText("No se han completado todos los campos para crear la cuenta, rellene los campos faltantes");
+             Optional<ButtonType> result2 = alertnull.showAndWait();
          }
+        }
    if (x==0){
              Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
              alert2.setHeaderText("");      
