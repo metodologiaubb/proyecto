@@ -54,7 +54,7 @@
                                                 <Insets bottom="3.0" top="10.0" />
                                              </padding>
                                           </Label>
-                                          <JFXTextField fx:id="filterField1" focusColor="WHITE" layoutX="14.0" layoutY="7.0" maxWidth="194.0" minWidth="161.0" prefHeight="25.0" prefWidth="161.0" promptText="Filtro cotizaciones" styleClass="JFXTextField" stylesheets="@css/css.css" unFocusColor="#9a9494" AnchorPane.leftAnchor="30.0">
+                                          <JFXTextField fx:id="filterField1" focusColor="#4d4b4b" layoutX="14.0" layoutY="7.0" maxWidth="194.0" minWidth="161.0" prefHeight="25.0" prefWidth="161.0" promptText="Filtro cotizaciones" styleClass="JFXTextField" stylesheets="@css/css.css" unFocusColor="#9a9494" AnchorPane.leftAnchor="30.0">
                                              <padding>
                                                 <Insets bottom="5.0" left="30.0" />
                                              </padding>
@@ -504,7 +504,7 @@
                                                 <Insets left="2.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <JFXTextField fx:id="tfDatosNombre" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1">
+                                          <JFXTextField fx:id="tfDatosNombre" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -512,7 +512,7 @@
                                                 <Insets left="10.0" />
                                              </opaqueInsets>
                                           </JFXTextField>
-                                          <JFXTextField fx:id="tfDatosApellidos" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                          <JFXTextField fx:id="tfDatosApellidos" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -520,7 +520,7 @@
                                                 <Insets left="10.0" />
                                              </opaqueInsets>
                                           </JFXTextField>
-                                          <JFXTextField fx:id="tfDatosCuenta" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <JFXTextField fx:id="tfDatosCuenta" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -528,7 +528,7 @@
                                                 <Insets left="10.0" />
                                              </opaqueInsets>
                                           </JFXTextField>
-                                          <JFXTextField fx:id="tfDatosTelefono" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                          <JFXTextField fx:id="tfDatosTelefono" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -549,7 +549,7 @@
                                                 <Font name="System Bold" size="13.0" />
                                              </font>
                                           </Label>
-                                          <JFXTextField fx:id="tfDatospass" editable="false" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                          <JFXTextField fx:id="tfDatospass" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>

@@ -187,6 +187,7 @@ public class FXMLDocumentController implements Initializable {
     private JFXTextField jtfnombre_marca;
     @FXML
     private JFXButton btnGestionarCuenta;
+    @FXML
     private JFXButton btnModificar;
     @FXML
      private JFXButton btnActualizar;
@@ -613,8 +614,6 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                  tfDatosTipoCuenta.setText("Usuario"); 
                  btnCrearCuentas.setVisible(false);
                  btnGestionarCuenta.setVisible(false);
-                 btnModificar.setVisible(false);
-                 
                    }
     }
 
@@ -1048,7 +1047,29 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
     @FXML
    
     void Actualizar(ActionEvent event) {
-
+        int x=8;
+         if (tfDatosCuenta.getText().length()!=0  && tfDatospass.getText().length()!=0 && tfDatosNombre.getText().length()!=0 && tfDatosApellidos.getText().length()!=0 && tfDatosTelefono.getText().length()!=0){ 
+            x=consultas.Insert("UPDATE `user` SET `USER_USERNAME` ='"+tfDatosCuenta.getText()+"',`USER_PASS`='"+tfDatospass.getText()+"',`USER_NOMBRE`='"+tfDatosNombre.getText()+"',`USER_APELLIDO`='"+tfDatosApellidos.getText()+"',`USER_FONO`='"+tfDatosTelefono.getText()+"'WHERE ID_USER='"+Sesion.CurrentUser.getID_USER()+"';");
+            System.out.println("hola");
+            }
+             if(x==8){
+             Alert alertnull = new Alert(Alert.AlertType.INFORMATION);
+             alertnull.setHeaderText("");      
+             alertnull.setTitle("Datos incompletos");
+             alertnull.setContentText("No se han completado todos los campos para modificar los datos, rellene los campos faltantes");
+             Optional<ButtonType> result2 = alertnull.showAndWait();
+            }    
+       
+         
+         if (x==0){
+            Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+             alerta.setHeaderText("");      
+             alerta.setTitle("Datos modificados");
+             alerta.setContentText("La cuenta se ha modificado correctamente");
+             Optional<ButtonType> result = alerta.showAndWait();
+         }
+    }
+         /*else
         try {
 
             Statement statement;
@@ -1075,4 +1096,8 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             }
           
         }
+    */
 }
+    
+
+    
