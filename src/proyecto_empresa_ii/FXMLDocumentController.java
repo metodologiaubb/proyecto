@@ -77,8 +77,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private JFXTextField filterField1;
     @FXML
-    private JFXButton btnguardar_producto;
-    @FXML
     private TableColumn<Cotizacion, Number> colid_cotizacion;
     @FXML
     private TableColumn<Cotizacion, String> colfecha_cotizacion;
@@ -115,8 +113,6 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton btnagregar_marca;
     @FXML
     private JFXButton btnactualizar_producto;
-    @FXML
-    private JFXButton btneliminar_producto;
     @FXML
     private JFXButton botonagregarcot;
     @FXML
@@ -191,7 +187,6 @@ public class FXMLDocumentController implements Initializable {
     private JFXTextField jtfnombre_marca;
     @FXML
     private JFXButton btnGestionarCuenta;
-    @FXML
     private JFXButton btnModificar;
     @FXML
      private JFXButton btnActualizar;
@@ -256,7 +251,7 @@ public class FXMLDocumentController implements Initializable {
     }
     private void actualizarcmbproveedor(){
         listaproveedor=null;
-        cmbproveedor1.setValue(null);
+      //  cmbproveedor1.setValue(null);
         cmbproveedor1.getItems().clear();
         listaproveedor=FXCollections.observableArrayList();
         Proveedor.llenarInformacion(conexion.getConnection(), listaproveedor);
@@ -1051,45 +1046,13 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
     }
     
     @FXML
-    void ventanaModificar(ActionEvent event) {
-    try {
-            FXMLLoader fXMLLoader = new FXMLLoader(
-            getClass().getResource("Modificarcuentas.fxml")
-            );
-            Parent root1 = (Parent) fXMLLoader.load();
-            Stage stage = new Stage();
-            stage.initStyle(StageStyle.UTILITY);
-            stage.setTitle("Modificar cuentas");
-            stage.setScene(new Scene(root1));
-            stage.setResizable(false);
-            /*Evento Dragg and drop*/
-            root1.setOnMousePressed((MouseEvent event1) -> {
-                xOffset = event1.getSceneX();
-                yOffset = event1.getSceneY();
-            });
-            root1.setOnMouseDragged((MouseEvent event1) -> {
-                stage.setX(event1.getScreenX() - xOffset);
-                stage.setY(event1.getScreenY() - yOffset);
-            });
-            /*Fin del evento*/
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(
-                    FXMLDocumentController.class.getName()).log(
-                            Level.SEVERE, null, ex
-                    );
-        }
- 
-    }
-    private Conexion con;
-    @FXML
+   
     void Actualizar(ActionEvent event) {
-         con=new Conexion();
-         con.establecerConexion();
+
         try {
 
             Statement statement;
-            statement = con.getConnection().createStatement();
+            statement = conexion.getConnection().createStatement();
             ResultSet res;
             res=statement.executeQuery("SELECT ID_USER,"
                                              +"USER_USERNAME,"

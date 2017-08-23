@@ -127,6 +127,7 @@ public class ModificarcuentasController implements Initializable {
             tfMirarNombre.setText(res.getString("USER_NOMBRE"));
             tfMirarApellidos.setText(res.getString("USER_APELLIDO"));
             tfMirarTelefono.setText(res.getString("USER_FONO"));
+           
             tfMirarTipo.setText("Usuario");
         
         }else{
@@ -136,6 +137,7 @@ public class ModificarcuentasController implements Initializable {
             tfMirarNombre.setText(res.getString("USER_NOMBRE"));
             tfMirarApellidos.setText(res.getString("USER_APELLIDO"));
             tfMirarTelefono.setText(res.getString("USER_FONO"));
+         
             tfMirarTipo.setText("Administrador");
 
         }
