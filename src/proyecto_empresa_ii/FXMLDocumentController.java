@@ -61,6 +61,7 @@ import javafx.util.converter.LocalDateStringConverter;
 import proyecto_empresa_ii.modelo.Conexion;
 import proyecto_empresa_ii.modelo.Cotizacion;
 import proyecto_empresa_ii.modelo.Marca;
+import proyecto_empresa_ii.modelo.PdfCreator;
 import proyecto_empresa_ii.modelo.Producto;
 import proyecto_empresa_ii.modelo.Proveedor;
 import proyecto_empresa_ii.modelo.consultas;
@@ -119,6 +120,8 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton botoneliminarcot;
     @FXML
     private JFXButton botonagregarcot1;
+    @FXML
+     private JFXButton btnInforme;
     @FXML
     private JFXButton btnprodacot;
     
@@ -499,7 +502,12 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         }
         
     }
-        @FXML
+    @FXML
+    void informe(ActionEvent event) {
+        PdfCreator pdf=new PdfCreator();
+        pdf.reporteCotizacion(wat);
+    }
+    @FXML
     void abrirReclamos(ActionEvent event) {
 
     }

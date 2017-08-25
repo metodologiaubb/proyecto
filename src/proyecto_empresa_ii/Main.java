@@ -58,7 +58,7 @@ public class Main extends Application {
        Scene scene = new Scene(root);
     primaryStage.setScene(scene);        
        primaryStage.show();
-            primaryStage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));//Cierra todo
+       //primaryStage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));//Cierra todo
         
 //        Scene scene = new Scene(root);
         //primaryStage.show();
