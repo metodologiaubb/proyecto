@@ -427,12 +427,12 @@ if (result.get() == ButtonType.OK){
         
         try {
             FXMLLoader fXMLLoader = new FXMLLoader(
-                    getClass().getResource("AddProduct.fxml")
+                    getClass().getResource("Addproductoproveedor.fxml")
             );
             Parent root1 = (Parent) fXMLLoader.load();
             Stage stage = new Stage();
             stage.initStyle(StageStyle.UTILITY);
-            stage.setTitle("Agregar Producto");
+            stage.setTitle("Vincular producto a proveedor");
             stage.setScene(new Scene(root1));
             /*Evento Dragg and drop*/
             root1.setOnMousePressed((MouseEvent event1) -> {
@@ -710,7 +710,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             System.out.println(p);
             Date date = java.sql.Date.valueOf(p.getPentrega());
             try {
-                String query = "UPDATE producto SET PENTREGA= ? where ID_PRODUCTO = ?";
+                String query = "UPDATE producto_proveedor SET PENTREGA= ? where ID_PRODUCTO = ?";
                 preparedStmt = conexion.getConnection().prepareStatement(query);
                 preparedStmt.setDate(1,date);
                 preparedStmt.setInt(2, p.getId_producto());
@@ -743,7 +743,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             System.out.println("Nuevo Nombre: " + data.getNewValue());             
             System.out.println(p);
             try {
-                String query = "UPDATE producto SET VALOR = ? where ID_PRODUCTO = ?";
+                String query = "UPDATE producto_proveedor SET VALOR = ? where ID_PRODUCTO = ?";
                 preparedStmt = conexion.getConnection().prepareStatement(query);
                 preparedStmt.setDouble(1, data.getNewValue());
                 preparedStmt.setInt(2, p.getId_producto());
@@ -797,7 +797,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             Proveedor pro = data.getNewValue();
             p.setProveedor(pro);
         try {
-                String query = "UPDATE producto SET ID_PROVEEDOR = ? where ID_PRODUCTO = ?";
+                String query = "UPDATE producto_proveedor SET ID_PROVEEDOR = ? where ID_PRODUCTO = ?";
                 preparedStmt = conexion.getConnection().prepareStatement(query);
                 preparedStmt.setInt(1, pro.getId_proveedor());
                 preparedStmt.setInt(2, p.getId_producto());

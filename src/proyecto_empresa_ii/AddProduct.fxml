@@ -5,7 +5,6 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,7 +19,7 @@
    <children>
       <HBox alignment="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="417.0" prefWidth="433.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="465.0" prefWidth="407.0">
+            <VBox alignment="CENTER" prefHeight="412.0" prefWidth="407.0">
                <children>
                   <GridPane prefHeight="312.0" prefWidth="407.0">
                      <columnConstraints>
@@ -28,9 +27,6 @@
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="168.0" />
                      </columnConstraints>
                      <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -49,7 +45,7 @@
                         </Label>
                         <JFXTextField fx:id="jtfnombre_producto" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" styleClass="JFXTextField" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <JFXTextField fx:id="jtfum_producto" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" styleClass="JFXTextField" unFocusColor="#979797" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <ComboBox fx:id="cmbproveedor_producto" prefHeight="26.0" prefWidth="210.0" promptText="Elegir proveedor" style="-fx-background-color: #E8E8E8;" stylesheets="@css/bootstrap2.css" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <ComboBox fx:id="cmbmarca_producto" prefHeight="26.0" prefWidth="210.0" promptText="Elegir marca" style="-fx-background-color: #E8E8E8;" stylesheets="@css/bootstrap2.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -57,45 +53,23 @@
                               <Insets left="7.0" />
                            </GridPane.margin>
                         </ComboBox>
-                        <ComboBox fx:id="cmbmarca_producto" prefHeight="26.0" prefWidth="210.0" promptText="Elegir marca" style="-fx-background-color: #E8E8E8;" stylesheets="@css/bootstrap2.css" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <GridPane.margin>
-                              <Insets left="7.0" />
-                           </GridPane.margin>
-                        </ComboBox>
-                        <JFXTextField fx:id="jtfvalor_producto" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" styleClass="JFXTextField" unFocusColor="#808080" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <Label styleClass="Label" text="Unidad de medida:" textFill="WHITE" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></Label>
-                        <Label styleClass="Label" text="Plazo de entrega:" textFill="WHITE" GridPane.rowIndex="3">
+                        <Label styleClass="Label" text="Marca:" textFill="WHITE" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></Label>
-                        <Label styleClass="Label" text="Marca:" textFill="WHITE" GridPane.rowIndex="5">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font></Label>
-                        <Label styleClass="Label" text="Proveedor:" textFill="WHITE" GridPane.rowIndex="4">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font></Label>
-                        <Label styleClass="Label" text="Valor:" textFill="WHITE" GridPane.rowIndex="6">
-                           <font>
-                              <Font name="System Bold" size="13.0" />
-                           </font></Label>
-                        <DatePicker fx:id="date_pentrega" prefHeight="26.0" prefWidth="221.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
-                  <HBox alignment="CENTER" prefHeight="73.0" prefWidth="407.0" spacing="20.0">
+                  <HBox alignment="CENTER" prefHeight="66.0" prefWidth="407.0" spacing="20.0">
                      <children>
                         <JFXButton fx:id="btnguardar_producto" mnemonicParsing="false" onAction="#insertarproducto" prefHeight="23.0" prefWidth="84.0" style="-fx-background-color: #f37005;" stylesheets="@css/css.css" text="Guardar" />
-                        <JFXButton fx:id="btnnuevo_producto" mnemonicParsing="false" onAction="#eventoLimpiar" prefHeight="23.0" prefWidth="84.0" style="-fx-background-color: #f37005;" text="Nuevo" />
+                        <JFXButton fx:id="btnnuevo_producto" mnemonicParsing="false" onAction="#eventoLimpiar" prefHeight="23.0" prefWidth="84.0" style="-fx-background-color: #f37005;" text="Limpiar" />
                      </children>
                   </HBox>
-                  <Label fx:id="mensajesql" textFill="WHITE">
+                  <Label fx:id="mensajesql" textFill="#ff6a00">
                      <font>
                         <Font name="Consolas Bold" size="15.0" />
                      </font>

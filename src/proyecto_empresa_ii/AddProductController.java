@@ -7,16 +7,25 @@ package proyecto_empresa_ii;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import proyecto_empresa_ii.modelo.Conexion;
 import proyecto_empresa_ii.modelo.Marca;
 import proyecto_empresa_ii.modelo.Proveedor;
@@ -35,13 +44,8 @@ public class AddProductController implements Initializable {
     @FXML
     private JFXTextField jtfum_producto;
     @FXML
-    private ComboBox<Proveedor> cmbproveedor_producto;
-    @FXML
     private ComboBox<Marca> cmbmarca_producto;
-    @FXML
     private JFXTextField jtfvalor_producto;
-    @FXML
-    private DatePicker date_pentrega;
     @FXML
     private Label mensajesql;
     @FXML
@@ -53,7 +57,7 @@ public class AddProductController implements Initializable {
         limpiar();
     }
     private ObservableList<Marca>       listamarcas;
-    private ObservableList<Proveedor>   listaproveedor;
+   // private ObservableList<Proveedor>   listaproveedor;
     Conexion conexion;
     String date1;
     /**
@@ -61,40 +65,40 @@ public class AddProductController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        conexion = new Conexion();
+                 conexion = new Conexion();
         conexion.establecerConexion();
-        listamarcas     =FXCollections.observableArrayList();
-        listaproveedor  =FXCollections.observableArrayList();
-        Proveedor.llenarInformacion (conexion.getConnection(), listaproveedor);
-        Marca.llenarInformacion     (conexion.getConnection(), listamarcas);
-        Proveedor.autocompletar(cmbproveedor_producto, listaproveedor);
-        Marca.autocompletar         (cmbmarca_producto, listamarcas);
+llename();
     }    
     
-       private void date1() {
-         String repo=date_pentrega.getValue().toString();
-   String[] partes = repo.split("-");
-   date1=partes[0]+partes[1]+partes[2];
-    }
+
     
     private void limpiar(){
         jtfnombre_producto.setText(null);
-        date_pentrega.setValue(null);
+    //    date_pentrega.setValue(null);
         jtfum_producto.setText(null);
         cmbmarca_producto.setValue(null);
-        cmbproveedor_producto.setValue(null);
-        jtfvalor_producto.setText(null);    
+        cmbmarca_producto.getItems().clear();
+        //cmbproveedor_producto.setValue(null);
+      //  jtfvalor_producto.setText(null);
+      llename();
     };
-
-    @FXML
-    private void insertarproducto(ActionEvent event) {int x;
-        date1();
-        x=consultas.Insert("INSERT INTO `producto`(`NOMBRE_PRODUCTO`, `U_MEDIDA`, `PENTREGA`, `ID_PROVEEDOR`, `ID_MARCA`, `VALOR`) VALUES ('"+jtfnombre_producto.getText()+"','"+jtfum_producto.getText()+"','"+date1+"','"+cmbproveedor_producto.getValue().getId_proveedor()+"','"+cmbmarca_producto.getValue().getId_marca()+"','"+jtfvalor_producto.getText()+"');");
-       if(x==0){
-    mensajesql.setText("Producto ingresado exitosamente");
-    }
-    
-    
+public void llename(){
+   
+        listamarcas     =FXCollections.observableArrayList();
+    //    listaproveedor  =FXCollections.observableArrayList();
+    //    Proveedor.llenarInformacion (conexion.getConnection(), listaproveedor);
+        Marca.llenarInformacion     (conexion.getConnection(), listamarcas);
+   //     Proveedor.autocompletar(cmbproveedor_producto, listaproveedor);
+        Marca.autocompletar         (cmbmarca_producto, listamarcas);
     
 }
+    @FXML
+    private void insertarproducto(ActionEvent event) {int x;
+      //  date1();
+     x=consultas.Insert("INSERT INTO `producto`(`NOMBRE_PRODUCTO`,`U_MEDIDA`, `ID_MARCA`) VALUES ('"+jtfnombre_producto.getText()+"','"+jtfum_producto.getText()+"','"+cmbmarca_producto.getValue().getId_marca()+"');");
+        if(x==0){
+    mensajesql.setText("Producto ingresado exitosamente");
+    }}
+
+   
 }

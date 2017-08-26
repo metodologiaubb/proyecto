@@ -27,10 +27,11 @@ public class PdfCreator {
             Map cotiza=new HashMap();
             cotiza.put("cotizacion", Cotizacion);
             JasperPrint p= JasperFillManager.fillReport(cotizacion, cotiza,con.getConnection());
-            JasperViewer jv=new JasperViewer(p);
+            JasperViewer jv=new JasperViewer(p,false);
             jv.setTitle("Informe Cotización");
             jv.setVisible(true);
             jv.addWindowListener(new java.awt.event.WindowAdapter() {
+                
             @Override
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 
