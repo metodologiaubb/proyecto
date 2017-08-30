@@ -47,15 +47,15 @@ public class addproveedorcontroller implements Initializable {
     private ComboBox<Proveedor> cmbproveedor1;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
+       
+    }
 
     @FXML
     private void insertarproducto(ActionEvent event) {
         
           int x=5;
           if(jtfnombre_proveedor.getText().length()!=0 && jtftelefono_proveedor.getText().length()!=0 && jtfn_pro_proveedor.getText().length()!=0){
-  x=consultas.Insert("INSERT INTO `proveedor`(`NOMBRE_PROVEEDOR`, `DCTO_PROVEEDOR`, `C_PRO_DCTO`) VALUES ('"+jtfnombre_proveedor.getText()+"','"+jtftelefono_proveedor.getText()+"','"+jtfn_pro_proveedor.getText()+"')");
+  x=consultas.Insert("INSERT INTO `proveedor`(`NOMBRE_PROVEEDOR`, `TELEFONO`, `C_PRO_DCTO`) VALUES ('"+jtfnombre_proveedor.getText()+"','"+jtftelefono_proveedor.getText()+"','"+jtfn_pro_proveedor.getText()+"')");
           } if(x==0){
     mensajesql.setText("Proveedor ingresado ");
      listaproveedor=null;

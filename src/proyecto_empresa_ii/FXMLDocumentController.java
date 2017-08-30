@@ -398,7 +398,7 @@ actualizarcmbmarca();
         if(jtfnombre_proveedor.getText().length()==0 && jtftelefono_proveedor.getText().length()==0 && jtf_c_prod_dcto_proveedor.getText().length()==0 && jtfid_proveedor.getText().length()==0){
            
         }else{
-  x=consultas.Insert("UPDATE `proveedor` SET `NOMBRE_PROVEEDOR`='"+jtfnombre_proveedor.getText()+"',`DCTO_PROVEEDOR`='"+jtftelefono_proveedor.getText()+"',`C_PRO_DCTO`='"+jtf_c_prod_dcto_proveedor.getText()+"' WHERE ID_PROVEEDOR='"+cmbproveedor1.getValue().getId_proveedor()+"';"); 
+  x=consultas.Insert("UPDATE `proveedor` SET `NOMBRE_PROVEEDOR`='"+jtfnombre_proveedor.getText()+"',`TELEFONO`='"+jtftelefono_proveedor.getText()+"',`C_PRO_DCTO`='"+jtf_c_prod_dcto_proveedor.getText()+"' WHERE ID_PROVEEDOR='"+cmbproveedor1.getValue().getId_proveedor()+"';"); 
         }
         
         if(x==0){
@@ -1146,6 +1146,4 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         }
     */
 }
-    
 
-    
