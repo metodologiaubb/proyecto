@@ -110,6 +110,12 @@
 				</textElement>
 				<text><![CDATA[NOMBRE DE PROVEEDOR]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="60" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="29" width="555" height="1"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
@@ -149,6 +155,9 @@
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMBRE_PROVEEDOR}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="30" width="555" height="1"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
