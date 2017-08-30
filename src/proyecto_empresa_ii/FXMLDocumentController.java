@@ -24,6 +24,7 @@ import java.util.logging.Logger;
 import java.lang.Integer;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.format.DateTimeFormatter;
 import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -128,7 +129,7 @@ public class FXMLDocumentController implements Initializable {
     /*-----------------------tab2----------------------*/
     @FXML
     private ComboBox<Proveedor> cmbproveedor1;
-        private ObservableList<Marca>       listamarcas1;
+    private ObservableList<Marca>       listamarcas1;
     private ObservableList<Proveedor>   listaproveedor1;
     @FXML
     private JFXButton btneditarthisproveedor;
@@ -166,7 +167,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private JFXButton btneliminar_marca;
     @FXML
-    private ComboBox<Marca> cmbmarca;
+    private  ComboBox<Marca> cmbmarca;
     
     
     //-------------------------------------tab 3------------------------------
@@ -204,11 +205,11 @@ public class FXMLDocumentController implements Initializable {
     private void newmarca(ActionEvent event) {
  limpialistamarca();
         try {
-            FXMLLoader fXMLLoader = new FXMLLoader(
-                    getClass().getResource("addmarca.fxml")
-            );
-            Parent root1 = (Parent) fXMLLoader.load();
             Stage stage1 = new Stage();
+            FXMLLoader fXMLLoader = new FXMLLoader();
+            Parent root1 = (Parent) fXMLLoader.load(getClass().getResource("addmarca.fxml").openStream());
+            addmarcacontroller marcacontroller=(addmarcacontroller)fXMLLoader.getController();
+            marcacontroller.setcomobox(cmbmarca,listamarcas1);
             stage1.initStyle(StageStyle.UTILITY);
             stage1.setTitle("Agregar Marca");
             stage1.setScene(new Scene(root1));
@@ -261,6 +262,7 @@ public class FXMLDocumentController implements Initializable {
         Proveedor.llenarInformacion(conexion.getConnection(), listaproveedor);
         Proveedor.autocompletar(cmbproveedor1, listaproveedor);
     }
+    
     
     @FXML
     private void limpialistamarca()  {
@@ -356,11 +358,11 @@ actualizarcmbmarca();
     private void addnewproveedor(ActionEvent event) {
         limpialistaproveedor();
          try {
-            FXMLLoader fXMLLoader = new FXMLLoader(
-                    getClass().getResource("addproveedor.fxml")
-            );
-            Parent root1 = (Parent) fXMLLoader.load();
-            Stage stage1 = new Stage();
+             Stage stage1 = new Stage();
+            FXMLLoader fXMLLoader = new FXMLLoader();
+            Parent root1 = (Parent) fXMLLoader.load(getClass().getResource("addproveedor.fxml").openStream());
+            addproveedorcontroller proveedorcontroller=(addproveedorcontroller)fXMLLoader.getController();
+            proveedorcontroller.setlistabaox(cmbproveedor1, listaproveedor);
             stage1.initStyle(StageStyle.UTILITY);
             stage1.setTitle("Agregar Proveedor");
             stage1.setScene(new Scene(root1));
@@ -536,7 +538,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
     
     
     
-    private Conexion                    conexion;
+    public static Conexion                    conexion;
     private ObservableList<Marca>       listamarcas;
     private ObservableList<Proveedor>   listaproveedor;
     private ObservableList<Producto>    listaproductos;
@@ -916,6 +918,10 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
+                String pattern = "dd/MM/yyyy";
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+                LocalDateStringConverter converter = new LocalDateStringConverter();
+                String formattedString = producto.getPentrega().format(formatter);
 
                 // Compare first name and last name of every person with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
@@ -926,7 +932,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                     return true; //filltro por marca
                 }else if(producto.getProveedor().toString().toLowerCase().contains(lowerCaseFilter)){
                     return true; //fitro por proveedor
-                }else if(String.valueOf(producto.getPentrega()).toLowerCase().contains(lowerCaseFilter)){
+                }else if(formattedString.toLowerCase().contains(lowerCaseFilter)){
                     return true; //filtro por fecha de entrega
                 }else if(producto.getU_medida().toLowerCase().contains(lowerCaseFilter)){
                     return true; // filtro por unidad de medida

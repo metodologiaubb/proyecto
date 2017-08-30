@@ -9,10 +9,15 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import static proyecto_empresa_ii.FXMLDocumentController.conexion;
+import proyecto_empresa_ii.modelo.Proveedor;
 import proyecto_empresa_ii.modelo.consultas;
 
 /**
@@ -38,6 +43,8 @@ public class addproveedorcontroller implements Initializable {
     /**
      * Initializes the controller class.
      */
+    private ObservableList<Proveedor>   listaproveedor;
+    private ComboBox<Proveedor> cmbproveedor1;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -50,6 +57,13 @@ public class addproveedorcontroller implements Initializable {
   x=consultas.Insert("INSERT INTO `proveedor`(`NOMBRE_PROVEEDOR`, `DCTO_PROVEEDOR`, `C_PRO_DCTO`) VALUES ('"+jtfnombre_proveedor.getText()+"','"+jtfdcto_proveedor.getText()+"','"+jtfn_pro_proveedor.getText()+"')");
                if(x==0){
     mensajesql.setText("Proveedor ingresado ");
+     listaproveedor=null;
+      //  cmbproveedor1.setValue(null);
+        cmbproveedor1.getItems().clear();
+        listaproveedor=FXCollections.observableArrayList();
+        Proveedor.llenarInformacion(conexion.getConnection(), listaproveedor);
+        Proveedor.autocompletar(cmbproveedor1, listaproveedor);
+        limpiar();
     }
     }
 
@@ -64,6 +78,10 @@ public class addproveedorcontroller implements Initializable {
         jtfn_pro_proveedor.setText(null);
         
         
+    }
+    public void setlistabaox(ComboBox<Proveedor> cmbproveedor,ObservableList<Proveedor>  listaproveedo){
+        listaproveedor=listaproveedo;
+        cmbproveedor1=cmbproveedor;
     }
     
 }

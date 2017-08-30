@@ -9,10 +9,15 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import static proyecto_empresa_ii.FXMLDocumentController.conexion;
+import proyecto_empresa_ii.modelo.Marca;
 import proyecto_empresa_ii.modelo.consultas;
 
 /**
@@ -34,6 +39,8 @@ public class addmarcacontroller implements Initializable {
     /**
      * Initializes the controller class.
      */
+    private  ComboBox<Marca> cmbmarca;
+    private ObservableList<Marca>       listamarcas1;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      
@@ -47,8 +54,20 @@ public class addmarcacontroller implements Initializable {
   x=consultas.Insert("INSERT INTO `marca`(`NOMBRE_MARCA`) VALUES ('"+tfwnombre_marca.getText()+"');");
                if(x==0){
     mensajesql.setText("Marca ingresada");
+    listamarcas1=null;
+       cmbmarca.setValue(null);
+  cmbmarca.getItems().clear();
+    listamarcas1  =FXCollections.observableArrayList();
+           Marca.llenarInformacion(conexion.getConnection(), listamarcas1);
+            Marca.autocompletar(cmbmarca, listamarcas1);
+            tfwnombre_marca.setText(null); 
     }
+               
         
+    }
+    public void setcomobox(ComboBox<Marca> cmbmarc,ObservableList<Marca> listamarca){
+               cmbmarca=cmbmarc;
+               listamarcas1=listamarca;
     }
 
     @FXML
