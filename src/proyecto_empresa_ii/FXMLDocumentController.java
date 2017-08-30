@@ -140,7 +140,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private JFXTextField jtf_c_prod_dcto_proveedor;
     @FXML
-    private JFXTextField jtfdcto_proveedor;
+    private JFXTextField jtftelefono_proveedor;
     @FXML
     private JFXButton btnlimpiarcamposproveedor;
     @FXML
@@ -234,7 +234,7 @@ public class FXMLDocumentController implements Initializable {
                     );
         } 
     }
-
+    
     @FXML
     private void editarmarca(ActionEvent event) {
         int x=5;
@@ -313,7 +313,7 @@ actualizarcmbmarca();
     private void llenarproveedorlist(ActionEvent event) {
      jtfid_proveedor.setText(cmbproveedor1.getValue().getId_proveedor()+"");
      jtfnombre_proveedor.setText(cmbproveedor1.getValue().getNombre_proveedor());
-     jtfdcto_proveedor.setText(cmbproveedor1.getValue().getDcto_proveedor()+"");
+     jtftelefono_proveedor.setText(cmbproveedor1.getValue().getDcto_proveedor()+"");
      jtf_c_prod_dcto_proveedor.setText(cmbproveedor1.getValue().getC_pro_dcto()+"");
     }
     @FXML
@@ -353,7 +353,7 @@ actualizarcmbmarca();
     private void limpialistaproveedor() {
      jtfid_proveedor.setText(null);
      jtfnombre_proveedor.setText(null);
-     jtfdcto_proveedor.setText(null);
+     jtftelefono_proveedor.setText(null);
      jtf_c_prod_dcto_proveedor.setText(null);
      mensajesql.setText(null);
      actualizarcmbproveedor();
@@ -395,10 +395,10 @@ actualizarcmbmarca();
       @FXML
     private void editarproveedor(ActionEvent event) {
         int x=5;
-        if(jtfnombre_proveedor.getText().length()==0 && jtfdcto_proveedor.getText().length()==0 && jtf_c_prod_dcto_proveedor.getText().length()==0 && jtfid_proveedor.getText().length()==0){
+        if(jtfnombre_proveedor.getText().length()==0 && jtftelefono_proveedor.getText().length()==0 && jtf_c_prod_dcto_proveedor.getText().length()==0 && jtfid_proveedor.getText().length()==0){
            
         }else{
-  x=consultas.Insert("UPDATE `proveedor` SET `NOMBRE_PROVEEDOR`='"+jtfnombre_proveedor.getText()+"',`DCTO_PROVEEDOR`='"+jtfdcto_proveedor.getText()+"',`C_PRO_DCTO`='"+jtf_c_prod_dcto_proveedor.getText()+"' WHERE ID_PROVEEDOR='"+cmbproveedor1.getValue().getId_proveedor()+"';"); 
+  x=consultas.Insert("UPDATE `proveedor` SET `NOMBRE_PROVEEDOR`='"+jtfnombre_proveedor.getText()+"',`DCTO_PROVEEDOR`='"+jtftelefono_proveedor.getText()+"',`C_PRO_DCTO`='"+jtf_c_prod_dcto_proveedor.getText()+"' WHERE ID_PROVEEDOR='"+cmbproveedor1.getValue().getId_proveedor()+"';"); 
         }
         
         if(x==0){

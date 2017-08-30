@@ -30,7 +30,7 @@ public class addproveedorcontroller implements Initializable {
     @FXML
     private JFXTextField jtfnombre_proveedor;
     @FXML
-    private JFXTextField jtfdcto_proveedor;
+    private JFXTextField jtftelefono_proveedor;
     @FXML
     private JFXTextField jtfn_pro_proveedor;
     @FXML
@@ -54,8 +54,8 @@ public class addproveedorcontroller implements Initializable {
     private void insertarproducto(ActionEvent event) {
         
           int x=5;
-          if(jtfnombre_proveedor.getText().length()!=0 && jtfdcto_proveedor.getText().length()!=0 && jtfn_pro_proveedor.getText().length()!=0){
-  x=consultas.Insert("INSERT INTO `proveedor`(`NOMBRE_PROVEEDOR`, `DCTO_PROVEEDOR`, `C_PRO_DCTO`) VALUES ('"+jtfnombre_proveedor.getText()+"','"+jtfdcto_proveedor.getText()+"','"+jtfn_pro_proveedor.getText()+"')");
+          if(jtfnombre_proveedor.getText().length()!=0 && jtftelefono_proveedor.getText().length()!=0 && jtfn_pro_proveedor.getText().length()!=0){
+  x=consultas.Insert("INSERT INTO `proveedor`(`NOMBRE_PROVEEDOR`, `DCTO_PROVEEDOR`, `C_PRO_DCTO`) VALUES ('"+jtfnombre_proveedor.getText()+"','"+jtftelefono_proveedor.getText()+"','"+jtfn_pro_proveedor.getText()+"')");
           } if(x==0){
     mensajesql.setText("Proveedor ingresado ");
      listaproveedor=null;
@@ -77,7 +77,7 @@ public class addproveedorcontroller implements Initializable {
     }
     private void limpiar(){
         jtfnombre_proveedor.setText(null);
-        jtfdcto_proveedor.setText(null);
+        jtftelefono_proveedor.setText(null);
         jtfn_pro_proveedor.setText(null);
         
         
