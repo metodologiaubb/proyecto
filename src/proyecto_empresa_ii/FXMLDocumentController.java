@@ -237,13 +237,18 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void editarmarca(ActionEvent event) {
-        int x;
+        int x=5;
+   if(jtfnombre_marca.getText().length()==0 && jtfid_marca.getText().length()==0){
+   
+   }else{     
   x=consultas.Insert("UPDATE `marca` SET `NOMBRE_MARCA`='"+jtfnombre_marca.getText()+"' WHERE ID_MARCA='"+cmbmarca.getValue().getId_marca()+"';"); 
-  if(x==0){
+   }
+   
+   if(x==0){
     mensajesql.setText("Marca '"+cmbmarca.getValue().getId_marca()+"' editada exitosamente");
   actualizarcmbmarca();
     }
-        
+      
     }
 
     private void actualizarcmbmarca(){
@@ -388,10 +393,15 @@ actualizarcmbmarca();
         } 
     }
       @FXML
-    private void editarproveedor(ActionEvent event) {int x;
-    
+    private void editarproveedor(ActionEvent event) {
+        int x=5;
+        if(jtfnombre_proveedor.getText().length()==0 && jtfdcto_proveedor.getText().length()==0 && jtf_c_prod_dcto_proveedor.getText().length()==0 && jtfid_proveedor.getText().length()==0){
+           
+        }else{
   x=consultas.Insert("UPDATE `proveedor` SET `NOMBRE_PROVEEDOR`='"+jtfnombre_proveedor.getText()+"',`DCTO_PROVEEDOR`='"+jtfdcto_proveedor.getText()+"',`C_PRO_DCTO`='"+jtf_c_prod_dcto_proveedor.getText()+"' WHERE ID_PROVEEDOR='"+cmbproveedor1.getValue().getId_proveedor()+"';"); 
-  if(x==0){
+        }
+        
+        if(x==0){
     mensajesql.setText("Proveedor '"+cmbproveedor1.getValue().getId_proveedor()+"' editado exitosamente");
       actualizarcmbproveedor();
     }
