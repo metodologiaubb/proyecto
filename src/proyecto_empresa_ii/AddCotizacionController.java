@@ -53,11 +53,18 @@ public class AddCotizacionController {
     }
 
     @FXML
-    private void insertarcotizacion(ActionEvent event) {int x;
-    
+    private void insertarcotizacion(ActionEvent event) {
+        
+        int x=5;
+        if(txtdescripcion_cotizacion.getText().length()!=0){
          x=consultas.Insert("INSERT INTO `cotizacion`(`ID_CREADOR`, `DESCRIPCION`) VALUES ('"+Sesion.CurrentUser.getID_USER()+"','"+txtdescripcion_cotizacion.getText()+"');");
-       if(x==0){
+        }
+        
+        if(x==0){
     mensajesql.setText("Cotización ingresada exitosamente");
+        }else{
+        mensajesql.setText("Complete el campo de texto");
+        }
     }
     
-}}
+}
