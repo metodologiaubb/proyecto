@@ -125,7 +125,7 @@ public class Producto{
                                       + "prc.U_MEDIDA,prc.PENTREGA ,"
                                       + "prc.ID_PROVEEDOR"
                                       + ",prc.ID_MARCA,prc.VALOR,prv."
-                                      + "NOMBRE_PROVEEDOR,prv.DCTO_PROVEEDOR,"
+                                      + "NOMBRE_PROVEEDOR,prv.TELEFONO,"
                                       + "prv.C_PRO_DCTO,mr.NOMBRE_MARCA"
                                       + " FROM Producto_Com prc,proveedor prv,"
                                       + "marca mr,pertenece per "
@@ -146,7 +146,7 @@ public class Producto{
                                     new Proveedor(
                                             resultado.getInt("prc.ID_PROVEEDOR"), 
                                             resultado.getString("prv.NOMBRE_PROVEEDOR"), 
-                                            resultado.getInt("prv.DCTO_PROVEEDOR"), 
+                                            resultado.getInt("prv.TELEFONO"), 
                                             resultado.getInt("prv.C_PRO_DCTO")
                                     ),
                                     new Marca(
