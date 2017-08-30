@@ -120,48 +120,40 @@ public class Producto{
                 Statement statement = connection.createStatement();
                 ResultSet resultado =statement.executeQuery(
                               "SELECT "
-+"A.ID_PRODUCTO, "
-+"A.NOMBRE_PRODUCTO, "
-+"A.U_MEDIDA, "
-+"PP.PENTREGA, "
-+"B.ID_PROVEEDOR, "
-+"A.ID_MARCA, "
-+"PP.VALOR, "
-+"B.NOMBRE_PROVEEDOR, "
-+"B.DCTO_PROVEEDOR, "
-+"B.C_PRO_DCTO, "
-+"C.NOMBRE_MARCA "
-+"FROM producto A "
-+"INNER JOIN producto_proveedor PP "
-+"ON (A.ID_PRODUCTO=PP.ID_PRODUCTO) "
-+"INNER JOIN proveedor B "
-+"ON (PP.ID_PROVEEDOR=B.ID_PROVEEDOR) "
-+"INNER JOIN marca C "
-+"ON (A.ID_MARCA=C.ID_MARCA) "
-+"INNER JOIN pertenece D "
-+"ON(A.ID_PRODUCTO=D.ID_PRODUCT) "
-+"INNER JOIN cotizacion E "
-+"ON(D.ID_COT=E.ID_COT) "
-+"AND D.ID_COT="+n
+                                      + "prc.ID_PRODUCTO,"
+                                      + "prc.NOMBRE_PRODUCTO,"
+                                      + "prc.U_MEDIDA,prc.PENTREGA ,"
+                                      + "prc.ID_PROVEEDOR"
+                                      + ",prc.ID_MARCA,prc.VALOR,prv."
+                                      + "NOMBRE_PROVEEDOR,prv.DCTO_PROVEEDOR,"
+                                      + "prv.C_PRO_DCTO,mr.NOMBRE_MARCA"
+                                      + " FROM Producto_Com prc,proveedor prv,"
+                                      + "marca mr,pertenece per "
+                                      + "WHERE prc.ID_PROVEEDOR="
+                                      + "prv.ID_PROVEEDOR AND "
+                                      + "prc.ID_MARCA=mr.ID_MARCA "
+                                      + "AND prc.ID_PRODUCTO_PROVEEDOR="
+                                      + "per.ID_PRODUCT_PRO"
+                                      + " AND per.ID_COT="+n
                 );
                 while (resultado.next()) {        
                     lista.add(
                             new Producto(
-                                    resultado.getInt("A.ID_PRODUCTO"), 
-                                    resultado.getString("A.NOMBRE_PRODUCTO"), 
-                                    resultado.getString("A.U_MEDIDA"), 
-                                    resultado.getDate("PP.PENTREGA").toLocalDate(),
+                                    resultado.getInt("prc.ID_PRODUCTO"), 
+                                    resultado.getString("prc.NOMBRE_PRODUCTO"), 
+                                    resultado.getString("prc.U_MEDIDA"), 
+                                    resultado.getDate("prc.PENTREGA").toLocalDate(),
                                     new Proveedor(
-                                            resultado.getInt("B.ID_PROVEEDOR"), 
-                                            resultado.getString("B.NOMBRE_PROVEEDOR"), 
-                                            resultado.getInt("B.DCTO_PROVEEDOR"), 
-                                            resultado.getInt("B.C_PRO_DCTO")
+                                            resultado.getInt("prc.ID_PROVEEDOR"), 
+                                            resultado.getString("prv.NOMBRE_PROVEEDOR"), 
+                                            resultado.getInt("prv.DCTO_PROVEEDOR"), 
+                                            resultado.getInt("prv.C_PRO_DCTO")
                                     ),
                                     new Marca(
-                                            resultado.getInt("A.ID_MARCA"), 
-                                            resultado.getString("C.NOMBRE_MARCA")
+                                            resultado.getInt("prc.ID_MARCA"), 
+                                            resultado.getString("mr.NOMBRE_MARCA")
                                     ),
-                                    resultado.getInt("PP.VALOR")
+                                    resultado.getInt("prc.VALOR")
                             )
                     );
                     
@@ -176,49 +168,33 @@ public class Producto{
                 ObservableList<Producto> lista){
             try {
                 ResultSet resultado =consultas.Select(
-                                                    "SELECT "
-+"A.ID_PRODUCTO, "
-+"A.NOMBRE_PRODUCTO, "
-+"A.U_MEDIDA, "
-+"PP.PENTREGA, "
-+"B.ID_PROVEEDOR, "
-+"A.ID_MARCA, "
-+"PP.VALOR, "
-+"B.NOMBRE_PROVEEDOR, "
-+"B.DCTO_PROVEEDOR, "
-+"B.C_PRO_DCTO, "
-+"C.NOMBRE_MARCA "
-+"FROM producto A "
-+"INNER JOIN producto_proveedor PP "
-+"ON (A.ID_PRODUCTO=PP.ID_PRODUCTO) "
-+"INNER JOIN proveedor B "
-+"ON (PP.ID_PROVEEDOR=B.ID_PROVEEDOR) "
-+"INNER JOIN marca C "
-+"ON (A.ID_MARCA=C.ID_MARCA) "
-+"INNER JOIN pertenece D "
-+"on(A.ID_PRODUCTO=D.ID_PRODUCT) "
-+"INNER JOIN cotizacion E "
-+"on(D.ID_COT=E.ID_COT) "
+                   "SELECT "
++ "prc.ID_PRODUCTO,prc.NOMBRE_PRODUCTO,"
++ "prc.U_MEDIDA,prc.PENTREGA,prc.ID_PROVEEDOR ,"
++ "prc.ID_MARCA,prc.VALOR,prv.NOMBRE_PROVEEDOR,"
++ "prv.DCTO_PROVEEDOR,prv.C_PRO_DCTO,mr.NOMBRE_MARCA "
++ "FROM Producto_Com prc,proveedor prv,marca mr WHERE "
++ "prc.ID_PROVEEDOR=prv.ID_PROVEEDOR AND prc.ID_MARCA=mr.ID_MARCA; "
 
                 );
-                while (resultado.next()) {        
+             while (resultado.next()) {        
                     lista.add(
                             new Producto(
-                                    resultado.getInt("A.ID_PRODUCTO"), 
-                                    resultado.getString("A.NOMBRE_PRODUCTO"), 
-                                    resultado.getString("A.U_MEDIDA"), 
-                                    resultado.getDate("PP.PENTREGA").toLocalDate(),
+                                    resultado.getInt("prc.ID_PRODUCTO"), 
+                                    resultado.getString("prc.NOMBRE_PRODUCTO"), 
+                                    resultado.getString("prc.U_MEDIDA"), 
+                                    resultado.getDate("prc.PENTREGA").toLocalDate(),
                                     new Proveedor(
-                                            resultado.getInt("B.ID_PROVEEDOR"), 
-                                            resultado.getString("B.NOMBRE_PROVEEDOR"), 
-                                            resultado.getInt("B.DCTO_PROVEEDOR"), 
-                                            resultado.getInt("B.C_PRO_DCTO")
+                                            resultado.getInt("prc.ID_PROVEEDOR"), 
+                                            resultado.getString("prv.NOMBRE_PROVEEDOR"), 
+                                            resultado.getInt("prv.DCTO_PROVEEDOR"), 
+                                            resultado.getInt("prv.C_PRO_DCTO")
                                     ),
                                     new Marca(
-                                            resultado.getInt("A.ID_MARCA"), 
-                                            resultado.getString("C.NOMBRE_MARCA")
+                                            resultado.getInt("prc.ID_MARCA"), 
+                                            resultado.getString("mr.NOMBRE_MARCA")
                                     ),
-                                    resultado.getInt("PP.VALOR")
+                                    resultado.getInt("prc.VALOR")
                             )
                     );
                     
