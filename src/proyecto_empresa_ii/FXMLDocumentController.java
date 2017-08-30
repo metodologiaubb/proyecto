@@ -964,14 +964,14 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
 
                 if (String.valueOf(cotizacion.getId_cot()).toLowerCase().contains(lowerCaseFilter)) {
                     return true; // filtro por id
-                } else if (cotizacion.getFecha_cot().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; //filltro por fecha
+//                } else if (cotizacion.getFecha_cot().toLowerCase().contains(lowerCaseFilter)) {
+//                    return true; //filltro por fecha
                 }else if(cotizacion.getDescripcion().toLowerCase().contains(lowerCaseFilter)){
                     return true; //fitro por descrpción
-                }else if(String.valueOf(cotizacion.getId_creador()).toLowerCase().contains(lowerCaseFilter)){
-                    return true; //filtro por id proveedor
-                }else if(String.valueOf(cotizacion.getN_productos()).toLowerCase().contains(lowerCaseFilter)){
-                    return true; // filtro por numero de productos
+//                }else if(String.valueOf(cotizacion.getId_creador()).toLowerCase().contains(lowerCaseFilter)){
+//                    return true; //filtro por id proveedor
+//                }else if(String.valueOf(cotizacion.getN_productos()).toLowerCase().contains(lowerCaseFilter)){
+//                    return true; // filtro por numero de productos
                 
                 }return false; // Does not match.
             });
