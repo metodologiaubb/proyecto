@@ -32,6 +32,7 @@ import proyecto_empresa_ii.modelo.Conexion;
 import proyecto_empresa_ii.modelo.Cotizacion;
 import proyecto_empresa_ii.modelo.Producto;
 import proyecto_empresa_ii.modelo.Producto1;
+import proyecto_empresa_ii.modelo.Producto_Proveedor;
 import proyecto_empresa_ii.modelo.consultas;
 
 /**
@@ -44,7 +45,7 @@ public class AddproductcotizacionController implements Initializable {
     @FXML
     private ComboBox<Cotizacion> cmbcot;
     @FXML
-    private ComboBox <Producto1> cmbproducto;
+    private ComboBox <Producto_Proveedor> cmbproducto;
     @FXML
     private JFXButton btninsertar;
     @FXML
@@ -52,26 +53,22 @@ public class AddproductcotizacionController implements Initializable {
     @FXML
     private Label mensajesql;
     private ObservableList<Cotizacion>listacot;
-    public ObservableList<Producto1> listaproducto;
-    Conexion conexion;
+    public ObservableList<Producto_Proveedor> listaproducto;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        conexion = new Conexion();
-        conexion.establecerConexion();
-     
         listaproducto=FXCollections.observableArrayList();
         listacot=FXCollections.observableArrayList();
     Cotizacion.llenarInformacion (listacot);
         try {
-            Producto1.llenarproducto(listaproducto);
+            Producto_Proveedor.llenarproducto(listaproducto);
         } catch (SQLException ex) {
             Logger.getLogger(AddproductcotizacionController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-Producto.autocompletar1(cmbproducto, listaproducto);
+Producto_Proveedor.autocompletar(cmbproducto, listaproducto);
 Cotizacion.autocompletar(cmbcot, listacot);
     }
 
@@ -79,7 +76,7 @@ Cotizacion.autocompletar(cmbcot, listacot);
     @FXML
     private void insertarprodencot(ActionEvent event) {
     int x;
-  x=consultas.Insert("INSERT INTO `pertenece`(`ID_COT`, `ID_PRODUCT`) VALUES ('"+cmbcot.getValue().getId_cot()+"','"+cmbproducto.getValue().getID_PRODUCTO()+"')");
+  x=consultas.Insert("INSERT INTO `pertenece`(`ID_COT`, `ID_PRODUCT_PRO`) VALUES ('"+cmbcot.getValue().getId_cot()+"','"+cmbproducto.getValue().getID_PRODUCTO_PROVEEDOR()+"')");
                if(x==0){
     mensajesql.setText("Producto ingresado a cotización exitosamente");
     }}
