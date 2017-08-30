@@ -53,9 +53,10 @@ public class addproveedorcontroller implements Initializable {
     @FXML
     private void insertarproducto(ActionEvent event) {
         
-          int x;
+          int x=5;
+          if(jtfnombre_proveedor.getText().length()!=0 && jtfdcto_proveedor.getText().length()!=0 && jtfn_pro_proveedor.getText().length()!=0){
   x=consultas.Insert("INSERT INTO `proveedor`(`NOMBRE_PROVEEDOR`, `DCTO_PROVEEDOR`, `C_PRO_DCTO`) VALUES ('"+jtfnombre_proveedor.getText()+"','"+jtfdcto_proveedor.getText()+"','"+jtfn_pro_proveedor.getText()+"')");
-               if(x==0){
+          } if(x==0){
     mensajesql.setText("Proveedor ingresado ");
      listaproveedor=null;
       //  cmbproveedor1.setValue(null);
@@ -64,7 +65,9 @@ public class addproveedorcontroller implements Initializable {
         Proveedor.llenarInformacion(conexion.getConnection(), listaproveedor);
         Proveedor.autocompletar(cmbproveedor1, listaproveedor);
         limpiar();
-    }
+    }else{
+           mensajesql.setText("Complete todos los campos");
+          }
     }
 
     @FXML

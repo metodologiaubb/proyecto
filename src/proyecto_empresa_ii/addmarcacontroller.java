@@ -50,10 +50,14 @@ public class addmarcacontroller implements Initializable {
 
     @FXML
     private void insertarproducto(ActionEvent event) {
-              int x;
+              int x=5;
+              if (tfwnombre_marca.getText().length()!=0){
   x=consultas.Insert("INSERT INTO `marca`(`NOMBRE_MARCA`) VALUES ('"+tfwnombre_marca.getText()+"');");
-               if(x==0){
+              } if(x==0){
     mensajesql.setText("Marca ingresada");
+               }else{
+               mensajesql.setText("Complete el campo de texto");
+               }
     listamarcas1=null;
        cmbmarca.setValue(null);
   cmbmarca.getItems().clear();
@@ -62,9 +66,10 @@ public class addmarcacontroller implements Initializable {
             Marca.autocompletar(cmbmarca, listamarcas1);
             tfwnombre_marca.setText(null); 
     }
+              
                
         
-    }
+    
     public void setcomobox(ComboBox<Marca> cmbmarc,ObservableList<Marca> listamarca){
                cmbmarca=cmbmarc;
                listamarcas1=listamarca;
