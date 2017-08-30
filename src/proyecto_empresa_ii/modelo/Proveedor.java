@@ -31,15 +31,15 @@ import proyecto_empresa_ii.ComboBoxAutoComplete;
 public class Proveedor{
 	private IntegerProperty id_proveedor;
 	private StringProperty nombre_proveedor;
-	private IntegerProperty dcto_proveedor;
+	private IntegerProperty telefono;
 	private IntegerProperty c_pro_dcto;
 
 	public Proveedor(int id_proveedor, String nombre_proveedor, 
-                int dcto_proveedor, int c_pro_dcto) { 
+                int telefono, int c_pro_dcto) { 
 
             this.id_proveedor = new SimpleIntegerProperty(id_proveedor);
             this.nombre_proveedor = new SimpleStringProperty(nombre_proveedor);
-            this.dcto_proveedor = new SimpleIntegerProperty(dcto_proveedor);
+            this.telefono = new SimpleIntegerProperty(telefono);
             this.c_pro_dcto = new SimpleIntegerProperty(c_pro_dcto);
 	}
 
@@ -65,13 +65,13 @@ public class Proveedor{
 	}
 	//Metodos atributo: dcto_proveedor
 	public int getDcto_proveedor() {
-            return dcto_proveedor.get();
+            return telefono.get();
 	}
 	public void setDcto_proveedor(int dcto_proveedor) {
-            this.dcto_proveedor = new SimpleIntegerProperty(dcto_proveedor);
+            this.telefono = new SimpleIntegerProperty(dcto_proveedor);
 	}
 	public IntegerProperty Dcto_proveedorProperty() {
-            return dcto_proveedor;
+            return telefono;
 	}
 	//Metodos atributo: c_pro_dcto
 	public int getC_pro_dcto() {
@@ -88,13 +88,13 @@ public class Proveedor{
             ResultSet resultado ;
             try {
                 statement = connection.createStatement();
-                resultado = statement.executeQuery("SELECT ID_PROVEEDOR, NOMBRE_PROVEEDOR, DCTO_PROVEEDOR, C_PRO_DCTO FROM proveedor;");
+                resultado = statement.executeQuery("SELECT ID_PROVEEDOR, NOMBRE_PROVEEDOR, TELEFONO, C_PRO_DCTO FROM proveedor;");
                 while (resultado.next()) {
                     lista.add(
                             new Proveedor(
                                     resultado.getInt("ID_PROVEEDOR"),
                                     resultado.getString("NOMBRE_PROVEEDOR"),
-                                    resultado.getInt("DCTO_PROVEEDOR"),
+                                    resultado.getInt("TELEFONO"),
                                     resultado.getInt("C_PRO_DCTO")
                             )
                     );
