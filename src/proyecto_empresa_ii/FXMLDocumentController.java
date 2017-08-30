@@ -830,7 +830,8 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
     }
     
     private void tvCotizacion(){
-        colid_cotizacion.setCellValueFactory(
+	tv_cotizacion.setEditable(true);        
+	colid_cotizacion.setCellValueFactory(
             new PropertyValueFactory<Cotizacion, Number>("id_cot")
         );
         colfecha_cotizacion.setCellValueFactory(
@@ -842,6 +843,27 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         coldescripcion_cotizacion.setCellValueFactory(
             new PropertyValueFactory<Cotizacion, String>("descripcion")
         );
+	coldescripcion_cotizacion.setCellFactory(TextFieldTableCell.forTableColumn());
+        coldescripcion_cotizacion.setOnEditCommit(data -> {
+            System.out.println("Antiguo Nombre: " + data.getOldValue());   
+            Cotizacion c = data.getRowValue();
+            c.setDescripcion(data.getNewValue());
+            System.out.println("Nuevo Nombre: " + data.getNewValue());             
+            System.out.println(c);
+            try {
+                String query = "UPDATE cotizacion SET DESCRIPCION = ? where ID_COT = ?";
+                preparedStmt = conexion.getConnection().prepareStatement(query);
+                preparedStmt.setString(1, data.getNewValue());
+                preparedStmt.setInt(2, c.getId_cot());
+                preparedStmt.executeUpdate();
+                preparedStmt.clearParameters();// no es necesario
+                preparedStmt.close();
+                //conexion.cerrarConexion();
+            } catch (SQLException ex) {
+                Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+            //pepe(wat);
+        });
     }
     
 
