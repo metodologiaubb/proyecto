@@ -15,7 +15,9 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -40,9 +42,10 @@ public class Producto{
 	private Proveedor proveedor;
 	private Marca marca;
 	private IntegerProperty valor;
-
+        private DoubleProperty valordcto;
+        
 	public Producto(int id_producto, String nombre_producto, String u_medida, 
-                LocalDate pentrega, Proveedor proveedor, Marca marca, int valor) { 
+                LocalDate pentrega, Proveedor proveedor, Marca marca, int valor,double valordcto) { 
 		this.id_producto = new SimpleIntegerProperty(id_producto);
 		this.nombre_producto = new SimpleStringProperty(nombre_producto);
 		this.u_medida = new SimpleStringProperty(u_medida);
@@ -50,6 +53,7 @@ public class Producto{
 		this.proveedor = proveedor;
 		this.marca = marca;
 		this.valor = new SimpleIntegerProperty(valor);
+                this.valordcto = new  SimpleDoubleProperty(valordcto);
 	}
 
 	//Metodos atributo: id_producto
@@ -113,6 +117,18 @@ public class Producto{
 	public IntegerProperty ValorProperty() {
 		return valor;
 	}
+        ///////////////
+        //Metodos atributo: valor
+	public double getValorDcto() {
+		return valordcto.get();
+	}
+	public void setValorDcto(int valor) {
+		this.valordcto = new SimpleDoubleProperty(valor);
+	}
+	public DoubleProperty ValorDctoProperty() {
+		return valordcto;
+	}
+        /////////////
         public static void llenarInformacion(Connection connection, 
                 ObservableList<Producto> lista, int n){
             System.out.println(n);
@@ -126,6 +142,7 @@ public class Producto{
                                       + "prc.ID_PROVEEDOR"
                                       + ",prc.ID_MARCA,prc.VALOR,prv."
                                       + "NOMBRE_PROVEEDOR,prv.TELEFONO,"
+                                      + "prc.VALOR_FINAL,"
                                       + "prv.C_PRO_DCTO,mr.NOMBRE_MARCA"
                                       + " FROM Producto_Com prc,proveedor prv,"
                                       + "marca mr,pertenece per "
@@ -153,7 +170,8 @@ public class Producto{
                                             resultado.getInt("prc.ID_MARCA"), 
                                             resultado.getString("mr.NOMBRE_MARCA")
                                     ),
-                                    resultado.getInt("prc.VALOR")
+                                    resultado.getInt("prc.VALOR"),
+                                    resultado.getDouble("prc.VALOR_FINAL")
                             )
                     );
                     
@@ -169,12 +187,19 @@ public class Producto{
             try {
                 ResultSet resultado =consultas.Select(
                    "SELECT "
-+ "prc.ID_PRODUCTO,prc.NOMBRE_PRODUCTO,"
-+ "prc.U_MEDIDA,prc.PENTREGA,prc.ID_PROVEEDOR ,"
-+ "prc.ID_MARCA,prc.VALOR,prv.NOMBRE_PROVEEDOR,"
-+ "prv.DCTO_PROVEEDOR,prv.C_PRO_DCTO,mr.NOMBRE_MARCA "
-+ "FROM Producto_Com prc,proveedor prv,marca mr WHERE "
-+ "prc.ID_PROVEEDOR=prv.ID_PROVEEDOR AND prc.ID_MARCA=mr.ID_MARCA; "
+                    + "prc.ID_PRODUCTO,"
+                    + "prc.NOMBRE_PRODUCTO,"
+                    + "prc.U_MEDIDA,"
+                    + "prc.PENTREGA,"
+                    + "prc.ID_PROVEEDOR ,"
+                    + "prc.ID_MARCA,"
+                    + "prc.VALOR,"
+                    + "prc.VALOR_FINAL,"
+                    + "prv.NOMBRE_PROVEEDOR,"
+                    + "prv.DCTO_PROVEEDOR,"
+                    + "prv.C_PRO_DCTO,mr.NOMBRE_MARCA "
+                    + "FROM Producto_Com prc,proveedor prv,marca mr WHERE "
+                    + "prc.ID_PROVEEDOR=prv.ID_PROVEEDOR AND prc.ID_MARCA=mr.ID_MARCA; "
 
                 );
              while (resultado.next()) {        
@@ -194,7 +219,8 @@ public class Producto{
                                             resultado.getInt("prc.ID_MARCA"), 
                                             resultado.getString("mr.NOMBRE_MARCA")
                                     ),
-                                    resultado.getInt("prc.VALOR")
+                                    resultado.getInt("prc.VALOR"),
+                                    resultado.getDouble("prc.VALOR_FINAL")
                             )
                     );
                     
