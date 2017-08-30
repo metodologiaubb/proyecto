@@ -2,12 +2,12 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="8"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="cotizacion" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT NOMBRE_PRODUCTO,NOMBRE_PROVEEDOR,U_MEDIDA,PENTREGA,VALOR,DESCRIPCION,FECHA_COT FROM producto,pertenece,cotizacion,proveedor WHERE proveedor.ID_PROVEEDOR=producto.ID_PROVEEDOR AND pertenece.ID_PRODUCT=producto.ID_PRODUCTO AND cotizacion.ID_COT=pertenece.ID_COT AND pertenece.ID_COT=$P{cotizacion};]]>
+		<![CDATA[SELECT NOMBRE_PRODUCTO,NOMBRE_PROVEEDOR,U_MEDIDA,PENTREGA,VALOR,DESCRIPCION,FECHA_COT FROM Producto_Com,pertenece,cotizacion,proveedor WHERE proveedor.ID_PROVEEDOR=Producto_Com.ID_PROVEEDOR AND pertenece.ID_PRODUCT_PRO=Producto_Com.ID_PRODUCTO_PROVEEDOR AND cotizacion.ID_COT=pertenece.ID_COT AND pertenece.ID_COT=$P{cotizacion};]]>
 	</queryString>
 	<field name="NOMBRE_PRODUCTO" class="java.lang.String"/>
 	<field name="NOMBRE_PROVEEDOR" class="java.lang.String"/>
@@ -44,28 +44,28 @@
 	<pageHeader>
 		<band height="77" splitType="Stretch">
 			<textField>
-				<reportElement x="162" y="57" width="100" height="20"/>
+				<reportElement x="162" y="18" width="100" height="59"/>
 				<textElement>
 					<font size="9" isItalic="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{DESCRIPCION}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="23" y="57" width="139" height="20"/>
+				<reportElement x="23" y="18" width="139" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
 				<text><![CDATA[DESCRIPCIÓN DE LA COTIZACION:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="375" y="57" width="100" height="20"/>
+				<reportElement x="375" y="18" width="152" height="20"/>
 				<textElement>
 					<font size="9" isItalic="true"/>
 				</textElement>
 				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{FECHA_COT}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="278" y="57" width="97" height="20"/>
+				<reportElement x="278" y="18" width="97" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>
