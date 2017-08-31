@@ -54,8 +54,8 @@ public class Producto{
 		this.pentrega = pentrega;
 		this.proveedor = proveedor;
 		this.marca = marca;
-		this.valor = new SimpleIntegerProperty(valor);
-                this.valordcto = new  SimpleIntegerProperty(valordcto);
+		this.valor =        new SimpleIntegerProperty(valor);
+                this.valordcto =    new SimpleIntegerProperty(valordcto);
                 this.id_producto_proveedor=new SimpleIntegerProperty(id_prod_prov);
 	}
 
@@ -148,11 +148,14 @@ public class Producto{
                                       + "prc.ID_PRODUCTO,"
                                       + "prc.NOMBRE_PRODUCTO,"
                                       + "prc.U_MEDIDA,prc.PENTREGA ,"
-                                      + "prc.ID_PROVEEDOR"
-                                      + ",prc.ID_MARCA,prc.VALOR,prv."
-                                      + "NOMBRE_PROVEEDOR,prv.TELEFONO,"
+                                      + "prc.ID_PROVEEDOR,"
+                                      + "prc.ID_MARCA,"
+                                      + "prc.VALOR,prv."
+                                      + "NOMBRE_PROVEEDOR,"
+                                      + "prv.TELEFONO,"
                                       + "prc.VALOR_FINAL,"
-                                      + "prv.C_PRO_DCTO,mr.NOMBRE_MARCA,"
+                                      + "prv.C_PRO_DCTO,"
+                                      + "mr.NOMBRE_MARCA,"
                                       + "prc.ID_PRODUCTO_PROVEEDOR"
                                       + " FROM Producto_Com prc,proveedor prv,"
                                       + "marca mr,pertenece per "

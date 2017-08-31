@@ -49,6 +49,8 @@ public class AddproductoproveedorController implements Initializable{
     @FXML
     private JFXTextField jtfvalor;
     @FXML
+    private JFXTextField jtfdescuento;
+    @FXML
     private JFXButton btnvincularproductoproveedor;
     @FXML
     private JFXButton limpiarproductoproveedor;

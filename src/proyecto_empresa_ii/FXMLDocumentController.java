@@ -104,6 +104,7 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<Producto, Integer> colvalor_producto;
     @FXML
     private TableColumn<Producto, Integer> colvalor_productofinal;
+    
     @FXML
     private TableView<Producto> tv_productos;
     private PreparedStatement preparedStmt;
