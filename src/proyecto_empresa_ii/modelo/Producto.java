@@ -43,9 +43,11 @@ public class Producto{
 	private Marca marca;
 	private IntegerProperty valor;
         private DoubleProperty valordcto;
+        private IntegerProperty id_producto_proveedor;
         
 	public Producto(int id_producto, String nombre_producto, String u_medida, 
-                LocalDate pentrega, Proveedor proveedor, Marca marca, int valor,double valordcto) { 
+                LocalDate pentrega, Proveedor proveedor, 
+                Marca marca, int valor,double valordcto,int id_prod_prov) { 
 		this.id_producto = new SimpleIntegerProperty(id_producto);
 		this.nombre_producto = new SimpleStringProperty(nombre_producto);
 		this.u_medida = new SimpleStringProperty(u_medida);
@@ -54,6 +56,7 @@ public class Producto{
 		this.marca = marca;
 		this.valor = new SimpleIntegerProperty(valor);
                 this.valordcto = new  SimpleDoubleProperty(valordcto);
+                this.id_producto_proveedor=new SimpleIntegerProperty(id_prod_prov);
 	}
 
 	//Metodos atributo: id_producto
@@ -128,6 +131,12 @@ public class Producto{
 	public DoubleProperty ValorDctoProperty() {
 		return valordcto;
 	}
+        public int getId_producto_proveedor() {
+		return id_producto_proveedor.get();
+	}
+	public void setId_producto_proveedor(int id_producto_proveedor) {
+		this.id_producto_proveedor = new SimpleIntegerProperty(id_producto_proveedor);
+	}
         /////////////
         public static void llenarInformacion(Connection connection, 
                 ObservableList<Producto> lista, int n){
@@ -143,7 +152,8 @@ public class Producto{
                                       + ",prc.ID_MARCA,prc.VALOR,prv."
                                       + "NOMBRE_PROVEEDOR,prv.TELEFONO,"
                                       + "prc.VALOR_FINAL,"
-                                      + "prv.C_PRO_DCTO,mr.NOMBRE_MARCA"
+                                      + "prv.C_PRO_DCTO,mr.NOMBRE_MARCA,"
+                                      + "prc.ID_PRODUCTO_PROVEEDOR"
                                       + " FROM Producto_Com prc,proveedor prv,"
                                       + "marca mr,pertenece per "
                                       + "WHERE prc.ID_PROVEEDOR="
@@ -171,7 +181,8 @@ public class Producto{
                                             resultado.getString("mr.NOMBRE_MARCA")
                                     ),
                                     resultado.getInt("prc.VALOR"),
-                                    resultado.getDouble("prc.VALOR_FINAL")
+                                    resultado.getDouble("prc.VALOR_FINAL"),
+                                    resultado.getInt("prc.ID_PRODUCTO_PROVEEDOR")
                             )
                     );
                     
@@ -197,7 +208,8 @@ public class Producto{
                     + "prc.VALOR_FINAL,"
                     + "prv.NOMBRE_PROVEEDOR,"
                     + "prv.DCTO_PROVEEDOR,"
-                    + "prv.C_PRO_DCTO,mr.NOMBRE_MARCA "
+                    + "prv.C_PRO_DCTO,mr.NOMBRE_MARCA,"
+                    + "prc.ID_PRODUCTO_PROVEEDOR "
                     + "FROM Producto_Com prc,proveedor prv,marca mr WHERE "
                     + "prc.ID_PROVEEDOR=prv.ID_PROVEEDOR AND prc.ID_MARCA=mr.ID_MARCA; "
 
@@ -220,7 +232,8 @@ public class Producto{
                                             resultado.getString("mr.NOMBRE_MARCA")
                                     ),
                                     resultado.getInt("prc.VALOR"),
-                                    resultado.getDouble("prc.VALOR_FINAL")
+                                    resultado.getDouble("prc.VALOR_FINAL"),
+                                    resultado.getInt("prc.ID_PRODUCTO_PROVEEDOR")
                             )
                     );
                     

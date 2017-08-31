@@ -148,6 +148,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private JFXButton btnagregar_proveedor;
     public static int wat;
+    public static int productoS;
     @FXML
     private JFXDrawer drawer;
     @FXML
@@ -587,6 +588,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         tv_productos.setItems(listaproductos);
         /*--------------------------------------------------*/
         eventoTvCotizacion();
+        eventoTvProducto();
         
         filtroProducto();
         filtroCotizacion();
@@ -912,8 +914,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
     private void eventoTvProducto(){
         tv_productos.getSelectionModel().selectedItemProperty().addListener(
             (observable, oldValue, selectedValue) -> {
-                //jtfid_producto.setText(String.valueOf(selectedValue.getId_producto()));
-                //jtfnombre_producto.setText(selectedValue.getNombre_producto());
+                productoS=selectedValue.getId_producto();
             }
                 
         );
