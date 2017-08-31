@@ -50,6 +50,7 @@ import javafx.scene.control.cell.ChoiceBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -570,6 +571,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         conexion.establecerConexion();
         listaCotiza = new HashMap<Integer,Integer>();
         btnInforme.disableProperty().setValue(Boolean.TRUE);
+        btnactualizar_producto.disableProperty().setValue(Boolean.TRUE);
         /*--------------------------------------------------*/
         listamarcas     =FXCollections.observableArrayList();
         listaproveedor  =FXCollections.observableArrayList();
@@ -919,6 +921,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         tv_productos.getSelectionModel().selectedItemProperty().addListener(
             (observable, oldValue, selectedValue) -> {
                 productoS=selectedValue.getId_producto();
+                btnactualizar_producto.disableProperty().setValue(Boolean.FALSE);
             }
                 
         );
@@ -1074,6 +1077,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
 @FXML
     void GestionarCuentas(ActionEvent event) {
             try {
+                 
             FXMLLoader fXMLLoader = new FXMLLoader(
             getClass().getResource("GestionarCuentas.fxml")
             );

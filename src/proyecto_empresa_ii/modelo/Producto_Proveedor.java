@@ -27,6 +27,7 @@ public class Producto_Proveedor {
     private SimpleIntegerProperty ID_MARCA = new SimpleIntegerProperty();  
     private SimpleIntegerProperty VALOR = new SimpleIntegerProperty();
     private SimpleIntegerProperty ID_PRODUCTO_PROVEEDOR= new SimpleIntegerProperty();
+    private SimpleStringProperty NOMBRE_PROVEEDOR = new SimpleStringProperty();
 
     public int getID_PRODUCTO(){
         return ID_PRODUCTO.get();
@@ -54,7 +55,9 @@ public class Producto_Proveedor {
     public int getID_PRODUCTO_PROVEEDOR(){
         return ID_PRODUCTO_PROVEEDOR.get();
     }
- 
+    public String getNOMBRE_PROVEEDOR(){
+        return NOMBRE_PROVEEDOR.get();
+    }
 
     public void setID_PRODUCTO(int ID_PRODUCTO) {
         this.ID_PRODUCTO.set(ID_PRODUCTO);
@@ -68,7 +71,9 @@ public class Producto_Proveedor {
     public void setNOMBRE_PRODUCTO(String NOMBRE_PRODUCTO) {
         this.NOMBRE_PRODUCTO.set(NOMBRE_PRODUCTO);
     }
-
+     public void setNOMBRE_PROVEEDOR(String NOMBRE_PROVEEDOR) {
+        this.NOMBRE_PROVEEDOR.set(NOMBRE_PROVEEDOR);
+    }
     public void setU_MEDIDA(String U_MEDIDA) {
         this.U_MEDIDA.set(U_MEDIDA);
     }
@@ -86,16 +91,20 @@ public class Producto_Proveedor {
     
      @Override
         public String toString(){
-        return ID_PRODUCTO_PROVEEDOR.get()+"("+NOMBRE_PRODUCTO.get()+")";
+        return ID_PRODUCTO_PROVEEDOR.get()+"("+NOMBRE_PRODUCTO.get()+")("+NOMBRE_PROVEEDOR.get()+")";
         }
     
     public static void llenarproducto(ObservableList<Producto_Proveedor>list) throws SQLException{
-            String sql="SELECT * FROM Producto_Com;";
+            String sql="SELECT ID_PRODUCTO_PROVEEDOR,NOMBRE_PRODUCTO,"
+                    + "NOMBRE_PROVEEDOR FROM Producto_Com,proveedor "
+                    + "WHERE Producto_Com.ID_PROVEEDOR="
+                    + "proveedor.ID_PROVEEDOR ;";
             ResultSet resultado = consultas.Select(sql);
             while(resultado.next()){
                 Producto_Proveedor pro=new Producto_Proveedor();
               pro.setID_PRODUCTO_PROVEEDOR(resultado.getInt("ID_PRODUCTO_PROVEEDOR"));
                pro.setNOMBRE_PRODUCTO(resultado.getString("NOMBRE_PRODUCTO"));
+               pro.setNOMBRE_PROVEEDOR(resultado.getString("NOMBRE_PROVEEDOR"));
                 
                 list.add(pro);
             }
