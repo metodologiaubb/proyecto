@@ -726,10 +726,11 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             System.out.println(p);
             Date date = java.sql.Date.valueOf(p.getPentrega());
             try {
-                String query = "UPDATE producto_proveedor SET PENTREGA= ? where ID_PRODUCTO = ?";
+                String query = "UPDATE Producto_Com SET PENTREGA = ? WHERE Producto_Com.ID_PRODUCTO = ? AND Producto_Com.ID_PRODUCTO_PROVEEDOR = ?";
                 preparedStmt = conexion.getConnection().prepareStatement(query);
                 preparedStmt.setDate(1,date);
                 preparedStmt.setInt(2, p.getId_producto());
+                preparedStmt.setInt(3, p.getId_producto_proveedor());
                 preparedStmt.executeUpdate();
                 preparedStmt.clearParameters();// no es necesario
                 preparedStmt.close();
@@ -762,10 +763,11 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             System.out.println("Nuevo Nombre: " + data.getNewValue());             
             System.out.println(p);
             try {
-                String query = "UPDATE producto_proveedor SET VALOR = ? where ID_PRODUCTO = ?";
+                String query = "UPDATE Producto_Com SET VALOR = ? WHERE Producto_Com.ID_PRODUCTO = ? AND Producto_Com.ID_PRODUCTO_PROVEEDOR = ?";
                 preparedStmt = conexion.getConnection().prepareStatement(query);
                 preparedStmt.setDouble(1, data.getNewValue());
                 preparedStmt.setInt(2, p.getId_producto());
+                preparedStmt.setInt(3, p.getId_producto_proveedor());
                 preparedStmt.executeUpdate();
                 preparedStmt.clearParameters();// no es necesario
                 preparedStmt.close();
@@ -816,10 +818,11 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             Proveedor pro = data.getNewValue();
             p.setProveedor(pro);
         try {
-                String query = "UPDATE producto_proveedor SET ID_PROVEEDOR = ? where ID_PRODUCTO = ?";
+                String query = "UPDATE Producto_Com SET ID_PROVEEDOR = ? WHERE Producto_Com.ID_PRODUCTO = ? AND Producto_Com.ID_PRODUCTO_PROVEEDOR = ?;";
                 preparedStmt = conexion.getConnection().prepareStatement(query);
                 preparedStmt.setInt(1, pro.getId_proveedor());
                 preparedStmt.setInt(2, p.getId_producto());
+                preparedStmt.setInt(3, p.getId_producto_proveedor());
                 preparedStmt.executeUpdate();
                 preparedStmt.clearParameters();// no es necesario
                 preparedStmt.close();
