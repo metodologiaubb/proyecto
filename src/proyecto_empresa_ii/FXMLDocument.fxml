@@ -128,7 +128,7 @@
                                           <TableColumn fx:id="colproveedor_producto" prefWidth="107.0" text="Proveedor" />
                                           <TableColumn fx:id="colmarca_producto" prefWidth="75.0" text="Marca" />
                                           <TableColumn fx:id="colvalor_producto" prefWidth="110.0" text="Valor" />
-                                          <TableColumn prefWidth="75.0" text="Valor dcto." />
+                                          <TableColumn fx:id="colvalor_productofinal" prefWidth="75.0" text="Valor dcto." />
                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
