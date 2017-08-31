@@ -33,7 +33,7 @@ import proyecto_empresa_ii.modelo.Producto1;
 import proyecto_empresa_ii.modelo.Proveedor;
 import proyecto_empresa_ii.modelo.consultas;
 
-/**
+/**vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
  *
  * @author pascaliwi
  */
@@ -121,15 +121,16 @@ public class AddproductoproveedorController implements Initializable{
     }
     @FXML
     private void vincularproductoproveedor(ActionEvent event) {
-        
         int x;
-      date1();
-     x=consultas.Insert("INSERT INTO `producto_proveedor`(`ID_PROVEEDOR`,`ID_PRODUCTO`, `VALOR`,`PENTREGA`,`VALOR_FINAL`) VALUES ('"+cmbpprove.getValue().getId_proveedor()+"','"+cmbppro.getValue().getID_PRODUCTO()+"','"+jtfvalor.getText()+"','"+date1+"','"+valorfinal+"');");
-     int b,c;
+        int b,c;
         b=Integer.parseInt(jtfdescuento.getText());
         c=Integer.parseInt(jtfvalor.getText());
         valorfinal=c-((b*c)/100);
-     System.out.println("el valor final es:"+valorfinal+"");
+        System.out.println("el valor final es:"+valorfinal);
+      date1();
+     x=consultas.Insert("INSERT INTO `producto_proveedor`(`ID_PROVEEDOR`,`ID_PRODUCTO`, `VALOR`,`PENTREGA`,`VALOR_FINAL`) VALUES ('"+cmbpprove.getValue().getId_proveedor()+"','"+cmbppro.getValue().getID_PRODUCTO()+"','"+jtfvalor.getText()+"','"+date1+"','"+valorfinal+"');");
+     
+     
      if(x==0){
     mensajesql.setText("Producto "+cmbppro.getValue().getNOMBRE_PRODUCTO()+" vinculado a "+cmbpprove.getValue().getNombre_proveedor()+" exitosamente");
      
