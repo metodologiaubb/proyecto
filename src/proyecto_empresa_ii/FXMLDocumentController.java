@@ -103,7 +103,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TableColumn<Producto, Integer> colvalor_producto;
     @FXML
-    private TableColumn<Producto, Double>colvalor_productofinal;
+    private TableColumn<Producto, Integer> colvalor_productofinal;
     @FXML
     private TableView<Producto> tv_productos;
     private PreparedStatement preparedStmt;
@@ -745,7 +745,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             new PropertyValueFactory<Producto, Proveedor>("proveedor")
         );
         colvalor_productofinal.setCellValueFactory(
-            new PropertyValueFactory<Producto, Double>("valordcto")
+            new PropertyValueFactory<Producto, Integer>("valordcto")
         );
         colmarca_producto.setCellValueFactory(
             new PropertyValueFactory<Producto, Marca>("marca")
