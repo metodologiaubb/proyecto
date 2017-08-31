@@ -42,12 +42,12 @@ public class Producto{
 	private Proveedor proveedor;
 	private Marca marca;
 	private IntegerProperty valor;
-        private DoubleProperty valordcto;
+        private IntegerProperty valordcto;
         private IntegerProperty id_producto_proveedor;
         
 	public Producto(int id_producto, String nombre_producto, String u_medida, 
                 LocalDate pentrega, Proveedor proveedor, 
-                Marca marca, int valor,double valordcto,int id_prod_prov) { 
+                Marca marca, int valor,int valordcto,int id_prod_prov) { 
 		this.id_producto = new SimpleIntegerProperty(id_producto);
 		this.nombre_producto = new SimpleStringProperty(nombre_producto);
 		this.u_medida = new SimpleStringProperty(u_medida);
@@ -55,7 +55,7 @@ public class Producto{
 		this.proveedor = proveedor;
 		this.marca = marca;
 		this.valor = new SimpleIntegerProperty(valor);
-                this.valordcto = new  SimpleDoubleProperty(valordcto);
+                this.valordcto = new  SimpleIntegerProperty(valordcto);
                 this.id_producto_proveedor=new SimpleIntegerProperty(id_prod_prov);
 	}
 
@@ -122,13 +122,13 @@ public class Producto{
 	}
         ///////////////
         //Metodos atributo: valor
-	public double getValorDcto() {
+	public int getValorDcto() {
 		return valordcto.get();
 	}
 	public void setValorDcto(int valor) {
-		this.valordcto = new SimpleDoubleProperty(valor);
+		this.valordcto = new SimpleIntegerProperty(valor);
 	}
-	public DoubleProperty ValorDctoProperty() {
+	public IntegerProperty ValorDctoProperty() {
 		return valordcto;
 	}
         public int getId_producto_proveedor() {
@@ -181,7 +181,7 @@ public class Producto{
                                             resultado.getString("mr.NOMBRE_MARCA")
                                     ),
                                     resultado.getInt("prc.VALOR"),
-                                    resultado.getDouble("prc.VALOR_FINAL"),
+                                    resultado.getInt("prc.VALOR_FINAL"),
                                     resultado.getInt("prc.ID_PRODUCTO_PROVEEDOR")
                             )
                     );
@@ -232,7 +232,7 @@ public class Producto{
                                             resultado.getString("mr.NOMBRE_MARCA")
                                     ),
                                     resultado.getInt("prc.VALOR"),
-                                    resultado.getDouble("prc.VALOR_FINAL"),
+                                    resultado.getInt("prc.VALOR_FINAL"),
                                     resultado.getInt("prc.ID_PRODUCTO_PROVEEDOR")
                             )
                     );
