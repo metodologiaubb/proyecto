@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
@@ -24,7 +33,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane blendMode="MULTIPLY" cache="true" cacheHint="SPEED" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.FXMLDocumentController">
+<AnchorPane blendMode="MULTIPLY" cache="true" cacheHint="SPEED" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.FXMLDocumentController">
    <children>
       <TabPane fx:id="root" layoutY="-14.0" prefHeight="725.0" prefWidth="950.0" styleClass="background" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -157,20 +166,18 @@
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <JFXButton fx:id="botonagregarcot1" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" prefHeight="37.0" prefWidth="124.0" style="-fx-background-color: #f37005;" stylesheets="@css/killme.css" text="Editar">
-                                       <VBox.margin>
-                                          <Insets top="10.0" />
-                                       </VBox.margin>
-                                    </JFXButton>
                                     <JFXButton fx:id="btnInforme" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" onAction="#informe" prefHeight="37.0" prefWidth="124.0" style="-fx-background-color: #f37005;" stylesheets="@css/killme.css" text="Informe">
                                        <VBox.margin>
                                           <Insets top="10.0" />
                                        </VBox.margin>
                                     </JFXButton>
-                                    <JFXButton fx:id="btnagregar_producto11" mnemonicParsing="false" onAction="#agregarproducto" prefHeight="37.0" prefWidth="124.0" style="-fx-background-color: #f37005;" text="Nuevo">
+                                    <JFXButton fx:id="btnagregar_producto11" mnemonicParsing="false" onAction="#agregarproducto" prefHeight="37.0" prefWidth="124.0" style="-fx-background-color: #f37005;" text="Nuevo producto">
                                        <VBox.margin>
                                           <Insets top="200.0" />
                                        </VBox.margin>
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
                                     </JFXButton>
                                     <JFXButton fx:id="btnprodacot" alignment="BASELINE_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#agregarprodacot" prefHeight="37.0" prefWidth="124.0" style="-fx-background-color: #f37005;" text="Vincular cuenta">
                                        <font>
