@@ -42,8 +42,9 @@ public class Producto{
 	private Proveedor proveedor;
 	private Marca marca;
 	private IntegerProperty valor;
-        private IntegerProperty valordcto;
+        private IntegerProperty valor_final;
         private IntegerProperty id_producto_proveedor;
+        private boolean ischeck = true;
         
 	public Producto(int id_producto, String nombre_producto, String u_medida, 
                 LocalDate pentrega, Proveedor proveedor, 
@@ -55,7 +56,7 @@ public class Producto{
 		this.proveedor = proveedor;
 		this.marca = marca;
 		this.valor =        new SimpleIntegerProperty(valor);
-                this.valordcto =    new SimpleIntegerProperty(valordcto);
+                this.valor_final =  new SimpleIntegerProperty(valor);
                 this.id_producto_proveedor=new SimpleIntegerProperty(id_prod_prov);
 	}
 
@@ -120,16 +121,22 @@ public class Producto{
 	public IntegerProperty ValorProperty() {
 		return valor;
 	}
+        public boolean getCheck(){
+            return ischeck;
+        }
+        public void setCheck(boolean ischeck){
+            this.ischeck=ischeck;
+        }
         ///////////////
         //Metodos atributo: valor
 	public int getValorDcto() {
-		return valordcto.get();
+		return valor_final.get();
 	}
 	public void setValorDcto(int valor) {
-		this.valordcto = new SimpleIntegerProperty(valor);
+		this.valor_final = new SimpleIntegerProperty(valor);
 	}
 	public IntegerProperty ValorDctoProperty() {
-		return valordcto;
+		return valor_final;
 	}
         public int getId_producto_proveedor() {
 		return id_producto_proveedor.get();
@@ -150,14 +157,14 @@ public class Producto{
                                       + "prc.U_MEDIDA,prc.PENTREGA ,"
                                       + "prc.ID_PROVEEDOR,"
                                       + "prc.ID_MARCA,"
-                                      + "prc.VALOR,prv."
-                                      + "NOMBRE_PROVEEDOR,"
+                                      + "prc.VALOR,"
+                                      + "prv.NOMBRE_PROVEEDOR,"
                                       + "prv.TELEFONO,"
                                       + "prc.VALOR_FINAL,"
                                       + "prv.C_PRO_DCTO,"
                                       + "mr.NOMBRE_MARCA,"
-                                      + "prc.ID_PRODUCTO_PROVEEDOR"
-                                      + " FROM Producto_Com prc,proveedor prv,"
+                                      + "prc.ID_PRODUCTO_PROVEEDOR "
+                                      + "FROM Producto_Com prc,proveedor prv,"
                                       + "marca mr,pertenece per "
                                       + "WHERE prc.ID_PROVEEDOR="
                                       + "prv.ID_PROVEEDOR AND "
@@ -263,7 +270,4 @@ public class Producto{
             new ComboBoxAutoComplete<Producto1>(cmb);
         }
            
-    public boolean getActivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

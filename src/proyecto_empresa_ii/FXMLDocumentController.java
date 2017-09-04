@@ -105,9 +105,11 @@ public class FXMLDocumentController implements Initializable {
     private TableColumn<Producto, Integer> colvalor_producto;
     @FXML
     private TableColumn<Producto, Integer> colvalor_productofinal;
+    @FXML
+    private TableColumn<Producto, Boolean> coleliminar_producto;
     
     @FXML
-    private TableView<Producto> tv_productos;
+    private TableView<Producto> tv_productos; 
     private PreparedStatement preparedStmt;
     private double xOffset = 0;
     private double yOffset = 0;
@@ -202,6 +204,7 @@ public class FXMLDocumentController implements Initializable {
      private JFXButton btnActualizar;
     @FXML
     private JFXTextField tfDatospass;
+    public boolean estado;
     
     
     /*--------------------tab2--------------------------------------*/
@@ -257,16 +260,16 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private void actualizarcmbmarca(){
-             listamarcas1=null;
-       cmbmarca.setValue(null);
-  cmbmarca.getItems().clear();
-    listamarcas1  =FXCollections.observableArrayList();
-           Marca.llenarInformacion(conexion.getConnection(), listamarcas1);
-            Marca.autocompletar(cmbmarca, listamarcas1); 
+        listamarcas1=null;
+        cmbmarca.setValue(null);
+        cmbmarca.getItems().clear();
+        listamarcas1  =FXCollections.observableArrayList();
+        Marca.llenarInformacion(conexion.getConnection(), listamarcas1);
+        Marca.autocompletar(cmbmarca, listamarcas1); 
     }
     private void actualizarcmbproveedor(){
         listaproveedor=null;
-      //  cmbproveedor1.setValue(null);
+        //  cmbproveedor1.setValue(null);
         cmbproveedor1.getItems().clear();
         listaproveedor=FXCollections.observableArrayList();
         Proveedor.llenarInformacion(conexion.getConnection(), listaproveedor);
@@ -285,25 +288,20 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void deletemarca(ActionEvent event) {
-        
-Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-alert.setTitle("Eliminar Marca");
-alert.setHeaderText("");
-alert.setContentText("¿Seguro que desea eliminar la marca "+cmbmarca.getValue().getId_marca()+"?");
-Optional<ButtonType> result = alert.showAndWait();
-if (result.get() == ButtonType.OK){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Eliminar Marca");
+        alert.setHeaderText("");
+        alert.setContentText("¿Seguro que desea eliminar la marca "+cmbmarca.getValue().getId_marca()+"?");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            int x;
+            x=consultas.Insert("DELETE FROM `marca` WHERE ID_MARCA='"+cmbmarca.getValue().getId_marca()+"'"); 
+            if(x==0){
+                mensajesql.setText("Marca '"+cmbmarca.getValue().getNombre_marca()+"' eliminada exitosamente");
+                actualizarcmbmarca();
+            }
 
-   int x;
-  x=consultas.Insert("DELETE FROM `marca` WHERE ID_MARCA='"+cmbmarca.getValue().getId_marca()+"'"); 
-  if(x==0){
-    mensajesql.setText("Marca '"+cmbmarca.getValue().getNombre_marca()+"' eliminada exitosamente");
-actualizarcmbmarca();
-
-    }
-    
-} else {
-}
-       
+        }        
     }
   
     @FXML
@@ -598,16 +596,15 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         hilo=new thread(this);
         hilo.start();
         /*-----------------------tab2-----------------------*/
-             listaproveedor1  =FXCollections.observableArrayList();
+        listaproveedor1  =FXCollections.observableArrayList();
         Proveedor.llenarInformacion (conexion.getConnection(), listaproveedor1);
         Proveedor.autocompletar(cmbproveedor1, listaproveedor1);
-           listamarcas1  =FXCollections.observableArrayList();
-           Marca.llenarInformacion(conexion.getConnection(), listamarcas1);
-            Marca.autocompletar(cmbmarca, listamarcas1);
+        listamarcas1  =FXCollections.observableArrayList();
+        Marca.llenarInformacion(conexion.getConnection(), listamarcas1);
+        Marca.autocompletar(cmbmarca, listamarcas1);
         
         /*-----------------------hamb-----------------------*/
-                rootP = root;
-        
+        rootP = root;
         try {
             VBox box = FXMLLoader.load(getClass().getResource("SidePanelContent.fxml"));
             drawer.setSidePane(box);
@@ -634,15 +631,14 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
          tfDatosCuenta.setText(Sesion.CurrentUser.getUSER_USERNAME());
          tfDatospass.setText(Sesion.CurrentUser.getPASS_USER());
          if (Sesion.CurrentUser.getROL()==2){
-   
-             tfDatosTipoCuenta.setText("Administrador");
-                 }
-                else
-                 {
-                 tfDatosTipoCuenta.setText("Usuario"); 
-                 btnCrearCuentas.setVisible(false);
-                 btnGestionarCuenta.setVisible(false);
-                   }
+        tfDatosTipoCuenta.setText("Administrador");
+        }
+        else
+        {
+        tfDatosTipoCuenta.setText("Usuario"); 
+        btnCrearCuentas.setVisible(false);
+        btnGestionarCuenta.setVisible(false);
+        }
     }
 
         
@@ -662,6 +658,27 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
     ***************************************************************************/
     
     private void tvProducto(){
+
+        
+        coleliminar_producto.setCellValueFactory(
+            new PropertyValueFactory<Producto, Boolean>("ischeck")
+        );
+        coleliminar_producto.setCellValueFactory(cell -> {
+            Producto p = cell.getValue();
+            
+            return new ReadOnlyBooleanWrapper(p.getCheck());
+
+        });
+        coleliminar_producto.setCellFactory(
+                CheckBoxTableCell.forTableColumn(coleliminar_producto)
+        );
+        
+        
+        
+        
+        
+        
+
        
         tv_productos.setEditable(true);//activo edición sobre tabla
         /*--------------------------------------------------------------------*/
@@ -669,12 +686,14 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             new PropertyValueFactory<Producto, String>("nombre_producto")
         );
         colnombre_producto.setCellFactory(TextFieldTableCell.forTableColumn());
+        
         colnombre_producto.setOnEditCommit(data -> {
             System.out.println("Antiguo Nombre: " + data.getOldValue());   
             Producto p = data.getRowValue();
             p.setNombre_producto(data.getNewValue());
             System.out.println("Nuevo Nombre: " + data.getNewValue());             
             System.out.println(p);
+            System.out.println("FUNCIONA:"+p.getValorDcto());
             try {
                 String query = "UPDATE producto SET NOMBRE_PRODUCTO = ? where ID_PRODUCTO = ?";
                 preparedStmt = conexion.getConnection().prepareStatement(query);
@@ -747,9 +766,11 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         colproveedor_producto.setCellValueFactory(
             new PropertyValueFactory<Producto, Proveedor>("proveedor")
         );
+        
         colvalor_productofinal.setCellValueFactory(
-            new PropertyValueFactory<Producto, Integer>("valordcto")
+            new PropertyValueFactory<Producto, Integer>("valor_final")
         );
+        
         colmarca_producto.setCellValueFactory(
             new PropertyValueFactory<Producto, Marca>("marca")
         );
@@ -908,6 +929,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             }
         );
     }
+    
     private void pepe(int wat){
        listaproductos.removeAll(listaproductos);
        Producto.llenarInformacion  (conexion.getConnection(), 
@@ -922,6 +944,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             (observable, oldValue, selectedValue) -> {
                 productoS=selectedValue.getId_producto();
                 btnactualizar_producto.disableProperty().setValue(Boolean.FALSE);
+                //System.err.println(selectedValue.getValorDcto()+"nombre:"+selectedValue.;
             }
                 
         );

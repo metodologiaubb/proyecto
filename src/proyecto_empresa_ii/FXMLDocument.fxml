@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
@@ -33,7 +24,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane blendMode="MULTIPLY" cache="true" cacheHint="SPEED" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.FXMLDocumentController">
+<AnchorPane blendMode="MULTIPLY" cache="true" cacheHint="SPEED" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.FXMLDocumentController">
    <children>
       <TabPane fx:id="root" layoutY="-14.0" prefHeight="725.0" prefWidth="950.0" styleClass="background" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -138,6 +129,7 @@
                                           <TableColumn fx:id="colmarca_producto" prefWidth="75.0" text="Marca" />
                                           <TableColumn fx:id="colvalor_producto" prefWidth="110.0" text="Valor" />
                                           <TableColumn fx:id="colvalor_productofinal" prefWidth="75.0" text="Valor dcto." />
+                                          <TableColumn fx:id="coleliminar_producto" prefWidth="75.0" text="Eliminar" />
                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
