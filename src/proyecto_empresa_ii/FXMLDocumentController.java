@@ -693,7 +693,6 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             p.setNombre_producto(data.getNewValue());
             System.out.println("Nuevo Nombre: " + data.getNewValue());             
             System.out.println(p);
-            System.out.println("FUNCIONA:"+p.getValorDcto());
             try {
                 String query = "UPDATE producto SET NOMBRE_PRODUCTO = ? where ID_PRODUCTO = ?";
                 preparedStmt = conexion.getConnection().prepareStatement(query);
@@ -768,7 +767,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         );
         
         colvalor_productofinal.setCellValueFactory(
-            new PropertyValueFactory<Producto, Integer>("valor_final")
+            new PropertyValueFactory<Producto, Integer>("valorF")
         );
         
         colmarca_producto.setCellValueFactory(

@@ -35,6 +35,7 @@ import proyecto_empresa_ii.ComboBoxAutoComplete;
 
 
 public class Producto{
+        private IntegerProperty valorF;
 	private IntegerProperty id_producto;
 	private StringProperty nombre_producto;
 	private StringProperty u_medida;
@@ -42,9 +43,8 @@ public class Producto{
 	private Proveedor proveedor;
 	private Marca marca;
 	private IntegerProperty valor;
-        private IntegerProperty valor_final;
         private IntegerProperty id_producto_proveedor;
-        private boolean ischeck = true;
+        private boolean ischeck = false;
         
 	public Producto(int id_producto, String nombre_producto, String u_medida, 
                 LocalDate pentrega, Proveedor proveedor, 
@@ -56,7 +56,7 @@ public class Producto{
 		this.proveedor = proveedor;
 		this.marca = marca;
 		this.valor =        new SimpleIntegerProperty(valor);
-                this.valor_final =  new SimpleIntegerProperty(valor);
+                this.valorF =        new SimpleIntegerProperty(valordcto);
                 this.id_producto_proveedor=new SimpleIntegerProperty(id_prod_prov);
 	}
 
@@ -129,15 +129,16 @@ public class Producto{
         }
         ///////////////
         //Metodos atributo: valor
-	public int getValorDcto() {
-		return valor_final.get();
+	public int getValorF() {
+		return valorF.get();
 	}
-	public void setValorDcto(int valor) {
-		this.valor_final = new SimpleIntegerProperty(valor);
+	public void setValorF(int valor) {
+		this.valorF = new SimpleIntegerProperty(valor);
 	}
-	public IntegerProperty ValorDctoProperty() {
-		return valor_final;
+	public IntegerProperty ValorFProperty() {
+		return valorF;
 	}
+	
         public int getId_producto_proveedor() {
 		return id_producto_proveedor.get();
 	}
