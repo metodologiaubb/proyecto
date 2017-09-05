@@ -72,13 +72,21 @@
                            </font>
                         </Label>
                         <JFXDatePicker fx:id="datepentrega" defaultColor="#ffa200" prefHeight="26.0" prefWidth="207.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <JFXTextField fx:id="jtfvalor" focusColor="WHITE" prefHeight="26.0" prefWidth="158.0" style="-fx-text-inner-color: #f37005;" styleClass="JFXTextField" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <JFXTextField fx:id="jtfvalor" focusColor="WHITE" prefHeight="26.0" prefWidth="158.0" style="-fx-text-inner-color: #f37005;" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label styleClass="Label" text="Descuento:" textFill="WHITE" GridPane.rowIndex="5">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="jtfdescuento" focusColor="WHITE" prefHeight="26.0" prefWidth="158.0" style="-fx-text-inner-color: #f37005;" styleClass="JFXTextField" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <JFXTextField fx:id="jtfdescuento" focusColor="WHITE" prefHeight="26.0" prefWidth="203.0" style="-fx-text-inner-color: #f37005;" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label text="\%" textFill="#f37005" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets left="200.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
                      </children>
                   </GridPane>
                   <HBox alignment="CENTER" prefHeight="73.0" prefWidth="407.0" spacing="20.0">
