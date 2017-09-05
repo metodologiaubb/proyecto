@@ -131,6 +131,8 @@ public class FXMLDocumentController implements Initializable {
      private JFXButton btnInforme;
     @FXML
     private JFXButton btnprodacot;
+      @FXML
+    private JFXButton eliminarproducto;
     
     /*-----------------------tab2----------------------*/
     @FXML
@@ -673,7 +675,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                 CheckBoxTableCell.forTableColumn(coleliminar_producto)
         );
         
-        
+  
         
         
         
@@ -1153,33 +1155,8 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
              Optional<ButtonType> result = alerta.showAndWait();
          }
     }
-         /*else
-        try {
-
-            Statement statement;
-            statement = conexion.getConnection().createStatement();
-            ResultSet res;
-            res=statement.executeQuery("SELECT ID_USER,"
-                                             +"USER_USERNAME,"
-                                             + "USER_PASS, "
-                                             + "USER_NOMBRE,"
-                                             + "USER_APELLIDO,"
-                                             + "USER_FONO,"
-                                             + "USER_ROL "
-                                             + "FROM user "
-                                             + "WHERE ID_USER = '"+Sesion.CurrentUser.getID_USER()+"'");while (res.next()){
-            tfDatosCuenta.setText(res.getString("USER_USERNAME"));
-            tfDatospass.setText(res.getString("USER_PASS")); 
-            tfDatosNombre.setText(res.getString("USER_NOMBRE"));
-            tfDatosApellidos.setText(res.getString("USER_APELLIDO"));
-            tfDatosTelefono.setText(res.getString("USER_FONO"));
-            }
-            
-            }       catch (SQLException ex) {
-            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-          
-        }
-    */
+         @FXML
+         private void Eliminar_Producto (ActionEvent event){
+  }
 }
 
