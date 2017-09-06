@@ -23,12 +23,12 @@
                            <font>
                               <Font size="14.0" />
                            </font></Label>
-                <TextField id="textField1" fx:id="userId" layoutX="23.0" layoutY="86.0" prefHeight="31.0" prefWidth="318.0" promptText="Usuario" stylesheets="@Login.css" text="GeeKcL" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="19.0" />
+                <TextField id="textField1" fx:id="userId" layoutX="23.0" layoutY="86.0" prefHeight="31.0" prefWidth="318.0" promptText="Usuario" stylesheets="@Login.css" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="19.0" />
                 <Label id="label1" layoutX="21.0" layoutY="139.0" prefHeight="16.0" prefWidth="78.0" style="-fx-text-fill: #f37005;" text="Contraseña">
                            <font>
                               <Font size="14.0" />
                            </font></Label>
-                <PasswordField id="passwordField1" fx:id="password" layoutX="23.0" layoutY="157.0" prefHeight="31.0" prefWidth="318.0" promptText="Contraseña" stylesheets="@Login.css" text="123321" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="19.0" />
+                <PasswordField id="passwordField1" fx:id="password" layoutX="23.0" layoutY="157.0" prefHeight="31.0" prefWidth="318.0" promptText="Contraseña" stylesheets="@Login.css" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="19.0" />
                 <ImageView id="app-login-logo" fitHeight="107.0" fitWidth="368.0" layoutX="8.0" layoutY="-45.0">
                   <image>
                     <Image url="@mseal1.png" />

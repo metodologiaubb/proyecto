@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
@@ -19,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="472.0" prefWidth="433.0" style="-fx-background-color: #383638;" styleClass="background" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.addproveedorcontroller">
+<AnchorPane id="AnchorPane" prefHeight="472.0" prefWidth="433.0" style="-fx-background-color: #1d1d1d;" styleClass="background" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.addproveedorcontroller">
    <children>
       <HBox alignment="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="417.0" prefWidth="433.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -43,17 +37,17 @@
                               <Font name="Consolas Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Label styleClass="Label" text="Nombre:" textFill="WHITE" GridPane.rowIndex="1">
+                        <Label style="-fx-text-fill: #f37005;" text="Nombre:" textFill="WHITE" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
                         <JFXTextField fx:id="jtfnombre_proveedor" focusColor="WHITE" style="-fx-text-inner-color: #f37005;" styleClass="JFXTextField" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label styleClass="Label" text="Telefono" textFill="WHITE" GridPane.rowIndex="2">
+                        <Label style="-fx-text-fill: #f37005;" text="Telefono" textFill="WHITE" GridPane.rowIndex="2">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></Label>
-                        <Label styleClass="Label" text="Numero de productos por dcto" textFill="WHITE" GridPane.rowIndex="3">
+                        <Label style="-fx-text-fill: #f37005;" text="Numero de productos por dcto" textFill="WHITE" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></Label>

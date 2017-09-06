@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -23,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="472.0" prefWidth="533.0" style="-fx-background-color: #383638;" styleClass="background" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.AddproductoproveedorController">
+<AnchorPane id="AnchorPane" prefHeight="472.0" prefWidth="533.0" style="-fx-background-color: #383638;" styleClass="background" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.AddproductoproveedorController">
    <children>
       <HBox alignment="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="417.0" prefWidth="433.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -31,10 +24,11 @@
                <children>
                   <GridPane prefHeight="312.0" prefWidth="432.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="227.0" minWidth="10.0" prefWidth="218.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.0" minWidth="10.0" prefWidth="203.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="247.0" minWidth="10.0" prefWidth="207.66668701171875" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="257.33331298828125" minWidth="10.0" prefWidth="257.33331298828125" />
                      </columnConstraints>
                      <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -58,7 +52,7 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Label styleClass="Label" text="Valor del producto:" textFill="WHITE" GridPane.rowIndex="4">
+                        <Label styleClass="Label" text="Valor del producto:" textFill="WHITE" GridPane.rowIndex="3">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -73,23 +67,33 @@
                               <Insets />
                            </opaqueInsets>
                         </ComboBox>
-                        <Label styleClass="Label" text="Plazo de entrega:" textFill="WHITE" GridPane.rowIndex="3">
+                        <Label styleClass="Label" text="Plazo de entrega:" textFill="WHITE" GridPane.rowIndex="5">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <JFXDatePicker fx:id="datepentrega" defaultColor="#ffa200" prefHeight="26.0" prefWidth="207.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <JFXTextField fx:id="jtfvalor" focusColor="WHITE" prefHeight="26.0" prefWidth="158.0" style="-fx-text-inner-color: #f37005;" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label styleClass="Label" text="Descuento:" textFill="WHITE" GridPane.rowIndex="5">
+                        <JFXDatePicker fx:id="datepentrega" defaultColor="#f37005" prefHeight="26.0" prefWidth="207.0" style="-fx-text-fill: #f37005;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <JFXTextField fx:id="jtfvalor" focusColor="#f37005" prefHeight="26.0" prefWidth="158.0" style="-fx-text-fill: #f37005;" unFocusColor="#f37005" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label styleClass="Label" text="Descuento:" textFill="WHITE" GridPane.rowIndex="4">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="jtfdescuento" focusColor="WHITE" prefHeight="26.0" prefWidth="203.0" style="-fx-text-inner-color: #f37005;" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label fx:id="labeldescuento" text="\%" textFill="#f37005" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <JFXTextField fx:id="jtfdescuento" focusColor="#f37005" prefHeight="26.0" prefWidth="203.0" style="-fx-text-fill: #f37005;" unFocusColor="#f37005" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label prefHeight="20.0" prefWidth="31.0" text="\%" textFill="#f37005" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets left="200.0" />
                            </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="\%  Valor Final(Descuento):" textFill="#f37005" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labeldescuento" prefHeight="20.0" prefWidth="270.0" textFill="#f37005" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>

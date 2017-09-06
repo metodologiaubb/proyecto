@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="312.0" prefWidth="433.0" style="-fx-background-color: #383638;" styleClass="background" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.addmarcacontroller">
+<AnchorPane id="AnchorPane" prefHeight="312.0" prefWidth="433.0" style="-fx-background-color: #1d1d1d;" styleClass="background" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.addmarcacontroller">
    <children>
       <HBox alignment="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="417.0" prefWidth="433.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -34,7 +34,7 @@
                               <Font name="Consolas Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Label styleClass="Label" text="Nombre:" textFill="WHITE" GridPane.rowIndex="1">
+                        <Label style="-fx-text-fill: #f37005;" text="Nombre:" textFill="WHITE" GridPane.rowIndex="1">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
