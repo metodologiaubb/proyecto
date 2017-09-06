@@ -5,8 +5,10 @@
  */
 package proyecto_empresa_ii.modelo;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -24,7 +26,8 @@ public class PdfCreator {
             String logo="mseal.png";
             Conexion con=new Conexion();
             con.establecerConexion();
-            JasperReport cotizacion = (JasperReport) JRLoader.loadObject("src/proyecto_empresa_ii/modelo/Cotizacion.jasper");
+            URL in=this.getClass().getResource("/Informes/Cotizacion.jasper");
+            JasperReport cotizacion = (JasperReport) JRLoader.loadObject(in);
             Map cotiza=new HashMap();
             cotiza.put("cotizacion", Cotizacion);
             cotiza.put("logo", this.getClass().getResourceAsStream(logo));
@@ -32,16 +35,12 @@ public class PdfCreator {
             JasperViewer jv=new JasperViewer(p,false);
             jv.setTitle("Informe Cotización");
             jv.setVisible(true);
-            jv.addWindowListener(new java.awt.event.WindowAdapter() {
                 
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                
-            }
-        });
+ 
             con.cerrarConexion();
         } catch (Exception e) {
             System.err.print(e);
+            JOptionPane.showMessageDialog(null, e, "error", JOptionPane.ERROR_MESSAGE);
         }
   
     }

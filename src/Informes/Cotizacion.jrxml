@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cotizacion" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<queryString>
+		<![CDATA[SELECT NOMBRE_PRODUCTO,NOMBRE_PROVEEDOR,U_MEDIDA,PENTREGA,VALOR,VALOR_FINAL,DESCRIPCION,FECHA_COT FROM Producto_Com,pertenece,cotizacion,proveedor WHERE proveedor.ID_PROVEEDOR=Producto_Com.ID_PROVEEDOR AND pertenece.ID_PRODUCT_PRO=Producto_Com.ID_PRODUCTO_PROVEEDOR AND cotizacion.ID_COT=pertenece.ID_COT AND pertenece.ID_COT=$P{cotizacion};]]>
+	</queryString>
+	<field name="NOMBRE_PRODUCTO" class="java.lang.String"/>
+	<field name="NOMBRE_PROVEEDOR" class="java.lang.String"/>
+	<field name="U_MEDIDA" class="java.lang.String"/>
+	<field name="PENTREGA" class="java.sql.Date"/>
+	<field name="VALOR" class="java.math.BigDecimal"/>
+	<field name="VALOR_FINAL" class="java.math.BigDecimal"/>
+	<field name="DESCRIPCION" class="java.lang.String"/>
+	<field name="FECHA_COT" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="210" y="29" width="133" height="23"/>
+				<textElement textAlignment="Right">
+					<font fontName="Abyssinica SIL" size="15" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[COTIZACION N°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="347" y="29" width="128" height="23"/>
+				<textElement>
+					<font fontName="Abyssinica SIL" size="15"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$P{cotizacion}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="34" y="0" width="100" height="79"/>
+				<imageExpression class="java.io.InputStream"><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="77" splitType="Stretch">
+			<textField>
+				<reportElement x="162" y="18" width="100" height="59"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{DESCRIPCION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="23" y="18" width="139" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCIÓN DE LA COTIZACION:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="375" y="18" width="152" height="20"/>
+				<textElement>
+					<font size="9" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{FECHA_COT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="278" y="18" width="97" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FECHA DE COTIZACION:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="41" width="92" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DEL PRODUCTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="41" width="67" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[UNIDAD DE MEDIDA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="41" width="52" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[VALOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="474" y="41" width="81" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[FECHA DE ENTREGA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="41" width="100" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DE PROVEEDOR]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="60" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="29" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="278" y="41" width="65" height="19"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[VALOR DE DCTO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="11" width="92" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMBRE_PRODUCTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="12" width="67" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{U_MEDIDA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="10" width="52" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{VALOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="474" y="11" width="81" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{PENTREGA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="10" width="100" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMBRE_PROVEEDOR}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="30" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="275" y="10" width="68" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{VALOR_FINAL}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="107" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="52" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="455" y="32" width="100" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="32" width="152" height="20"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Comercializadora Master Seal Ltda]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="47" splitType="Stretch"/>
+	</summary>
+</jasperReport>
