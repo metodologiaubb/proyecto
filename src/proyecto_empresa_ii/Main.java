@@ -58,6 +58,8 @@ public class Main extends Application {
        Scene scene = new Scene(root);
     primaryStage.setScene(scene);        
        primaryStage.show();
+       primaryStage.setMaxHeight(MINIMUM_WINDOW_WIDTH);
+       primaryStage.setMaxWidth(MINIMUM_WINDOW_WIDTH);
        //primaryStage.setOnCloseRequest((WindowEvent event1) -> System.exit(0));//Cierra todo
         
 //        Scene scene = new Scene(root);
