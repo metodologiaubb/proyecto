@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -16,7 +23,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="472.0" prefWidth="533.0" style="-fx-background-color: #383638;" styleClass="background" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.AddproductoproveedorController">
+<AnchorPane id="AnchorPane" prefHeight="472.0" prefWidth="533.0" style="-fx-background-color: #383638;" styleClass="background" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.AddproductoproveedorController">
    <children>
       <HBox alignment="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="417.0" prefWidth="433.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -79,7 +86,7 @@
                            </font>
                         </Label>
                         <JFXTextField fx:id="jtfdescuento" focusColor="WHITE" prefHeight="26.0" prefWidth="203.0" style="-fx-text-inner-color: #f37005;" unFocusColor="#868686" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label text="\%" textFill="#f37005" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <Label fx:id="labeldescuento" text="\%" textFill="#f37005" GridPane.columnIndex="1" GridPane.rowIndex="5">
                            <GridPane.margin>
                               <Insets left="200.0" />
                            </GridPane.margin>

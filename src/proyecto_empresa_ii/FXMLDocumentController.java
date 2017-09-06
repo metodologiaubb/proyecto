@@ -138,8 +138,10 @@ public class FXMLDocumentController implements Initializable {
      private JFXButton btnInforme;
     @FXML
     private JFXButton btnprodacot;
-      @FXML
+    @FXML
     private JFXButton eliminarproducto;
+    @FXML
+    private Label labeldescuento;
     
     /*-----------------------tab2----------------------*/
     @FXML
