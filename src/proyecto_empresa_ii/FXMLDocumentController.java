@@ -10,6 +10,8 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type;
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Boolean;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -26,24 +28,28 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.format.DateTimeFormatter;
 import javafx.beans.property.ReadOnlyBooleanWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.ChoiceBoxTableCell;
@@ -56,6 +62,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
 import javafx.util.StringConverter;
 import javafx.util.converter.DateStringConverter;
 import javafx.util.converter.IntegerStringConverter;
@@ -570,8 +577,8 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         conexion = new Conexion();
         conexion.establecerConexion();
         listaCotiza = new HashMap<Integer,Integer>();
-        btnInforme.disableProperty().setValue(Boolean.TRUE);
-        btnactualizar_producto.disableProperty().setValue(Boolean.TRUE);
+        btnInforme.disableProperty().setValue(true);
+        btnactualizar_producto.disableProperty().setValue(true);
         /*--------------------------------------------------*/
         listamarcas     =FXCollections.observableArrayList();
         listaproveedor  =FXCollections.observableArrayList();
@@ -658,7 +665,8 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
     ************************   Sección de metodos   ****************************
     ****************************************************************************
     ***************************************************************************/
-    
+    public void check(){
+        }
     private void tvProducto(){
 
         
@@ -667,14 +675,32 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         );
         coleliminar_producto.setCellValueFactory(cell -> {
             Producto p = cell.getValue();
-            
+        
             return new ReadOnlyBooleanWrapper(p.getCheck());
-
         });
+        coleliminar_producto.setCellValueFactory(
+new Callback<CellDataFeatures<Producto,Boolean>,ObservableValue<Boolean>>()
+{
+    //This callback tell the cell how to bind the data model 'Registered' property to
+    //the cell, itself.
+    @Override
+    public ObservableValue<Boolean> call(CellDataFeatures<Producto, Boolean> param)
+    {   
+        return param.getValue().CheckProperty();
+    }   
+});
         coleliminar_producto.setCellFactory(
                 CheckBoxTableCell.forTableColumn(coleliminar_producto)
         );
-        
+        coleliminar_producto.setOnEditCommit((event) -> {
+            System.out.println("commit");
+        });
+        coleliminar_producto.setOnEditCancel((event) -> {
+            System.out.println("cancelar");
+        });
+        coleliminar_producto.setOnEditStart((event) -> {
+            System.out.println("start");
+        });
   
         
         
@@ -926,7 +952,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
                 Producto.llenarInformacion  (conexion.getConnection(), 
                 listaproductos, selectedValue.getId_cot());
                 wat=selectedValue.getId_cot();
-                btnInforme.disableProperty().setValue(Boolean.FALSE);
+                btnInforme.disableProperty().setValue(false);
             }
         );
     }
@@ -944,7 +970,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         tv_productos.getSelectionModel().selectedItemProperty().addListener(
             (observable, oldValue, selectedValue) -> {
                 productoS=selectedValue.getId_producto();
-                btnactualizar_producto.disableProperty().setValue(Boolean.FALSE);
+                btnactualizar_producto.disableProperty().setValue(false);
                 //System.err.println(selectedValue.getValorDcto()+"nombre:"+selectedValue.;
             }
                 
@@ -1157,6 +1183,34 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
     }
          @FXML
          private void Eliminar_Producto (ActionEvent event){
+             int x=listaproductos.size();
+             if(x>=0){
+                 Alert alert = new Alert(AlertType.CONFIRMATION);
+                 alert.setTitle("Confirmar elección");
+                 alert.setHeaderText("");
+                 alert.setContentText("Esta seguro de querer eliminar "
+                         + "estos productos de la cotizacion?");
+
+                 Optional<ButtonType> result = alert.showAndWait();
+                if (result.get() == ButtonType.OK){
+                     for(int i=0;i<x;i++){
+                     if(listaproductos.get(i).getCheck()){
+                         String sql="DELETE FROM pertenece WHERE ID_PRODUCT_PRO"
+                                 + "="+listaproductos.get(i).getId_producto_proveedor()+""
+                                 + " AND ID_COT="+wat+";";
+                         if(consultas.Insert(sql)==0){
+                             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                             alerta.setHeaderText("");      
+                             alerta.setTitle("Datos modificados");
+                             alerta.setContentText("Se an eliminado los "
+                                     + "productos de la Cotización ");
+                             Optional<ButtonType> resultd = alerta.showAndWait();
+                         }
+                     }
+                 }
+                  pepe(wat);
+                } 
+                
+         }       
   }
 }
-

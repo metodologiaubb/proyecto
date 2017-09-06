@@ -15,8 +15,11 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.BooleanProperty;
+import static javafx.beans.property.BooleanProperty.booleanProperty;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -44,7 +47,7 @@ public class Producto{
 	private Marca marca;
 	private IntegerProperty valor;
         private IntegerProperty id_producto_proveedor;
-        private boolean ischeck = false;
+        private BooleanProperty  ischeck;
         
 	public Producto(int id_producto, String nombre_producto, String u_medida, 
                 LocalDate pentrega, Proveedor proveedor, 
@@ -58,6 +61,7 @@ public class Producto{
 		this.valor =        new SimpleIntegerProperty(valor);
                 this.valorF =        new SimpleIntegerProperty(valordcto);
                 this.id_producto_proveedor=new SimpleIntegerProperty(id_prod_prov);
+                this.ischeck=new SimpleBooleanProperty(false);
 	}
 
 	//Metodos atributo: id_producto
@@ -122,11 +126,14 @@ public class Producto{
 		return valor;
 	}
         public boolean getCheck(){
-            return ischeck;
+            return ischeck.get();
         }
         public void setCheck(boolean ischeck){
-            this.ischeck=ischeck;
+            this.ischeck= new SimpleBooleanProperty(ischeck);
         }
+        public BooleanProperty CheckProperty() {
+		return ischeck;
+	}
         ///////////////
         //Metodos atributo: valor
 	public int getValorF() {
