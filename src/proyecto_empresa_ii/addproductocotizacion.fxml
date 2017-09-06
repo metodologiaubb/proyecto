@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
@@ -13,7 +20,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="346.0" prefWidth="433.0" style="-fx-background-color: ;" styleClass="background" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.AddproductcotizacionController">
+<AnchorPane id="AnchorPane" prefHeight="346.0" prefWidth="433.0" style="-fx-background-color: ;" styleClass="background" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_empresa_ii.AddproductcotizacionController">
    <children>
       <HBox alignment="CENTER" layoutX="48.0" layoutY="27.0" prefHeight="472.0" prefWidth="433.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -34,14 +41,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ComboBox fx:id="cmbcot" prefHeight="26.0" prefWidth="304.0" promptText="Elegir Cotización" style="-fx-background-color: #E8E8E8;" GridPane.columnIndex="1">
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <GridPane.margin>
-                              <Insets left="7.0" />
-                           </GridPane.margin>
-                        </ComboBox>
                         <ComboBox fx:id="cmbproducto" prefHeight="26.0" prefWidth="307.0" promptText="Elegir Producto" style="-fx-background-color: #E8E8E8;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <opaqueInsets>
                               <Insets />
@@ -58,6 +57,7 @@
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font></Label>
+                        <JFXTextField fx:id="descripcion" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                   <HBox alignment="CENTER" prefHeight="73.0" prefWidth="407.0" spacing="20.0">

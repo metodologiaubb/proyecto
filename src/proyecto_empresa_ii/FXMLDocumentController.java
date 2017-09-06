@@ -162,6 +162,7 @@ public class FXMLDocumentController implements Initializable {
     private JFXButton btnagregar_proveedor;
     public static int wat;
     public static int productoS;
+    public static String DescripCot;
     @FXML
     private JFXDrawer drawer;
     @FXML
@@ -563,7 +564,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
     public static Conexion                    conexion;
     private ObservableList<Marca>       listamarcas;
     private ObservableList<Proveedor>   listaproveedor;
-    private ObservableList<Producto>    listaproductos;
+    private static ObservableList<Producto>    listaproductos;
     private ObservableList<Cotizacion>  listacotizacion;
     private FilteredList<Producto>      filtereddataproduct;
     private FilteredList<Cotizacion>    filtereddatacotiza;
@@ -665,8 +666,6 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
     ************************   Sección de metodos   ****************************
     ****************************************************************************
     ***************************************************************************/
-    public void check(){
-        }
     private void tvProducto(){
 
         
@@ -952,6 +951,7 @@ new Callback<CellDataFeatures<Producto,Boolean>,ObservableValue<Boolean>>()
                 Producto.llenarInformacion  (conexion.getConnection(), 
                 listaproductos, selectedValue.getId_cot());
                 wat=selectedValue.getId_cot();
+                DescripCot=selectedValue.getDescripcion();
                 btnInforme.disableProperty().setValue(false);
             }
         );
@@ -1198,12 +1198,12 @@ new Callback<CellDataFeatures<Producto,Boolean>,ObservableValue<Boolean>>()
                          String sql="DELETE FROM pertenece WHERE ID_PRODUCT_PRO"
                                  + "="+listaproductos.get(i).getId_producto_proveedor()+""
                                  + " AND ID_COT="+wat+";";
-                         if(consultas.Insert(sql)==0){
-                             Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+                         if(consultas.Insert(sql)!=0){
+                             Alert alerta = new Alert(Alert.AlertType.ERROR);
                              alerta.setHeaderText("");      
-                             alerta.setTitle("Datos modificados");
-                             alerta.setContentText("Se an eliminado los "
-                                     + "productos de la Cotización ");
+                             alerta.setTitle("ERROR");
+                             alerta.setContentText("Error al intentar "
+                                     + "eliminar la cotizacion");
                              Optional<ButtonType> resultd = alerta.showAndWait();
                          }
                      }
@@ -1213,4 +1213,7 @@ new Callback<CellDataFeatures<Producto,Boolean>,ObservableValue<Boolean>>()
                 
          }       
   }
+         public static ObservableList<Producto>getListapro(){
+             return listaproductos;
+         }
 }

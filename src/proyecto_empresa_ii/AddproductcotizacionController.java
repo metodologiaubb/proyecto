@@ -6,6 +6,7 @@
 package proyecto_empresa_ii;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,6 +29,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Window;
+import static proyecto_empresa_ii.FXMLDocumentController.conexion;
 import proyecto_empresa_ii.modelo.Conexion;
 import proyecto_empresa_ii.modelo.Cotizacion;
 import proyecto_empresa_ii.modelo.Producto;
@@ -41,9 +43,9 @@ import proyecto_empresa_ii.modelo.consultas;
  * @author pascaliwi
  */
 public class AddproductcotizacionController implements Initializable {
-
     @FXML
-    private ComboBox<Cotizacion> cmbcot;
+    private JFXTextField descripcion;
+    private ObservableList<Producto> listaproductos;
     @FXML
     private ComboBox <Producto_Proveedor> cmbproducto;
     @FXML
@@ -52,7 +54,6 @@ public class AddproductcotizacionController implements Initializable {
     private JFXButton btnnuevo_producto;
     @FXML
     private Label mensajesql;
-    private ObservableList<Cotizacion>listacot;
     public ObservableList<Producto_Proveedor> listaproducto;
     /**
      * Initializes the controller class.
@@ -60,8 +61,9 @@ public class AddproductcotizacionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listaproducto=FXCollections.observableArrayList();
-        listacot=FXCollections.observableArrayList();
-    Cotizacion.llenarInformacion (listacot);
+        descripcion.setText(FXMLDocumentController.DescripCot);
+        descripcion.setEditable(false);
+        listaproductos=FXMLDocumentController.getListapro();
         try {
             Producto_Proveedor.llenarproducto(listaproducto);
         } catch (SQLException ex) {
@@ -69,16 +71,18 @@ public class AddproductcotizacionController implements Initializable {
         }
         
 Producto_Proveedor.autocompletar(cmbproducto, listaproducto);
-Cotizacion.autocompletar(cmbcot, listacot);
     }
 
     
     @FXML
     private void insertarprodencot(ActionEvent event) {
     int x;
-  x=consultas.Insert("INSERT INTO `pertenece`(`ID_COT`, `ID_PRODUCT_PRO`) VALUES ('"+cmbcot.getValue().getId_cot()+"','"+cmbproducto.getValue().getID_PRODUCTO_PROVEEDOR()+"')");
+  x=consultas.Insert("INSERT INTO `pertenece`(`ID_COT`, `ID_PRODUCT_PRO`) VALUES ('"+FXMLDocumentController.wat+"','"+cmbproducto.getValue().getID_PRODUCTO_PROVEEDOR()+"')");
                if(x==0){
     mensajesql.setText("Producto ingresado a cotización exitosamente");
+    listaproductos.removeAll(listaproductos);
+       Producto.llenarInformacion  (conexion.getConnection(), 
+       listaproductos,FXMLDocumentController.wat);
     }}
               
 
@@ -88,7 +92,6 @@ Cotizacion.autocompletar(cmbcot, listacot);
     }
     
    private void limpiar(){
-        cmbcot.setValue(null);
         cmbproducto.setValue(null);
    }
    
