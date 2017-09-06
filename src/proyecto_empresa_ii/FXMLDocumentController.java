@@ -580,6 +580,7 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
         listaCotiza = new HashMap<Integer,Integer>();
         btnInforme.disableProperty().setValue(true);
         btnactualizar_producto.disableProperty().setValue(true);
+        btnprodacot.disableProperty().setValue(true);
         /*--------------------------------------------------*/
         listamarcas     =FXCollections.observableArrayList();
         listaproveedor  =FXCollections.observableArrayList();
@@ -953,6 +954,7 @@ new Callback<CellDataFeatures<Producto,Boolean>,ObservableValue<Boolean>>()
                 wat=selectedValue.getId_cot();
                 DescripCot=selectedValue.getDescripcion();
                 btnInforme.disableProperty().setValue(false);
+                btnprodacot.disableProperty().setValue(false);
             }
         );
     }
