@@ -56,6 +56,9 @@ public class AddproductoproveedorController implements Initializable{
     private JFXButton limpiarproductoproveedor;
     @FXML
     private JFXButton btnnuevoproducto;
+    @FXML
+    private Label labeldescuento;
+    
     static int valorfinal;
         Conexion con;
     String date1;
@@ -101,6 +104,7 @@ public class AddproductoproveedorController implements Initializable{
         limpiar();
        
     }
+    
     @FXML
     private void eventoDescuento(ActionEvent event){
         //char a=event.
@@ -157,14 +161,30 @@ public class AddproductoproveedorController implements Initializable{
         }
           Producto.autocompletar1(cmbppro, listaproductoss);
     }
-    
+      
+   
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
        con = new Conexion();
        con.establecerConexion();
        llename();
-        
-    }
+      jtfdescuento.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
+        if (! isNowFocused) {
+        int b,c;
+        if(Integer.parseInt(jtfdescuento.getText())<=100 && Integer.parseInt(jtfdescuento.getText())>=0){
+        b=Integer.parseInt(jtfdescuento.getText());
+        c=Integer.parseInt(jtfvalor.getText());
+        valorfinal=c-((b*c)/100); 
+        labeldescuento.setText(""+valorfinal);
+        }
+       }
+     });
+      /*labeldescuento.textProperty().addListener((obs, oldText, newText) -> 
+    labeldescuento.setText(""+valorfinal));*/
     
 }
+   
+}
+    
+
