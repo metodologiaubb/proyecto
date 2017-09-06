@@ -180,8 +180,8 @@ public class AddproductoproveedorController implements Initializable{
         }
        }
      });
-      /*labeldescuento.textProperty().addListener((obs, oldText, newText) -> 
-    labeldescuento.setText(""+valorfinal));*/
+//      labeldescuento.textProperty().addListener((obs, oldText, newText) -> 
+//    jtfdescuento.setText(""+valorfinal));
     
 }
    

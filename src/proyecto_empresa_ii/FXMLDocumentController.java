@@ -681,16 +681,9 @@ consultas.Insert("delete from cotizacion where ID_COT='"+wat+"';");
             return new ReadOnlyBooleanWrapper(p.getCheck());
         });
         coleliminar_producto.setCellValueFactory(
-new Callback<CellDataFeatures<Producto,Boolean>,ObservableValue<Boolean>>()
-{
-    //This callback tell the cell how to bind the data model 'Registered' property to
-    //the cell, itself.
-    @Override
-    public ObservableValue<Boolean> call(CellDataFeatures<Producto, Boolean> param)
-    {   
-        return param.getValue().CheckProperty();
-    }   
-});
+                (CellDataFeatures<Producto, Boolean> param) -> param.getValue().CheckProperty() 
+        //the cell, itself.
+        );
         coleliminar_producto.setCellFactory(
                 CheckBoxTableCell.forTableColumn(coleliminar_producto)
         );

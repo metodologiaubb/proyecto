@@ -91,7 +91,7 @@
                               <Insets left="200.0" />
                            </GridPane.margin>
                            <font>
-                              <Font name="System Bold" size="24.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
                      </children>

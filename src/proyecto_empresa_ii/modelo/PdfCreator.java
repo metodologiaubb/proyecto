@@ -21,11 +21,13 @@ public class PdfCreator {
     
     public void reporteCotizacion(int Cotizacion){
         try {
+            String logo="mseal.png";
             Conexion con=new Conexion();
             con.establecerConexion();
             JasperReport cotizacion = (JasperReport) JRLoader.loadObject("src/proyecto_empresa_ii/modelo/Cotizacion.jasper");
             Map cotiza=new HashMap();
             cotiza.put("cotizacion", Cotizacion);
+            cotiza.put("logo", this.getClass().getResourceAsStream(logo));
             JasperPrint p= JasperFillManager.fillReport(cotizacion, cotiza,con.getConnection());
             JasperViewer jv=new JasperViewer(p,false);
             jv.setTitle("Informe Cotización");
